@@ -9,6 +9,9 @@ var Tree = (function () {
         this.data = tree;
         this.data.href = '/';  // root must be /
     };
+    Tree.prototype.getData = function () {
+        return this.data;        
+    };
     Tree.prototype.getParent = function (str) {
         var parts = str.split('/');
         var s = parts.pop();
@@ -224,7 +227,34 @@ var Tree = (function () {
         li.appendChild(a);
         li.appendChild(ul);
     };
+    Tree.prototype.findKey = function(keyObj, data){
+        var p, key, val, tRet;
+        for (p in keyObj) {
+            if (keyObj.hasOwnProperty(p)) {
+                key = p;
+                val = keyObj[p];
+            }
+        }
 
+        if (data[key] == val) {
+            return data;
+        } else if (data.hasOwnProperty("children")) {
+            var children = data.children;
+            for (var i = 0; i < children.length; i++) {
+                var found = this.findKey(keyObj, children[i]);
+                if (found) {
+                    return found;
+                }
+            }
+            // if (this.hasOwnProperty(p)) {
+            //     tRet = findKey(keyObj, this[p]);
+            //     if (tRet) { return tRet; }
+            // }
+        }
+    };
+    Tree.prototype.setTreeTitle = function(title){
+
+    };
     return Tree;
 })();
 
@@ -255,6 +285,9 @@ NavTree = new Tree();
         };
 
         if (widgets) {
+
+
+
             var nav = document.createElement('div');
             nav.setAttribute('id', 'tree-navigation');
             nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
@@ -264,15 +297,24 @@ NavTree = new Tree();
             '</div>';
             widgets.insertBefore(nav, widgets.firstChild);
 
-            var root = getUrl(window.location.href);
-            NavTree.setData(tree);
-            var content = document.querySelector('#tree-navigation-content .widget-body');
-            NavTree.init(root);
+
+            //Add page title label
+            var navTitle = document.createElement('h3');
+            navTitle.setAttribute('id', 'tree-title');
+            // navTitle.setAttribute('class', 'strong');
+            navTitle.innerHTML = "Page title";
+            widgets.insertBefore(navTitle, widgets.firstChild);    
+
+            // var root = getUrl(window.location.href);
+            // NavTree.setData(tree);
+            // var content = document.querySelector('#tree-navigation-content .widget-body');
+            // NavTree.init(root);
             //NavTree.setHover();
 
             // query sitemap.js
-            /*$.ajax({
-                url: '/assets/js/scripts/sitemap.js',
+            $.ajax({
+                // url: '/assets/js/scripts/sitemap.js',
+                url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
                 dataType: "jsonp",
                 jsonp: false,
                 jsonpCallback: 'sitemap'
@@ -282,7 +324,7 @@ NavTree = new Tree();
                 var content = document.querySelector('#tree-navigation-content .widget-body');
                 NavTree.init(root);
                 NavTree.setHover();
-            });*/
+            });
         }
     });
 })();
