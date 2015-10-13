@@ -381,6 +381,8 @@ NavTree = new Tree();
 
                 var url = getUrl(window.location.href);
                 var path = url.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
+                if(path.indexOf("/") == 0)
+                    path = path.substring(1);
                 var pathArr = path.split("/");
 
                 var searchPath = "";
@@ -402,6 +404,8 @@ NavTree = new Tree();
                 }else if(pathArr[0] == "Knowledge_Base"){
 
                 }
+
+                searchPath = NavTree.getPathUntilDepth(pathArr, 5);
 
                 var treeData = tree;
                 //This will go into the Tree if on live site
