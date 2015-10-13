@@ -417,7 +417,7 @@ NavTree = new Tree();
 
                 
                 if(branch){
-                    NavTree.addToc(branch, "/"+path, getHeaderTags());
+                    NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
                     // NavTree.setTreeTitle(branch.name);
                     NavTree.setData(branch);
                     var content = document.querySelector('#tree-navigation-content .widget-body');
@@ -427,7 +427,7 @@ NavTree = new Tree();
                     $('#tree-title').append(siblingList);
                 }
 
-                
+
                 // var root = getUrl(window.location.href);
                 // NavTree.setData(tree);
                 // var content = document.querySelector('#tree-navigation-content .widget-body');
