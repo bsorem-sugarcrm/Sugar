@@ -246,11 +246,43 @@ var Tree = (function () {
                     return found;
                 }
             }
-            // if (this.hasOwnProperty(p)) {
-            //     tRet = findKey(keyObj, this[p]);
-            //     if (tRet) { return tRet; }
-            // }
         }
+    };
+    Tree.prototype.addToc = function(data, path, tocChildren){
+        if (data["href"] == path){
+            data.children = tocChildren;
+        }else if(data.hasOwnProperty("children")) {
+            var children = data.children;
+            for (var i = 0; i < children.length; i++) {
+                this.addToc(children[i], path, tocChildren);
+            }
+        }
+    };
+    Tree.prototype.createSiblingList = function(children, title){
+        var ul = document.createElement('ul');
+        ul.setAttribute('id','siblins')
+        for(var i=0; i<children.length; i++){
+            var li = document.createElement('li');
+            var a = document.createElement('a');
+            a.setAttribute('href', children[i].href);
+            a.innerHTML = children[i].name;
+            if(children[i].name == title){
+                a.setAttribute('class', 'title');
+                li.setAttribute('class', 'title');
+                li.setAttribute('onClick', 'NavTree.showSiblings()');
+            }else{
+                li.setAttribute('class', 'sibling');
+            }
+            li.appendChild(a);
+            ul.appendChild(li);
+        }
+        return ul;
+    };
+    Tree.prototype.showSiblings = function(){
+        var ul = document.getElementById('siblins');
+        $('#siblins li').each(function(){
+            $(this).toggleClass('open');
+        });
     };
     Tree.prototype.setTreeTitle = function(title){
 
@@ -298,11 +330,11 @@ NavTree = new Tree();
             widgets.insertBefore(nav, widgets.firstChild);
 
 
-            //Add page title label
-            var navTitle = document.createElement('h3');
+            //Add page title widget
+            var navTitle = document.createElement('div');
             navTitle.setAttribute('id', 'tree-title');
             // navTitle.setAttribute('class', 'strong');
-            navTitle.innerHTML = "Page title";
+            // navTitle.innerHTML = "Page title";
             widgets.insertBefore(navTitle, widgets.firstChild);    
 
             // var root = getUrl(window.location.href);

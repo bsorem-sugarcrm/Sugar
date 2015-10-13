@@ -744,7 +744,7 @@ a.video-thumbnail:hover {
 .content .navmenu {
   position: absolute;
   background: #444248;
-  padding: 40px 10px 20px 30px;
+  /*padding: 40px 10px 20px 30px;*/
 }
 
 .content .navmenu ul {
@@ -784,6 +784,46 @@ a.video-thumbnail:hover {
 }
 
 .content .navmenu li ul a {
+  color: #ddd;
+}
+
+#tree-navigation{
+  padding: 20px 10px 20px 30px;
+}
+
+/*NAV TREE */
+#tree-title{
+  padding: 20px 20px 20px 15px;
+  background-color: #000000;  
+}
+
+#tree-title a{
+  color: #ccc;
+}
+
+#tree-title a.title{
+  color: #fff;
+}
+
+#tree-title li.title{
+  background: url(../images/list_right.png) no-repeat left center;
+  padding: 0px 0px 3px 31px;
+  cursor: pointer;
+}
+#tree-title li.title.open{
+  background: url(../images/list_down.png) no-repeat left center;
+  padding: 0px 0px 3px 31px;
+  cursor: pointer;
+}
+
+#tree-title li.sibling{
+  display: none;
+}
+#tree-title li.sibling.open{
+  display: block;
+  padding: 0px 0px 3px 31px;
+}
+#tree-title .sub{
   color: #ddd;
 }
 
@@ -1094,3 +1134,6 @@ footer .nav-social a {
 #gcse-sugar .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
   color: #ccc;
 }
+
+
+
