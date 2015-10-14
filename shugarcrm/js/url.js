@@ -45,6 +45,7 @@ $("#urlButton").click(function(){
 		NavTree.init("root");
 		NavTree.setHover();
 
+		$('#tree-title').html("");
 		$('#tree-title').append(siblingList);
 	}
 

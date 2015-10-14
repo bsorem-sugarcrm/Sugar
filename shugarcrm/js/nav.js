@@ -259,29 +259,44 @@ var Tree = (function () {
         }
     };
     Tree.prototype.createSiblingList = function(children, title){
+        var div = document.createElement('div'); 
+        var span = document.createElement('span');
+        span.setAttribute('class', 'title');
+        span.setAttribute('onClick', 'NavTree.showSiblings()');
+        div.appendChild(span);
         var ul = document.createElement('ul');
-        ul.setAttribute('id','siblins')
+        ul.setAttribute('class', 'collapse');
+        div.appendChild(ul);
+        ul.setAttribute('id','sibling')
         for(var i=0; i<children.length; i++){
-            var li = document.createElement('li');
-            var a = document.createElement('a');
-            a.setAttribute('href', children[i].href);
+            var a = document.createElement('a');            
             a.innerHTML = children[i].name;
             if(children[i].name == title){
                 a.setAttribute('class', 'title');
-                li.setAttribute('class', 'title');
-                li.setAttribute('onClick', 'NavTree.showSiblings()');
+                span.appendChild(a);
+                // li.setAttribute('class', 'title');
+                a.setAttribute('data-toggle', 'collapse');
+                a.setAttribute('data-target', '#sibling');
+                
             }else{
-                li.setAttribute('class', 'sibling');
+                var li = document.createElement('li');
+                a.setAttribute('href', children[i].href);
+                li.setAttribute('aria-expanded', false);
+                li.appendChild(a);
+                ul.appendChild(li);
             }
-            li.appendChild(a);
-            ul.appendChild(li);
+            
         }
-        return ul;
+        return div;
     };
     Tree.prototype.showSiblings = function(){
-        var ul = document.getElementById('siblins');
-        $('#siblins li').each(function(){
-            $(this).toggleClass('open');
+        $('#tree-title span').toggleClass("open");
+
+        var ul = document.getElementById('sibling');
+        $('#sibling li').each(function(){
+            // $(this).toggleClass('in');
+            // $(this).attr('aria-expanded', !$(this).attr('aria-expanded'));
+            // $(this).collapse('show');
         });
     };
     Tree.prototype.getPathUntilDepth = function(path, depth){

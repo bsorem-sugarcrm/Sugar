@@ -756,7 +756,7 @@ a.video-thumbnail:hover {
 }
 
 .content .navmenu ul a {
-  color: #fff;
+  color: #b7b7b8;
 }
 
 .content .navmenu ul a b,
@@ -765,7 +765,7 @@ a.video-thumbnail:hover {
 }
 
 .content .navmenu ul .glyphicon {
-  color: #fff;
+  color: #b7b7b8;
   cursor: pointer;
   font-size: 10px;
   vertical-align: top;
@@ -784,7 +784,7 @@ a.video-thumbnail:hover {
 }
 
 .content .navmenu li ul a {
-  color: #ddd;
+  color: #b7b7b8;
 }
 
 #tree-navigation{
@@ -794,7 +794,8 @@ a.video-thumbnail:hover {
 /*NAV TREE */
 #tree-title{
   padding: 20px 20px 20px 15px;
-  background-color: #000000;  
+  /*background-color: #000000;  */
+  border-bottom: 1px solid #5f5d62;
 }
 
 #tree-title a{
@@ -805,15 +806,19 @@ a.video-thumbnail:hover {
   color: #fff;
 }
 
-#tree-title li.title{
+#tree-title span.title{
   background: url(../images/list_right.png) no-repeat left center;
   padding: 0px 0px 3px 31px;
   cursor: pointer;
 }
-#tree-title li.title.open{
+#tree-title span.title.open{
   background: url(../images/list_down.png) no-repeat left center;
   padding: 0px 0px 3px 31px;
   cursor: pointer;
+}
+
+#tree-title ul{
+  padding: 0 15px;
 }
 
 #tree-title li.sibling{
