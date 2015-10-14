@@ -260,9 +260,11 @@ var Tree = (function () {
     };
     Tree.prototype.createSiblingList = function(children, title){
         var div = document.createElement('div'); 
-        var span = document.createElement('span');
+        var span = document.createElement('p');
         span.setAttribute('class', 'title');
         span.setAttribute('onClick', 'NavTree.showSiblings()');
+        span.setAttribute('data-toggle', 'collapse');
+        span.setAttribute('data-target', '#sibling');
         div.appendChild(span);
         var ul = document.createElement('ul');
         ul.setAttribute('class', 'collapse');
@@ -290,14 +292,8 @@ var Tree = (function () {
         return div;
     };
     Tree.prototype.showSiblings = function(){
-        $('#tree-title span').toggleClass("open");
-
-        var ul = document.getElementById('sibling');
-        $('#sibling li').each(function(){
-            // $(this).toggleClass('in');
-            // $(this).attr('aria-expanded', !$(this).attr('aria-expanded'));
-            // $(this).collapse('show');
-        });
+        $('#tree-title p').toggleClass("open");
+        $('#tree-title').toggleClass("open");
     };
     Tree.prototype.getPathUntilDepth = function(path, depth){
         var result = "";

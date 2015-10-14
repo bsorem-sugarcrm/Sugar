@@ -793,9 +793,15 @@ a.video-thumbnail:hover {
 
 /*NAV TREE */
 #tree-title{
-  padding: 20px 20px 20px 15px;
+  /*padding: 20px 20px 20px 15px;*/
   /*background-color: #000000;  */
   border-bottom: 1px solid #5f5d62;
+  padding: 15px 0;
+}
+
+#tree-title.open{
+  background-color: #000000;
+  padding: 15px 0 0 0;
 }
 
 #tree-title a{
@@ -804,30 +810,32 @@ a.video-thumbnail:hover {
 
 #tree-title a.title{
   color: #fff;
+  padding: 5px 20px 5px 30px;
 }
 
-#tree-title span.title{
+#tree-title p.title{
   background: url(../images/list_right.png) no-repeat left center;
-  padding: 0px 0px 3px 31px;
+  
   cursor: pointer;
+  margin: 5px 0 5px 15px;
 }
-#tree-title span.title.open{
+#tree-title p.title.open{
   background: url(../images/list_down.png) no-repeat left center;
-  padding: 0px 0px 3px 31px;
+  /*padding: 0px 0px 3px 31px;*/
   cursor: pointer;
 }
 
 #tree-title ul{
-  padding: 0 15px;
+  /*padding: 0 15px;*/
 }
 
-#tree-title li.sibling{
-  display: none;
+#tree-title li{
+  padding: 5px 20px 5px 45px;
 }
-#tree-title li.sibling.open{
-  display: block;
-  padding: 0px 0px 3px 31px;
+#tree-title li:hover{
+  background-color: #e31c24;
 }
+
 #tree-title .sub{
   color: #ddd;
 }
