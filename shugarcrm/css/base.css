@@ -1518,8 +1518,8 @@ footer .nav-social a {
 }
 
 .separater {
-        &:before { content: '\00BB'; }
-        margin: 0 5px;
+        /*&:before { content: '\00BB'; }*/
+  margin: 0 5px;
 }
 
 
