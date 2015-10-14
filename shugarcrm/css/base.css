@@ -1517,5 +1517,11 @@ footer .nav-social a {
   color: #ccc;
 }
 
+.breadcrumbs .separater {
+        &:before { content: '\00BB'; }
+        margin: 0 5px;
+}
+
+
 
 
