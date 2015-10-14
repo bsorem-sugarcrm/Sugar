@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>SugarCRM Support - SugarCRM Support Site</title>
+    <title>{{title}} - SugarCRM Support Site</title>
+
+    <link rel="canonical" href="{{canonical}}">
 
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.css">
     <link rel="stylesheet" href="assets/jasny-bootstrap/css/jasny-bootstrap.css">
     <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
     <link rel="stylesheet" href="css/stackicons-social-minimal.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/forms.css">
@@ -142,27 +145,18 @@
           </button>
         </div>
 
-        <div class="row">
+        <div class="ro">
           <div class="col-md-12gg" >
-            <section class="content-heading">
+            <!-- <section class="content-heading">
               <a href="" class="back-link">&lt; Back to search results</a>
+            </section> -->
+
+            <section class="content-heading">
+              {{breadcrumbs}}
             </section>
-
             <section class="content-body">
-              <h1>Sugar Enterprise 7.6.0 Application Guide</h1>
-              <h2>Getting Started</h2>
-
-              <h3>Overview</h3>
-              <p>Sugar offers users a wide range of configuration options when getting started with the application. Your first time logging into Sugar the New User Wizard will step through configuring some basic settings (i.e. Your Information, Your Locale, ettc). You may skip these steps and configure these settings in your user preferencs at a later time. Please note that system administrators can also set up each user’s basic settings when creating.</p>
-
-              <h4>Summary</h4>
-              <p>The sugar log in allows you to enter login credentials to access your instance. Navigate your web browser to you instance’s URL to access Sugar’s login screen. If you do not know your instance URL or login credentials, please reach out to your system administrator for assisstance. The New User Wizard will launch upon your first successful log in to Sugar allowing you to configure some of your basic personal settings.</p>
-
-              <h3>Accessing Sugar</h3>
-              <h4>Prerequisites</h4>
-              <p>The following will need to be installed and configured on your local machine prior to accessing Sugar:</p>
-
-             
+              <h1>{{title}}</h1>
+              {{body}}
             </section>
 
             <section class="content-footer">
@@ -371,5 +365,6 @@
     <script src="js/base.js"></script>
 
     <script src="js/url.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
   </body>
 </html>
