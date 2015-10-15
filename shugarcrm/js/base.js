@@ -1,3 +1,58 @@
+/**
+ * Simple JavaScript Templating
+ */
+(function() {
+  var cache = {};
+
+  this.tmpl = function tmpl(str, data) {
+    var fn = !/\W/.test(str) ?
+    cache[str] = cache[str] ||
+      tmpl(document.getElementById(str).innerHTML) :
+    new Function("obj",
+      "var p=[],print=function(){p.push.apply(p,arguments);};" +
+      "with(obj){p.push('" +
+      str
+        .replace(/[\r\t\n]/g, " ")
+        .split("<%").join("\t")
+        .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+        .replace(/\t=(.*?)%>/g, "',$1,'")
+        .split("\t").join("');")
+        .split("%>").join("p.push('")
+        .split("\r").join("\\'")
+      + "');}return p.join('');");
+
+    return data ? fn( data ) : fn;
+  };
+})();
+
+/**
+ * Utils
+ */
+(function() {
+  this.Utils = {
+    strCut: function(str, num) {
+      if (str.length <= num) {
+        return str;
+      }
+
+      var string = str.substring(0, num),
+        pos = string.lastIndexOf(' ');
+
+      if (pos > 0) {
+        string = string.substring(0, pos) + '...';
+      }
+
+      return string;
+    },
+
+    stripTags: function(str) {
+      var replace = new RegExp("\\+", 'gi');
+
+      return str.replace(replace, ' ');
+    }
+  };
+})();
+
 $(function() {
   // Custom select picker
   if ($.fn.selectpicker) {

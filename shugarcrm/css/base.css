@@ -1009,6 +1009,69 @@ footer .nav-social a {
 }
 
 /**
+ * Search
+ */
+.search-result-box {
+  position: relative;
+  min-height: 100px;
+}
+
+.search-result-box h1 {
+  font-style: italic;
+  font-size: 18px;
+}
+
+.search-result-box.loading .results {
+  opacity: 0.2;
+}
+
+.search-result-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-result-list li {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.search-result-list li:hover {
+  background: #f9f9f9;
+}
+
+.search-result-list li a {
+  text-decoration: none;
+}
+
+.search-result-list .title {
+  display: block;
+  margin: 0 0 2px;
+}
+
+.search-result-list .url {
+  display: block;
+  color: #999;
+  margin: 0 0 2px;
+}
+
+.search-result-list .tags,
+.search-result-list .summary {
+  color: #666;
+  margin: 0;
+}
+
+.search-result-list .tags a {
+  color: #666;
+  text-decoration: underline;
+}
+
+.search-result-list .tags a:hover {
+  text-decoration: none;
+}
+
+/**
  * GCSE search
  */
 #gcse-sugar .gsc-control-cse {

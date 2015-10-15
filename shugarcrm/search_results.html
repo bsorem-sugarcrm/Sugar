@@ -12,16 +12,6 @@
     <link rel="stylesheet" href="css/stackicons-social-minimal.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/forms.css">
-
-    <script type="text/javascript">
-      (function() {
-          var cx = '007718218132233243975:ul-b5k2dwgm';
-          var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-          gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-            '//www.google.com/cse/cse.js?cx=' + cx;
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-        })();
-    </script>
   </head>
 
   <body>
@@ -49,37 +39,37 @@
 
     <section class="filters">
       <div class="container">
-        <form class="row">
+        <form class="row" id="searchForm" action="search_results.html">
           <div class="col-sm-12 col-md-5 input-wrap has-icon">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <input type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
+            <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
           </div>
 
           <div class="col-xs-12 col-sm-9 col-md-6 form-set">
             <div class="row">
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>Ultimate</option>
-                  <option>Enterprise</option>
-                  <option>Corporate</option>
-                  <option>Professional</option>
-                  <option>Community Edition</option>
+                <select name="tag1" class="form-control custom-select input-lg">
+                  <option value="Ultimate">Ultimate</option>
+                  <option value="Enterprise">Enterprise</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Community Edition">Community Edition</option>
                 </select>
               </div>
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>Sugar 7.4.X</option>
-                  <option>Sugar 7.5.X</option>
-                  <option>Sugar 7.6.X</option>
-                  <option>Sugar 7.7.X</option>
-                  <option>Sugar 7.8.X</option>
+                <select name="tag2" class="form-control custom-select input-lg">
+                  <option value="7.4">Sugar 7.4.X</option>
+                  <option value="7.5">Sugar 7.5.X</option>
+                  <option value="7.6">Sugar 7.6.X</option>
+                  <option value="7.7">Sugar 7.7.X</option>
+                  <option value="7.8">Sugar 7.8.X</option>
                 </select>
               </div>
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>End Users</option>
-                  <option>Administrators</option>
-                  <option>Developers</option>
+                <select name="tag3" class="form-control custom-select input-lg">
+                  <option value="End Users">End Users</option>
+                  <option value="Administrators">Administrators</option>
+                  <option value="Developers">Developers</option>
                 </select>
               </div>
             </div>
@@ -121,21 +111,21 @@
       <div class="container">
         <form class="form-inline">
           <div class="checkbox"><label><input type="checkbox"> Filters:</label></div>
-          <select class="form-control input-sm">
+          <select name="filter_tag1" class="form-control input-sm">
             <option>Ultimate</option>
             <option>Enterprise</option>
             <option>Corporate</option>
             <option>Professional</option>
             <option>Community Edition</option>
           </select>
-          <select class="form-control input-sm">
-            <option>Sugar 7.4.X</option>
-            <option>Sugar 7.5.X</option>
-            <option>Sugar 7.6.X</option>
-            <option>Sugar 7.7.X</option>
-            <option>Sugar 7.8.X</option>
+          <select name="filter_tag2" class="form-control input-sm">
+            <option value="7.4">Sugar 7.4.X</option>
+            <option value="7.5">Sugar 7.5.X</option>
+            <option value="7.6">Sugar 7.6.X</option>
+            <option value="7.7">Sugar 7.7.X</option>
+            <option value="7.8">Sugar 7.8.X</option>
           </select>
-          <select class="form-control input-sm">
+          <select name="filter_tag3" class="form-control input-sm">
             <option>End Users</option>
             <option>Administrators</option>
             <option>Developers</option>
@@ -148,14 +138,36 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9">
-            <div id="gcse-sugar">
-              <gcse:searchbox></gcse:searchbox>
-              <gcse:searchresults defaultToImageSearch="true"></gcse:searchresults>
+            <div class="search-result-box" id="search-box">
+              <div class="results"></div>
+              <div class="pagination"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <script type="text/html" id="search_results">
+      <% if (data.error) { %>
+        <p><%=data.error%></p>
+      <% } else { %>
+        <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+        <ul class="search-result-list">
+          <%
+            for (var i = 0; i < data.data.length; i++) {
+            var item = data.data[i];
+          %>
+            <li>
+              <a href="<%=item.url%>">
+                <span class="title"><%=item.title%></span>
+                <span class="url"><%=item.url%></span>
+                <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
+    </script>
 
     <footer>
       <div class="container">
@@ -257,5 +269,6 @@
     <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
     <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="js/base.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>
