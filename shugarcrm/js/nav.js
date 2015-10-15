@@ -417,7 +417,7 @@ NavTree = new Tree();
 
                 }
 
-                searchPath = NavTree.getPathUntilDepth(pathArr, 5);
+                searchPath = "/"+path;
 
                 var treeData = tree;
                 //This will go into the Tree if on live site
