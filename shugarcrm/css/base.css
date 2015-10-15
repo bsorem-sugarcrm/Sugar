@@ -761,6 +761,16 @@ a.video-thumbnail:hover {
  */
 .content.has-navmenu {
   position: relative;
+  padding-left: 283px;
+  padding-right: 30px;
+}
+
+@media(max-width: 768px){
+  .content.has-navmenu {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 .content .navmenu {
@@ -885,7 +895,8 @@ a.video-thumbnail:hover {
     }
 
     .has-navmenu .container {
-      width: 65%;
+      /* width: 65%; */
+      width: 100%;
     }
 
    
