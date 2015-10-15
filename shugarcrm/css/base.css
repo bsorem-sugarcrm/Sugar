@@ -392,6 +392,8 @@ ol.unmarked {
   padding: 0 10px;
   height: 24px;
   line-height: 24px;
+  font-size: 10px;
+  text-transform: uppercase;
   background: #f3f3f3;
   width: 100%;
   margin: 0 0 5px;
@@ -821,12 +823,11 @@ a.video-thumbnail:hover {
 
 #tree-title.open{
   background-color: #000000;
-  padding: 15px 0;
+  padding: 15px 0 0 0;
 }
 
 #tree-title a{
   color: #ccc;
-  text-decoration: none;
 }
 
 #tree-title a.title{
