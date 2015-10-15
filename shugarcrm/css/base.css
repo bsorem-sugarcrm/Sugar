@@ -1157,3 +1157,13 @@ footer .nav-social a {
 #gcse-sugar .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
   color: #ccc;
 }
+
+.separater {
+  margin: 0 5px;
+}
+
+.separater:before {
+    content: '\00BB'; 
+}
+
+
