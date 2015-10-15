@@ -9,6 +9,9 @@ var Tree = (function () {
         this.data = tree;
         this.data.href = '/';  // root must be /
     };
+    Tree.prototype.getData = function () {
+        return this.data;        
+    };
     Tree.prototype.getParent = function (str) {
         var parts = str.split('/');
         var s = parts.pop();
@@ -224,7 +227,104 @@ var Tree = (function () {
         li.appendChild(a);
         li.appendChild(ul);
     };
+    Tree.prototype.findKey = function(keyObj, data){
+        var p, key, val, tRet;
+        for (p in keyObj) {
+            if (keyObj.hasOwnProperty(p)) {
+                key = p;
+                val = keyObj[p];
+            }
+        }
 
+        if (data[key] == val) {
+            return data;
+        } else if (data.hasOwnProperty("children")) {
+            var children = data.children;
+            for (var i = 0; i < children.length; i++) {
+                var found = this.findKey(keyObj, children[i]);
+                if (found) {
+                    return found;
+                }
+            }
+        }
+    };
+    Tree.prototype.addToc = function(data, path, tocChildren){
+        if (data["href"] == path){
+            data.children = tocChildren;
+        }else if(data.hasOwnProperty("children")) {
+            var children = data.children;
+            for (var i = 0; i < children.length; i++) {
+                this.addToc(children[i], path, tocChildren);
+            }
+        }
+    };
+    Tree.prototype.createSiblingList = function(children, title){
+        var div = document.createElement('div'); 
+        var span = document.createElement('p');
+        span.setAttribute('class', 'title');
+        span.setAttribute('onClick', 'NavTree.showSiblings()');
+        span.setAttribute('data-toggle', 'collapse');
+        span.setAttribute('data-target', '#sibling');
+        div.appendChild(span);
+        var ul = document.createElement('ul');
+        ul.setAttribute('class', 'collapse');
+        div.appendChild(ul);
+        ul.setAttribute('id','sibling')
+        for(var i=0; i<children.length; i++){
+            var a = document.createElement('a');            
+            a.innerHTML = children[i].name;
+            if(children[i].name == title){
+                a.setAttribute('class', 'title');
+                span.appendChild(a);
+                // li.setAttribute('class', 'title');
+                a.setAttribute('data-toggle', 'collapse');
+                a.setAttribute('data-target', '#sibling');
+                
+            }else{
+                var li = document.createElement('li');
+                a.setAttribute('href', children[i].href);
+                li.setAttribute('aria-expanded', false);
+                li.appendChild(a);
+                ul.appendChild(li);
+            }
+            
+        }
+        return div;
+    };
+    Tree.prototype.showSiblings = function(){
+        $('#tree-title p').toggleClass("open");
+        $('#tree-title').toggleClass("open");
+    };
+    Tree.prototype.getPathUntilDepth = function(path, depth){
+        var result = "";
+        var i = 0;
+        while(path[i] != undefined && path[i].length > 0){
+            result += "/" + path[i];
+            i++;
+            if(i == depth)
+                break;
+        }
+        return result;
+    };
+    Tree.prototype.getHeaderTags = function(){
+        var order = 0;
+        var tags = [];
+        $('.content-body h2').each(function() {
+            var node = { 
+                children : [],
+                href : "#" + $(this).attr('id'), 
+                name : $(this).text(),
+                order: order,
+                sort : "m"
+            };
+            order++;
+            tags.push(node);
+        });
+        return tags;
+    };
+    Tree.prototype.setTreeTitle = function(title){
+
+    };
     return Tree;
 })();
 
@@ -255,6 +355,9 @@ NavTree = new Tree();
         };
 
         if (widgets) {
+
+
+
             var nav = document.createElement('div');
             nav.setAttribute('id', 'tree-navigation');
             nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
@@ -264,25 +367,88 @@ NavTree = new Tree();
             '</div>';
             widgets.insertBefore(nav, widgets.firstChild);
 
-            var root = getUrl(window.location.href);
-            NavTree.setData(tree);
-            var content = document.querySelector('#tree-navigation-content .widget-body');
-            NavTree.init(root);
+
+            //Add page title widget
+            var navTitle = document.createElement('div');
+            navTitle.setAttribute('id', 'tree-title');
+            // navTitle.setAttribute('class', 'strong');
+            // navTitle.innerHTML = "Page title";
+            widgets.insertBefore(navTitle, widgets.firstChild);    
+
+            // var root = getUrl(window.location.href);
+            // NavTree.setData(tree);
+            // var content = document.querySelector('#tree-navigation-content .widget-body');
+            // NavTree.init(root);
             //NavTree.setHover();
 
             // query sitemap.js
-            /*$.ajax({
-                url: '/assets/js/scripts/sitemap.js',
+            $.ajax({
+                // url: '/assets/js/scripts/sitemap.js',
+                url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
                 dataType: "jsonp",
                 jsonp: false,
                 jsonpCallback: 'sitemap'
             }).done(function (tree) {
-                var root = getUrl(window.location.href);
-                NavTree.setData(tree);
-                var content = document.querySelector('#tree-navigation-content .widget-body');
-                NavTree.init(root);
-                NavTree.setHover();
-            });*/
+
+                var url = getUrl(window.location.href);
+                var path = url.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
+                if(path.indexOf("/") == 0)
+                    path = path.substring(1);
+                var pathArr = path.split("/");
+
+                var searchPath = "";
+                // https://support.sugarcrm.com/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started
+                if(pathArr[0] == "Get Started"){
+
+                }else if(pathArr[0] == "Documentation"){
+                    if(pathArr[1] == "Sugar_Versions"){
+                        searchPath = NavTree.getPathUntilDepth(pathArr, 5);
+                    }else if(pathArr[1] == "Mobile_Solutions"){
+
+                    }else if(pathArr[1] == "Plug_ins"){
+
+                    }else if(pathArr[1] == "Installable_Connectors"){
+
+                    }else if(pathArr[1] == "Sugar_Developer"){
+
+                    }
+                }else if(pathArr[0] == "Knowledge_Base"){
+
+                }
+
+                searchPath = NavTree.getPathUntilDepth(pathArr, 5);
+
+                var treeData = tree;
+                //This will go into the Tree if on live site
+                // if(treeData == null)
+                    // treeData = NavTree.getData();
+                
+                var branch = NavTree.findKey({ "href" : searchPath }, treeData);
+
+                //Get top-level sibling nodes
+                var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
+                var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
+                var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
+
+                
+                if(branch){
+                    NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
+                    // NavTree.setTreeTitle(branch.name);
+                    NavTree.setData(branch);
+                    var content = document.querySelector('#tree-navigation-content .widget-body');
+                    NavTree.init(url);
+                    NavTree.setHover();
+
+                    $('#tree-title').append(siblingList);
+                }
+
+
+                // var root = getUrl(window.location.href);
+                // NavTree.setData(tree);
+                // var content = document.querySelector('#tree-navigation-content .widget-body');
+                // NavTree.init(root);
+                // NavTree.setHover();
+            });
         }
     });
 })();
