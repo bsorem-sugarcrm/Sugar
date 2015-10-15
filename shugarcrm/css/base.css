@@ -899,6 +899,10 @@ a.video-thumbnail:hover {
       width: 100%;
     }
 
+    .content-navbar-toogle {
+     display: none;
+    }
+
    
 }
 
@@ -936,10 +940,6 @@ a.video-thumbnail:hover {
 @media (min-width: 992px) {
   .content .content-col {
     margin-bottom: 0;
-  }
-
-  .content-navbar-toogle {
-   display: none;
   }
 
 }
