@@ -50,6 +50,15 @@ $("#urlButton").click(function(){
 
 		$('#tree-title').html("");
 		$('#tree-title').append(siblingList);
+
+		$('body').scrollspy({ target: '#toc-body' });
+		$('[data-spy="scroll"]').each(function () {
+		  var $spy = $(this).scrollspy('refresh')
+		})
+
+		$('#toc-body').on('activate.bs.scrollspy', function () {
+		  console.log("spy");
+		})
 	}
 
 

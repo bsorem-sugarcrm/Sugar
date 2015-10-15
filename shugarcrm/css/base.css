@@ -11,6 +11,7 @@
 
 body {
   color: #555;
+  position: relative;
 }
 
 a {
@@ -792,7 +793,7 @@ a.video-thumbnail:hover {
 }
 
 .content .navmenu ul a {
-  color: #b7b7b8;
+   color: #b7b7b8; 
 }
 
 .content .navmenu ul a b,
@@ -814,6 +815,9 @@ a.video-thumbnail:hover {
   padding: 5px 0 5px 15px;
   position: relative;
 }
+.content .navmenu li.active a{
+  color: #e31c24;
+}
 
 .content .navmenu li ul {
   margin: 8px 0;
@@ -821,6 +825,14 @@ a.video-thumbnail:hover {
 
 .content .navmenu li ul a {
   color: #b7b7b8;
+}
+
+.nav li a{
+  padding: 0;
+}
+.nav li a:hover{
+  background: none;
+  text-decoration: underline;
 }
 
 #tree-navigation{

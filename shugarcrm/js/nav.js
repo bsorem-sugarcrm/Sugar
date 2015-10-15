@@ -27,6 +27,7 @@ var Tree = (function () {
         root.innerHTML = "";
         var ul = document.createElement('ul');
         ul.setAttribute('id', search);
+        ul.setAttribute('class', 'nav');
         ul.childNodes = [];
 
         this.addChildren(ul, location, this.data);
@@ -361,7 +362,7 @@ NavTree = new Tree();
             var nav = document.createElement('div');
             nav.setAttribute('id', 'tree-navigation');
             nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
-            '    <div class="widget-body">' +
+            '    <div class="widget-body" id="toc-body">' +
             '        <p>Loading...</p>' +
             '    </div>' +
             '</div>';
