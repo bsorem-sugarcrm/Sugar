@@ -49,6 +49,7 @@
             <div class="row">
               <div class="col-xs-4 input-wrap">
                 <select name="tag1" class="form-control custom-select input-lg">
+                  <option>All edition</option>
                   <option value="Ultimate">Ultimate</option>
                   <option value="Enterprise">Enterprise</option>
                   <option value="Corporate">Corporate</option>
@@ -110,8 +111,9 @@
     <section class="active-filters">
       <div class="container">
         <form class="form-inline">
-          <div class="checkbox"><label><input type="checkbox"> Filters:</label></div>
+          <label>Active filters:</label>
           <select name="filter_tag1" class="form-control input-sm">
+            <option>All edition</option>
             <option>Ultimate</option>
             <option>Enterprise</option>
             <option>Corporate</option>
@@ -130,6 +132,7 @@
             <option>Administrators</option>
             <option>Developers</option>
           </select>
+          <a href="#" class="clear-all-filters">CLEAR ALL</a>
         </form>
       </div>
     </section>
@@ -152,6 +155,15 @@
         <p><%=data.error%></p>
       <% } else { %>
         <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+        <div class="tabs">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">All results</a></li>
+            <li role="presentation"><a href="#">Base</a></li>
+            <li role="presentation"><a href="#">Community</a></li>
+            <li role="presentation"><a href="#">Documentation</a></li>
+            <li role="presentation"><a href="#">Apps</a></li>
+          </ul>
+        </div>
         <ul class="search-result-list">
           <%
             for (var i = 0; i < data.data.length; i++) {
