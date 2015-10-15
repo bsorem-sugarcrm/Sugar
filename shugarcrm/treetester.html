@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/forms.css">
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#navmenu" data-offset="15">
     <header class="project-header navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -131,7 +131,7 @@
     </section>
 
     <section class="content has-navmenu">
-      <div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu"></div>
+      <div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>
 
       <div class="container">
         <div class="navbar content-navbar-toogle">
@@ -151,18 +151,274 @@
             </section>
 
             <section class="content-body">
-              <h1>Sugar Enterprise 7.6.0 Application Guide</h1>
-              <h2>Getting Started</h2>
+              <h1>Getting Started</h1>
+              <div class="content">
 
-              <h3>Overview</h3>
-              <p>Sugar offers users a wide range of configuration options when getting started with the application. Your first time logging into Sugar the New User Wizard will step through configuring some basic settings (i.e. Your Information, Your Locale, ettc). You may skip these steps and configure these settings in your user preferencs at a later time. Please note that system administrators can also set up each user’s basic settings when creating.</p>
-
-              <h4>Summary</h4>
-              <p>The sugar log in allows you to enter login credentials to access your instance. Navigate your web browser to you instance’s URL to access Sugar’s login screen. If you do not know your instance URL or login credentials, please reach out to your system administrator for assisstance. The New User Wizard will launch upon your first successful log in to Sugar allowing you to configure some of your basic personal settings.</p>
-
-              <h3>Accessing Sugar</h3>
-              <h4>Prerequisites</h4>
+              <h2 id="Overview">Overview</h2>
+              <p>Sugar offers users a wide range of configuration options when getting started with the application. Your first time logging into Sugar the New User Wizard will step through configuring some basic settings (i.e. Your Information, Your Locale, etc.). You may skip these steps and configure these settings in your user preferences at a later time. Please note that system administrators can also set up each user's basic settings when creating the user in Sugar. This documentation will cover the various options (e.g. New User Wizard, User Preferences, etc.) available when first getting started with Sugar and accessing your account.</p>
+              <h2 id="Accessing_Sugar">Accessing Sugar</h2>
+              <h3 id="Prerequisites">Prerequisites</h3>
               <p>The following will need to be installed and configured on your local machine prior to accessing Sugar:</p>
+              <ul><li>A supported web browser application (e.g. Chrome, Firefox, etc.) is required on your local machine. For more information on the various supported web browsers, please refer to the <a href="/Resources/Supported_Platforms/">Supported Platforms</a> page.</li>
+              <li>The web browser must have JavaScript and cookie support enabled in order to access Sugar.</li>
+              <li>Network access to a server running your Sugar instance is required.</li>
+              </ul><h3 id="Logging_In">Logging In</h3>
+              <p>The Sugar login screen allows you to enter login credentials (user name and password) to access your instance. Navigate your web browser to your instance's URL (e.g. <span class="plain">https://example.sugarondemand.com</span>) to access Sugar's login screen. If you do not know your instance URL or login credentials, please reach out to your system administrator for assistance. The New User Wizard will launch upon your first successful log in to Sugar allowing you to configure some of your basic personal settings. <br><img src="/files/29879d61-68f9-74e6-ce52-5503042ca770.png" border="0" alt=""></p>
+              <h3 id="Resetting_Your_Password">Resetting Your Password</h3>
+              <p>There may be occasions when users forget their Sugar password and will need to reset it. If the system administrator has enabled the Forgot Password feature via Admin &gt; Password Management, user's will have the option to request a password reset directly from Sugar's login screen. If you do not see the Forgot Password link on your login screen, please reach out to your system administrator for further assistance. System administrators can either enable the Forgot Password feature, send a system-generated password to the user, or manually change the user's password via Admin &gt; User Management. For more information on how to set up and manage passwords in Sugar, please refer to the <a href="../../Administration_Guide/Password_Management">Password Management</a> documentation. Please note that the outbound mail server for the system must be configured via Admin &gt; Email Settings and users will also need to have their <a href="#Email_Settings">personal email settings</a> configured in their user preferences in order for the temporary password information to be emailed.For more information on setting up the system email settings, please refer to the <a href="../../Administration_Guide/Email#Email_Settings">Email</a> documentation in the Administration guide.</p>
+              <p>Use the following steps to request a new password:</p>
+              <ol><li>Click the Forgot Password? link on the bottom left of Sugar's login dialog box. <br><img src="/files/82f53486-9b96-6af5-cb43-550304056509.png" border="0" alt=""></li>
+              <li>Enter your Sugar username and primary email address on file, then click "Request Password". If submitted successfully, a message will appear that your request has been submitted. <br><img src="/files/b551f2fa-a0f2-a0f5-4b0f-5503049addb2.png" border="0" alt="" width="258px"></li>
+              <li>A temporary password will be emailed to your primary email address.</li>
+              <li>Enter the temporary password into Sugar's log in screen. <br><strong>Note</strong>: Be sure to change your password once logged in by navigating to the <a href="#Password_Tab">Password tab</a> in your user preferences.</li>
+              </ol><h3 id="Setting_Your_Language">Setting Your Language</h3>
+              <p>User's have the option to choose the primary language they want displayed in Sugar by clicking the Language icon on the bottom right of the Login screen. The Language dropdown list will appear allowing you to select the appropriate language you want displayed in your Sugar account. The out-of-the-box default language is English (US), but administrators can change the default language globally via Admin &gt; Locale. For more information on configuring the default language in Sugar, please refer to the <a href="../../Administration_Guide/System#User_Interface_2">User Interface</a> section of the System documentation. Once the default language is changed by the administrator, it will display as the default selection on the login screen for all users.</p>
+              <p>Administrators can also control what languages are available to select in the Language dropdown list via Admin &gt; Languages. If you do not see one of the listed languages below displayed in the Language dropdown list, please reach out to your system administrator for assistance. For more information on managing languages in Sugar, please refer to the <a href="../../Administration_Guide/System#Languages">Languages</a> section of the System documentation.<br><img src="/files/c77481a1-49fa-f048-1867-55030567a5a8.png" border="0" alt="" width="194"></p>
+              <p>The following languages are available for use in Sugar:</p>
+              <table style="table-layout: fixed; width: 241px;" border="1" cellspacing="1" cellpadding="4">
+                <tbody>
+                  <tr><td style="width: 109px;">Albanian</td>
+              <td style="width: 105px;">Italian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Arabic</td>
+              <td style="width: 105px;">Japanese</td>
+              </tr>
+                  <tr><td style="width: 109px;">Brazilian Portuguese</td>
+              <td style="width: 105px;">Korean</td>
+              </tr>
+                  <tr><td style="width: 109px;">Bulgarian</td>
+              <td style="width: 105px;">Latvian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Catalan</td>
+              <td style="width: 105px;">Lithuanian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Chinese</td>
+              <td style="width: 105px;">Norwegian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Czech</td>
+              <td style="width: 105px;">Polish</td>
+              </tr>
+                  <tr><td style="width: 109px;">Danish</td>
+              <td style="width: 105px;">Portuguese</td>
+              </tr>
+                  <tr><td style="width: 109px;">Dutch</td>
+              <td style="width: 105px;">Romanian</td>
+              </tr>
+                  <tr><td style="width: 109px;">English (UK)</td>
+              <td style="width: 105px;">Russian</td>
+              </tr>
+                  <tr><td style="width: 109px;">English (US)</td>
+              <td style="width: 105px;">Serbian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Estonian</td>
+              <td style="width: 105px;">Slovak</td>
+              </tr>
+                  <tr><td style="width: 109px;">Finnish</td>
+              <td style="width: 105px;">Spanish</td>
+              </tr>
+                  <tr><td style="width: 109px;">French</td>
+              <td style="width: 105px;">Spanish (Latin)</td>
+              </tr>
+                  <tr><td style="width: 109px;">German</td>
+              <td style="width: 105px;">Swedish&nbsp;</td>
+              </tr>
+                  <tr><td style="width: 109px;">Greek</td>
+              <td style="width: 105px;">Turkish</td>
+              </tr>
+                  <tr><td style="width: 109px;">Hebrew</td>
+              <td style="width: 105px;">Ukrainian</td>
+              </tr>
+                  <tr><td style="width: 109px;">Hungarian</td>
+              <td style="width: 105px;">&nbsp;&nbsp;</td>
+              </tr>
+                </tbody>
+              </table><h3 id="Logging_Out">Logging Out</h3>
+              <p>When you are done working in Sugar and wish to log out of the system, simply click your user name on the upper right of Sugar and select "Log Out". This will log you out completely from Sugar and you must <a href="#Logging_In">log in</a> again in order to access your account.<br><img src="/files/5091d1f2-48a5-3323-6fb0-550304ecb435.png" border="0" alt=""></p>
+              <h4 id="Automatic_Log_Outs">Automatic Log Outs</h4>
+              <p>While working in Sugar, a user may be automatically logged out of the system. Currently, Sugar allows a username to be logged in under only one session, and any additional user sessions started using the same username will log out the previous session. This behavior is for your security as Sugar does not allow multiple sessions for the same username from different machines or browsers. To prevent situations like this, please do not share your login credentials (username and password) with users in your organization.</p>
+              <p>Another situation where users are automatically logged out is when the user does not perform any actions in Sugar for a certain period of time. The security timeout period in Sugar is controlled by configuration settings in PHP and the web server running your Sugar instance. Please note that the PHP session's lifetime persists until you close your web browser and the default session timeout value is 1440 seconds (24 minutes).</p>
+              <p>In order to prevent security timeouts, users can navigate or click the page(s) in Sugar every so often to keep the session active. If the session times out, click any button, tab, etc. on the current page once you are ready to continue working in Sugar, and you will be taken back to the <a href="#Logging_In">Login screen</a>. Another option is to completely close your current browser and open a new browser to navigate back to Sugar's Login page.</p>
+              <p>Please note that users can have multiple tabs of Sugar pages open within the same web browser (e.g. Chrome) without getting logged out of the system. For example, this is useful when working with multiple Sugar pages or records without navigating away from previous pages.</p>
+              <h2 id="New_User_Wizard">New User Wizard</h2>
+              <p>When users first log in to Sugar, they will step through the New User Wizard to configure some basic settings (i.e. Your Information, Your Locale, etc.). If the system administrator already configured your basic settings when adding you as a user to Sugar, the fields in the wizard will be populated with the provided information. You can update your information as you go through the New User Wizard to make any necessary changes. Please note that you can skip the steps in the wizard if you wish to configure the settings via your user preferences at a later time.</p>
+              <h3 id="Configuring_Your_Information">Configuring Your Information</h3>
+              <p>The Your Information step of the New User Wizard allows you to enter basic information (e.g. name, email address, phone) about yourself to be stored in your user profile. Please note that the information provided on this step can be updated in your user preferences at a later time if desired. For more information on configuring your personal information, please refer to the <a href="#User_Preferences">User Preferences</a> section of this documentation.</p>
+              <p>The following options are available to configure your user profile:</p>
+              <ul><li><strong>First Name</strong> : Enter your first name.</li>
+              <li><strong>Last Name </strong>: Enter your last name.</li>
+              <li><strong>Email</strong> : Enter your primary email address.</li>
+              <li><strong>Phone</strong> : Enter your office number.</li>
+              </ul><p>Please note that all required fields will indicate "Required" in the field and must be completed prior to moving to the next step of the wizard. Once your personal information is entered, click "Next". <br><img src="/files/2180fe54-b994-e6ad-d1ab-55030470390f.png" border="0" alt="" width="517px"></p>
+              <h3 id="Configuring_Your_Locale">Configuring Your Locale</h3>
+              <p>The User Locale Settings step allows you to configure the date, time, and name format you want displayed in Sugar based on your current geographical location. Please note that the information provided on this page can be updated in your <a href="#User_Preferences">user preferences</a> at a later time if desired.</p>
+              <p>The following options are available to configure your locale settings:</p>
+              <ul><li><strong>Time Zone</strong> : Select the time zone based on your current geographical location.</li>
+              <li><strong>Date Format</strong> : Select the format you want the date stamps displayed in Sugar.</li>
+              <li><strong>Time Format</strong> : Select the format you want the time stamps displayed in Sugar.</li>
+              <li><strong>Name Format </strong>: Select the format you want the concatenated name fields displayed in Sugar's list view and record view.</li>
+              </ul><p>Once your locale information is entered, click "Next". <br><img src="/files/422ee1e1-e969-905e-7adc-550304ae6cdc.png" border="0" alt=""></p>
+              <p>The following page will confirm that your set up is complete and that you are ready to use Sugar. You can access the various support resources (e.g. Documentation, Knowledge Base, etc.) available by clicking one of the boxes in the dialog box. Please note that you can click "Start Sugar" to go directly into your Sugar account. <br><img src="/files/993e12b0-187d-39b6-cdc1-550304994e3d.png" border="0" alt=""></p>
+              <h2 id="Tour">Tour</h2>
+              <p>Upon your first log into Sugar, the Welcome to Sugar tour will launch on the Home page to show you key features of the user interface. The Welcome to Sugar window includes links which provide access to additional resources (e.g. training, documentation, etc.). Click the appropriate link or icon to be directed to the specific page in a separate tab. To begin the tour, simply click the Right arrow and a bubble will appear to point out the various parts of the application such as where to access the dashboard and activity stream, perform a global search, etc. You can click the Left arrow at anytime during the tour to go back through the key features again. Once you have completed viewing the tour, click the Done button to exit the tour. The tour will not automatically launch again for any subsequent logins as long as you click the Done button to close the tour. Please note that you can click the Tour icon in Sugar's footer at any time to launch the tour again. For more information regarding the Tour icon, please refer to the <a href="../../Application_Guide/User_Interface#Footer">User Interface</a> documentation. As you navigate around Sugar, you can launch the tour for any of the Sidecar modules (e.g. Accounts, Leads, Contacts, etc.) by clicking the Tour icon to view key features for the list view and record view.<br><img src="/files/eb6e5129-7aa9-ec9a-5ba5-550305885678.png" border="0" alt="" width="310"></p>
+              <p><strong>Note</strong>: The tour will launch again upon logging into Sugar following the upgrade of your instance.</p>
+              <h2 id="User_Preferences">User Preferences</h2>
+              <p>There is a wide range of configuration options available to users when setting up their profile in Sugar. The User Preferences section gives users the ability to view and update their basic information, personal email settings, etc. To access user preferences, click your user name on the upper right of Sugar and select "Profile". <br><img src="/files/e0cbe83b-e9e1-72d1-8295-550304c3f857.png" border="0" alt=""></p>
+              <h3 id="User_Profile_Tab">User Profile Tab</h3>
+              <p>The User Profile tab displays basic information such as your name, email address, phone number, etc. If the New User Wizard was completed, the information you entered will appear under the User Profile tab. The system administrator can also enter the user's basic information when creating the user via Admin &gt; User Management. For more information on creating new users, please refer to the <a href="../../Administration_Guide/Users#Creating_Users">User Management</a> documentation. Your personal information on this tab are grouped by default into the User Profile, Employee Information, and Email Settings sections. To enter or update your information, simply enter the appropriate values for the fields then click "Save" to preserve the changes.</p>
+              <h4 id="User_Profile">User Profile</h4>
+              <p>The User Profile section displays your Sugar user name, full name, status, user type (e.g. Regular User, System Administrator User), and profile picture (if uploaded). Your user name, full name, status, and user type will be populated as the system administrator must enter this information when creating a new user. User's have the option to update their user name, full name, as well as upload a profile picture to be displayed in the upper right of Sugar. Please note that only system administrators have the ability to change your status and user type. For more information on changing a user's status and user type, please refer to the <a href="../../Administration_Guide/Users#Editing_Users">User Management</a> documentation. <br><img src="/files/168ab4e9-1409-d5b9-04f9-55030414ee74.png" border="0" alt=""></p>
+              <h4 id="Employee_Information">Employee Information</h4>
+              <p>The Employee Information section displays your employee status, title, phone number, address, etc. If you completed the Your Information step of the New User Wizard, the information you entered will appear in this section. You can update your address, phone number (e.g. Work Phone, Mobile, etc.), description, IM Type (e.g. MSN, Yahoo!, etc.), and IM Name in this section accordingly. Please note that only system administrators can change your employee status, title, department, and supervisor information. For more information on administrator updates to the Employee Information section, please refer to the <a href="../../Administration_Guide/Users#Editing_Users">User Management</a> documentation.<img src="/files/ce834744-3675-103c-fdd4-5503047e0957.png" border="0" alt="" width="582px"></p>
+              <h4 id="Email_Settings">Email Settings</h4>
+              <p>The Email Settings section is where users can configure their personal email settings. Administrator's can also set up the users email setting when adding the user in the system. Please note that the email setting must be configured in user preferences prior to sending outbound emails from Sugar. In addition, the outbound mail server for the system must also be configured by the system administrator via Admin &gt; Email Settings. For more information on setting up the system email settings, please refer to the <a href="../../Administration_Guide/Email#Email_Settings">Email</a> documentation in the Administration guide.</p>
+              <p>Users will enter in their primary email address where password reset emails, system-generated notifications, etc. will be sent. Multiple email addresses can be added in email settings, but only one will be marked "Primary". The primary email address will be displayed when sending outbound emails in Sugar and automatic notifications from Sugar will be sent to this address as well. Users will be able to send outbound email's automatically from Sugar if the administrator has enabled user's to use the system mail account configured in Admin &gt; Email Settings. If this option is not enabled, the SMTP Username and Password fields will appear in the Email Settings section for the user to enter their personal credentials corresponding to their mail account on the company's defined mail server. The user will need to enter these credentials in order to send emails using the system's outbound mail server.</p>
+              <p>By default, outbound emails will be sent using the email client set up within the Sugar application. However, users have the option to use an external mail client if they would like to use an email client (e.g. Microsoft Outlook) outside of the application .</p>
+              <p>Use the following steps to configure your personal email settings in user preferences:</p>
+              <ol><li>Enter in the primary email address in the Email Address field.
+              <ul><li>To add multiple email addresses, click the Plus button.</li>
+              </ul><img src="/files/591b989e-a425-902e-1232-5503045ad980.png" border="0" alt="" width="472px"></li>
+              <li>The email client will be defaulted to "Sugar Email Client", but users can choose to use an external mail client if they wish. <br><img src="/files/8c4dfa73-6d50-8617-e9ff-55030443e617.png" border="0" alt="" width="340px"></li>
+              <li>Enter in the SMTP Username and Password for your mail account on the company's defined mail server.
+              <ul><li><strong>Note</strong>: The SMTP Username and Password field will only appear if the system administrator has not allowed users to use the system mail account to send outbound emails.</li>
+              </ul><img src="/files/10d00357-6860-d054-e8b3-550304989574.png" border="0" alt="" width="376px"></li>
+              <li>Click "Send Test Email" and enter in an email address to send the test email.
+              <ul><li>If you do not receive the test email, double check and re-enter the email account information to test again.</li>
+              </ul><img src="/files/32802566-2530-326e-07b4-550304d33bdb.png" border="0" alt="" width="376px"></li>
+              <li>Click "Save" to preserve your email settings.</li>
+              </ol><h3 id="Password_Tab">Password Tab</h3>
+              <p>Users have the option to change their password in Sugar by navigating to the Password tab in their user preferences. You can use this option to change temporary Sugar password's, system-generated password's for password resets, etc. Administrators also have the ability to change or reset a user's password via Admin &gt; User Management. For more information on how administrator's can reset a user's password, please refer to the&nbsp;<a href="../../Administration_Guide/Users#Resetting_User_Passwords">Resetting User Passwords</a> section of the User Management documentation. Please note that passwords can be changed as often as you wish in Sugar. Updating password's in Sugar on a regular basis is recommended for the security of your account.</p>
+              <p>To reset your password, enter your current password, new password, and confirmed password making sure to meet the password requirements listed on the right. Each password requirement will be checked off in the list as the new password meets the required conditions. Please note that the new password you enter must meet all the restrictions in order for the password to save. System administrators can configure the password requirements via Admin &gt; Password Management. They can choose the minimum and maximum lengths required for the password, as well as indicate if any special characters are needed. Additional requirements such as upper case, lower case letters, and numbers can also be part of the set restriction. The password requirement set by the system administrator determines what users will need to include when creating new passwords. Although not recommended, administrators can choose to not set password requirements if they wish, which will allow users to change their passwords without any restrictions. For more information on configuring password requirements, please refer to the <a href="../../Administration_Guide/Password_Management#Password_Requirements">Password Requirements</a> section of the Password Management documentation. Once you have entered the new password, click "Save" to preserve the change. <br><img src="/files/f0312d99-da83-5ac3-4e2d-5503047aa018.png" border="0" alt="" width="575px"></p>
+              <h3 id="Advanced_Tab">Advanced Tab</h3>
+              <p>The Advanced tab shows information specific to the user's preferences in Sugar. This information includes user settings, locale settings, PDF settings, calendar options, and layout options. Users can set up, view, or change the information under this tab based on their geographical location and personal preference.</p>
+              <h4 id="User_Settings">User Settings</h4>
+              <p>The User Settings section allows you to configure various settings for your account such as default team(s), reminders, notify on assignment, etc. The system administrator can configure these settings for you when adding you as a user in Sugar, but you can change these settings accordingly based on your personal needs and preference.</p>
+              <p>The options available to configure in the User Settings section are as follows:</p>
+              <ul><li><strong>Export Delimiter</strong> : Specify the character used to delimit exported data from Sugar. By default, the comma is used to separate exported data in Sugar.</li>
+              <li><strong>Import/Export Character Set </strong>: Select the default character set used for data import, data export, and vCard generation. By default, UTF-8 (US or Western Europe region) is selected as the import/export character set.
+              <ul><li>Please be sure to select the proper character set based on your locale setting in Sugar. This will make sure that the character set between Sugar and your local machine matches when you export data, import data, or generate PDFs.</li>
+              </ul></li>
+              <li><strong>Show Full Names</strong> : Check this box if you would like your full name (e.g. John Smith) instead of your assigned user name (e.g. jsmith) displayed in Sugar. If enabled, your full name will appear in the My Activity Stream dashlet, Assigned to fields, and on the upper right of your Sugar account.</li>
+              <li><strong>Default Teams</strong> : Select the default team(s) that will be automatically assigned to new records you create in Sugar.</li>
+              <li><strong>Notify on Assignment</strong> : Check this box to receive an email notification when a record is assigned to you by another user. Both the outbound mail server and <a href="#Email_Settings">personal email settings</a> must be configured in order to receive the notification. For more information on configuring the outbound mail server, please refer to the <a href="../../Administration_Guide/Email#Email_Settings">Email</a> documentation.</li>
+              <li><strong>Reminders </strong>: Mark the popup or email reminder checkbox to set default reminders for calls and meetings. Once marked, you can select the default reminder time (e.g. 10 minutes prior) to send reminders to invitees.</li>
+              </ul><p>
+                <img src="/files/f4c909f2-3f07-4284-608e-550305266808.png" border="0" alt="" width="755"></p>
+              <h4 id="Layout_Options">Layout Options</h4>
+              <p>The Layout Options section allows users to select what modules they want displayed or hidden in the navigation bar.</p>
+              <p>The options available to configure in the Layout Options section are as follows:</p>
+              <ul><li><strong>Select Modules for Navigation Bar </strong>: Select which modules will be displayed or hidden in the navigation bar by using the left and right arrow to move modules between the Display and Hide Modules column. You can also designate the order of the modules displayed in the navigation bar by selecting the module in the Display Modules column and clicking the up and down arrow.</li>
+              </ul><p>
+                <img src="/files/662adf6d-46b7-77b2-9ac4-5503044eb63f.png" border="0" alt="" width="364px"></p>
+              <h4 id="Locale_Settings">Locale Settings</h4>
+              <p>The Locale Settings section is where you can specify how you would like the data in Sugar displayed based on your geographical location. Please note that system administrators can set the system locale settings via Admin &gt; Locale, which will be the default setting for all users in Sugar. But each user has the option to change the default locale settings for their Sugar account in their user preferences.</p>
+              <p>The options available to configure in the Locale Settings section are as follows:</p>
+              <ul><li><strong>Date Forma</strong>t : Select the format you want the date stamps displayed in Sugar.</li>
+              <li><strong>Time Format</strong> : Select the format you want the time stamps displayed in Sugar.</li>
+              <li><strong>Time Zone</strong> : Select the time zone based on your current geographical location.
+              <ul><li>Please note that if the selected time zone is different from your browser's set time zone, a warning message ("Your browser's timezone does not match your saved timezone Adjust Your Timezone.") will appear upon your next log in to Sugar. You can click the link in the warning dialog box to change the time zone in your user preference accordingly.</li>
+              <li><strong>Note</strong>: This Time Zone setting only applies to modules using the Legacy user interface. Modules using the Sidecar user interface will utilize the browser's time zone.</li>
+              </ul></li>
+              <li><strong>User Wizard Prompt </strong>: Mark the checkbox to have new users go through the New User Wizard upon first login.&nbsp;</li>
+              <li><strong>Name Display Format </strong>: Select the format you want the concatenated name fields displayed in Sugar's list view and record view.</li>
+              <li><strong>Preferred Currency</strong> : Select the default currency you want displayed in Sugar.</li>
+              <li><strong>Show Preferred Currency </strong>: Mark the checkbox to convert the base currency to user preferred currency in list views and record views.</li>
+              <li><strong>System&nbsp;Significant Digits </strong>: Select how many digits will appear after the decimal symbol for currencies.</li>
+              <li><strong>1000s Separator</strong> : Enter the default character used to separate numeric values in the thousands.</li>
+              <li><strong>Decimal Symbol</strong> : Enter the default character used as the decimal symbol.</li>
+              </ul><p>
+                <img src="/files/20a9fa38-f215-df5c-8012-550305e1b009.png" border="0" alt="" width="700"></p>
+              <h4 id="PDF_Settings">PDF Settings</h4>
+              <p>The PDF Settings section allows users to set and change the default font settings for PDF documents generated in Sugar.</p>
+              <p>The options available to configure in the PDF Settings section are as follows:</p>
+              <ul><li><span class="bold"><strong>Font for Header and Body</strong> :</span> Select the font for the header and body of PDF documents when generated in Sugar.</li>
+              <li><strong><span class="bold">Main Font Size </span> </strong><span class="Literal">: </span>Enter the default font size for the PDF header when generated in Sugar.</li>
+              <li><strong><span class="bold">Font for Footer </span> </strong>: Select the font for the footer of the PDF document when generated in Sugar.</li>
+              <li><strong><span class="bold">Data Font Size </span> </strong><span class="Literal">: </span>Enter the default font size for the PDF body when generated in Sugar.</li>
+              </ul><p>
+                <img src="/files/7b73686f-cc60-911a-3ca5-5503047cf4ef.png" border="0" alt="" width="310px"></p>
+              <h4 id="Calendar_Options">Calendar Options</h4>
+              <p>Sugar calendars can be shared and viewed with various iCal compatible calendar applications such as Apple iCal, Google Calendar, Yahoo! Calendar, Mozilla Thunderbird, etc. The calendars are viewable as read-only in the external calendar applications and any edits to existing calendar events (e.g. meetings, calls, etc.) can only be done in Sugar. The Calendar Options section allows users to generate a unique publish key to sync their Sugar calendar to external calendar application(s). The publish key is a security feature as it prevents other user's from viewing your calendar unless they have this information. The user must have your publish key information in order to view your Sugar calendar via the external calendar application.</p>
+              <ul><li><span class="bold">Publish Key :</span> The publish key is used to uniquely identify a user's calendar and sync Sugar's calendar to external calendar applications (e.g. Google Calendar, Apple iCal, etc.). A system-generated alphanumeric value (e.g. 948fc65a-9c89-a11f-b40c-5) is displayed by default, but users can change this key (e.g. mysecretkey) to whatever they wish. The Publish at my location site, Search location, and iCal integration URL all reflect the publish key within the URL.</li>
+              <li><strong>Publish at my location</strong> : Use this URL to sync free/busy information for meetings from Microsoft Outlook to Sugar. This is helpful when scheduling meetings in Sugar as you can view the user's free/busy information to avoid scheduling conflicts.</li>
+              <li><strong>Search location</strong> : Use this URL to sync free/busy information for meetings from Microsoft Outlook to Sugar. This is helpful when scheduling meetings in Sugar as you can view the user's free/busy information to avoid scheduling conflicts.</li>
+              <li><strong>iCal integration URL</strong> : Use this URL to integrate the external calendar application with your Sugar calendar.</li>
+              <li><strong>First Day of Week</strong> : Select the first day of the week that will display in Week, Month, and Year views when viewing your Sugar calendar.&nbsp;This setting also applies to calendar pickers which display when users are setting a value for a date field (e.g. Expected Close Date).</li>
+              </ul><p>Use the following steps to integrate the external calendar application with your Sugar calendar:</p>
+              <ol><li>Navigate to the Advanced tab in your user preferences and scroll to the Calendar Options section.</li>
+              <li>Enter a new publish key (e.g. mysecretkey) and Sugar will automatically generate the iCal integration URL. <br><img src="/files/693c5aa8-8d96-90db-0722-550304728272.png" border="0" alt="" width="819px"></li>
+              <li>Copy and paste the iCal integration URL into your iCal compatible calendar application.
+              <ul><li><strong>Example</strong>: Adding the URL into Apple iCal.
+              <ol><li>Click "Calendar" then select "Subscribe". <br><img src="/files/2ad422d7-c392-d133-b5d8-55030538aa1a.png" border="0" alt="" width="417px"></li>
+              <li>Enter the iCal integration URL and click "Subscribe". <br><img src="/files/645b5ec8-17b5-870a-1dec-550305eff97c.png" border="0" alt="" width="419px"></li>
+              </ol></li>
+              <li><strong>Example</strong>: Adding the URL into Google Calendar (<a class="link-https" title="https://www.google.com/calendar" href="https://www.google.com/calendar" target="_blank" rel="external nofollow">https://www.google.com/calendar</a>).
+              <ol><li>Click "Other Calendars" then select "Add by URL". <br><img src="/files/74cd7fc1-4b5c-4d05-025f-5503049e7e45.png" border="0" alt="" width="295px"></li>
+              <li>Enter the iCal integration URL and click "Add Calendar". <br><img src="/files/af508c67-702f-af1a-06e2-550304f0e917.png" border="0" alt="" width="370px"></li>
+              </ol></li>
+              </ul></li>
+              </ol><p>Use the following steps to sync the free/busy information from the Sugar calendar to Microsoft Outlook:</p>
+              <ol><li>Navigate to the Advanced tab in your user preferences and scroll to the Calendar Options section.</li>
+              <li>Copy the Search location URL.</li>
+              <li>In Outlook, go to File &gt; Options &gt; Calendar &gt; Free/Busy Options.</li>
+              <li>In the Internet Free/Busy section, paste the Search location URL into the corresponding box.</li>
+              </ol><p>Please note that the settings must be configured on each user's computer. Once configured, the invitee shows as busy for any times currently scheduled in Sugar if the user's email address in Sugar matches the invitee email address in Outlook.</p>
+              <h3 id="External_Accounts_Tab">External Accounts Tab</h3>
+              <p>The External Accounts tab allows users to connect to external applications (e.g. Google, GoToMeeting, WebEx, etc.) from Sugar. Please note that you must have an existing account with the external application prior to connecting in Sugar. Connecting to your Google account enables you to upload and access documents in Google Docs from the Documents module and you can view Sugar documents via Google Docs as well. For more information on how to upload and view external source documents, please refer to the <a href="../Documents#Creating_Via_Google_Docs">Documents</a> documentation. If you connect to your GoToMeeting and WebEx accounts, you will be able to schedule meetings in Sugar to be hosted by one of these applications. Please note that you must indicate the specific meeting type (e.g. Sugar, GoToMeeting, WebEx) when creating the meeting in Sugar. For more information on scheduling meetings, please refer to the <a href="../Meetings#Creating_Meetings">Meetings</a> documentation.</p>
+              <p>The following steps go over connecting to the Google application as an example:</p>
+              <ol><li>Click the External Accounts tab in your user preferences then click "Create". <br><img src="/files/a7a32039-76fd-049b-c1be-550304c2275d.png" border="0" alt="" width="424px"></li>
+              <li>Select "Google" in the Application field.
+              <ul><li><strong>Note</strong>: If the Google option is not available to select in the Application field, the Google connector may not have been configured properly via Admin &gt; Connectors. Please reach out to your Sugar administrator to have the Google connector configured accordingly. For more information on configuring connectors, please refer to the <a title="System" href="../../Administration_Guide/System/#Setting_Connector_Properties">System</a> documentation in the Administration guide.</li>
+              </ul></li>
+              <li>Enter in your username and password for Google Docs then click "Connect".
+              <ul><li>A message will display if the connection is not successful.</li>
+              <li><strong>Note</strong>:&nbsp;The browser's pop-up blocker must be disabled to ensure that the Google account connects successfully to Sugar.</li>
+              </ul><img src="/files/78168b17-0939-fdc9-edb0-550304360ad1.png" border="0" alt="" width="674px"></li>
+              <li>The Google application will appear in the External Accounts list view once connected successfully. <br><img src="/files/b27c57a7-6a43-8123-cb2d-5503040fdc93.png" border="0" alt="" width="456px"></li>
+              </ol><p>Please note that for Google, GoToMeeting, and WebEx, you can only be connected to one account for the application in Sugar.</p>
+              <h3 id="Access_Tab">Access Tab</h3>
+              <p>Users can view their access information (e.g. Access table, Roles, My Teams) via the Access tab in the detail view of their profile. System administrators can assign users to various teams and roles depending on what each user is allowed access to in Sugar. You will be able to view the team(s) and role(s) assigned to you via the Roles and My Teams section in the Access tab.</p>
+              <h4 id="Access_Table">Access Table</h4>
+              <p>The Access table summarizes the set of permissions assigned to the user and allows them to view the type of access they have along with the actions (e.g. View, Edit, Delete, etc.) they can perform in Sugar. Only system administrators have the ability to create roles and assign them to users. Users who are assigned to the role will only be able to perform actions defined by it. Please note that users with more than one role assigned will have the more restrictive role setting prevail on the access table. For example, if one role allows the user to delete records in the Contacts module, but the other role does not allow record deletion, the user will not be able to delete records in the Contacts module. The table will list the modules in rows on the far left with column headers representing the type of action (e.g. Delete, Edit, Export, etc.) users can perform in each module. For more information on the Access table column headers, please refer to the&nbsp;<a href="../../Administration_Guide/Role_Management#Setting_Module-Level_Permissions">Setting Module-Level Permissions</a> section in the Role Management documentation.</p>
+              <p>The following setting options are available for the Access column on the table:</p>
+              <ul><li><strong>Enabled </strong>: The user is allowed access to this module.</li>
+              <li><strong>Not Set</strong> : Does not restrict or grant access to this module, defaults to having "Enabled" access when selected.</li>
+              <li><strong>Disabled </strong>: The user will not be able to access this module, view any of its records, or see any trace of its existence in Sugar.</li>
+              </ul><p>The following setting options are available for the Access Type column on the table:</p>
+              <ul><li><strong>Normal </strong>: The user will be able to perform standard functions in this module barring restrictions from other roles or team settings. The user will not have any type of access to the Admin menu for this module.</li>
+              <li><strong>Not Set</strong> : Does not restrict or grant additional access to this module, defaults to having "Normal" access when selected.</li>
+              <li><strong>Admin </strong>: The user will supersede any team restrictions for this module and be able to view all records.
+              <ul><li><strong>Note</strong>: User does not get access to developer tools such as Studio and Workflow Management.</li>
+              </ul></li>
+              <li><strong>Developer </strong>: The user will be given access to the module-specific sections of Studio, Workflow Management, Dropdown Editor and any other necessary menus in Admin that are specific to the module. <br>For more information on developer tools, please refer to the <a href="../../Administration_Guide/Developer_Tools">Developer Tools</a> documentation.</li>
+              <li><strong>Admin &amp; Developer </strong>: The user will be given the rights defined with the Admin and Developer role settings.</li>
+              </ul><p>The following setting options are available for the actions (e.g. Edit, Delete, Export, etc.) on the table:</p>
+              <ul><li><strong>All</strong> : The user will be able to perform this action on any and all records that can be accessed.</li>
+              <li><strong>Owner </strong>: The user will only be able to perform this action where the Assigned To field is set to be this user.</li>
+              <li><strong>Not Set </strong>: Does not restrict or grant access to this function and actions default to having "All" access when selected.</li>
+              <li><strong>None</strong> : The user is not able to perform this action while using this module.</li>
+              </ul><p>
+                <img src="/files/3af63bd9-996a-497f-fccc-5503047bda62.png" border="0" alt="" width="691px"></p>
+              <h4 id="Roles">Roles</h4>
+              <p>Sugar Roles define permissions for users such as what kinds of records they can access and what level of access they are allowed . Roles work in conjunction withteams to form a robust security model for non-admin users in Sugar. Roles control three different layers of access for users within Sugar: module, field, and action-level access. Please note that only users who are assigned to the specific role will be able to perform actions (e.g. view, edit, delete, etc.) defined by it. For more information on the various actions and setting options for roles, please refer to the <a href="#Access_Table">Access Table</a> section of this documentation. Users who arenot assigned to a role can access and perform actions in any module as long as they are assigned to the record or a member of the team assigned to manage it. System administrators have the ability to create various roles and assign additional roles to users via Admin &gt; Role Management. For more information on creating and assigning roles, please refer to the <a href="../../Administration_Guide/Role_Management">Role Management</a> documentation.</p>
+              <p>The Roles section displays the list of roles (if any) assigned to the user. Please note that if you are assigned to more than one role, the more restrictive role setting prevails. For example, if you have two roles where one role allows exporting of records in the Leads module and the other does not, then you will not be able to export lead records due to the more restrictive role setting.<img src="/files/bdcade4f-f1b4-2ae8-d429-550304e36ca4.png" border="0" alt=""></p>
+              <h4 id="My_Teams">My Teams</h4>
+              <p>Teams consist of one or more users who are assigned to manage records in Sugar. The defined permissions determine what records a user is and is not able to access. Teams are used in conjunction withroles to form a robust security model for non-admin users in Sugar. The My Teams section displays the list of teams a user is associated with, which determines what records the user has access to in Sugar. Please note that every record is assigned to at least one team, but can be assigned to multiple teams as well if different users need access to it. The default team(s) set in the User Settings section under the Advanced tabwill automatically be assigned to new records created by the user. Users assigned to the record, as well as system administrators can access the record regardless of team membership. When a user is created in Sugar, they are automatically associated to the Global team (universal team) and a Private team (users own personal team) is created by default. System administrators can assign users to additional teams via Admin &gt; User Management or Admin &gt; Team Management as necessary. For more information on teams as well as creating and assigning teams, please refer to the <a href="../../Administration_Guide/Team_Management">Team Management</a> documentation.<img src="/files/5db8a542-71e2-2c68-190b-550304804a62.png" border="0" alt="" width="282px"></p>
+              <h3 id="Downloads_Tab">Downloads Tab</h3>
+              <p>The Downloads tab contains the Sugar Plug-ins for Microsoft Office (i.e. Sugar Plug-in for Microsoft Excel, Outlook, and Word) and Sugar Plug-in for Lotus Notes. Excel plug-in enables you to create, delete, update, or view data that is in your Sugar application. Outlook plug-in allows you to archive emails to Sugar, synchronize contacts, meetings, and tasks, as well as create new Sugar records. Word plug-in enables you to merge data, such as names and address in Sugar to perform mail merges. These plug-ins are available with all commercial editions of Sugar and must be installed on each Windows computer running the Microsoft Office application where the plug-in is desired. Lotus Notes plug-in allows you to integrate with Sugar by synchronizing meetings, tasks, and contacts, as well as archiving emails to records in your instance. The plug-in comes with the Enterprise or Ultimate editions of Sugar and is available for purchase a la carte for Professional and Corporate customers.</p>
+              <p>To download the plug-in(s), click the appropriate file that correspond to your version and bitrate of Microsoft Office Excel, Outlook, or Word. Please be sure to check for the correct version and bitrate of your Microsoft Office application in order to download the correct file for installation. For the Lotus Notes plug-in, the latest version will be available for installation in the Downloads tab. For more information on downloading and installing the Sugar plug-ins, please refer to the appropriate&nbsp;<a title="Plug-ins" href="/Documentation/Plug-ins/">Plug-ins</a>&nbsp;documentation.<img src="/files/6db09be1-e8e6-9a21-1dad-550305a43f6e.png" border="0" alt="" width="480"></p>
+              <h3 id="User_Holidays">User Holidays</h3>
+              <p>The User Holidays subpanel appears in the detail view (e.g. User Profile tab, Advanced tab, etc.) of the user's profile. This subpanel allows users and administrators to enter planned vacations or holidays where the user will not be working.<img src="/files/86e0cde6-cecc-fbef-daec-550304d9921a.png" border="0" alt="" width="452px"></p>
+              <h3 id="Resetting_a_Users_Preferences">Resetting a User's Preferences</h3>
+              <p>Users can reset their user preferences back to the default out-of-the-box settings, which will revert all changes made to the user preferences section (e.g. User Profile, User Settings, Locale Settings, etc.). To reset your user preference, click the Reset User Preferences button at the top of your profile in edit view or click the Actions menu then select "Reset User Preferences" in detail view.</p>
+              <p>From edit view:<br><img src="/files/8c4a0a3b-eb19-80fb-dd44-550305d7cd35.png" border="0" alt="" width="500">&nbsp;</p>
+              <p>From detail view:<br><img src="/files/531ba21a-f741-fe33-6bea-550305bf0d41.png" border="0" alt="" width="200"></p>
+              <h2 id="Accessing_Support">Accessing Support</h2>
+              <p>The SugarCRM Support page provides access to various Sugar Support resources such as the case portal, documentation, knowledge base, training, etc. Users can access the support page by clicking the Support icon on the bottom right of every Sugar page. To access Sugar's Support page outside of your instance, go directly to the SugarCRM Support page (<a title="//support.sugarcrm.com" href="/" rel="internal">//support.sugarcrm.com</a>) on your web browser.<br><img src="/files/302fca23-44be-803f-a504-55030459892d.png" border="0" alt="" width="283px"></p>
+              <p>The Get Started section of the Support page provides users, administrators, and developers with the appropriate resources to get them started in configuring, customizing, and utilizing the application. The Documentation and Training &amp; Help sections provide access to Sugar's self-help area where you can learn how to use various parts of the application via online documentations, classes, videos, knowledge base articles, etc. It also provides key information on supported versions and platforms to ensure you are running Sugar in the best performing environment. The Sugar Knowledge Base provides articles based on specific topics and areas of Sugar while the Documentations go over the entire Sugar application in detail. The Customer Tools section enables you to keep up-to-date with the latest version of Sugar. In addition, support authorized contacts can manage their Sugar subscription, view all purchased orders with Sugar, as well as download purchased software (e.g. Sugar Plug-in for Outlook, Sugar Plug-in for Word, etc.) for installation. <br><img src="/files/c0ffd948-1c9a-fbf1-e479-5503053ea005.png" border="0" alt="" width="650"></p>
+              <h2 id="Viewing_Instance_Information">Viewing Instance Information</h2>
+              <p>Users can find information regarding their version and build of Sugar by clicking their user name on the upper right of Sugar and selecting "About". For example, this will be useful if you need to confirm the current version and edition of your instance. <br><img src="/files/72d63d77-3ee0-251c-62da-550304741e41.png" border="0" alt="" width="168"></p>
+
+                      </div>
 
              
             </section>

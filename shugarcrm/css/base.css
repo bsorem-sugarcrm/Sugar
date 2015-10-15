@@ -751,7 +751,11 @@ a.video-thumbnail:hover {
 .content .navmenu {
   position: absolute;
   background: #444248;
-  /*padding: 40px 10px 20px 30px;*/
+  /* padding: 40px 10px 20px 30px; */
+}
+
+.content .affix {
+  position: fixed;
 }
 
 .content .navmenu ul {
