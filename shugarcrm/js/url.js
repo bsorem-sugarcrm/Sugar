@@ -69,7 +69,7 @@ $("#urlButton").click(function(){
 
 //TEMP - DOCUMENT PAGE
 $(document).ready(function () {
-	var URL = url.replace("http://", "").replace("https://", "");
+	var URL = window.location.href.replace("http://", "").replace("https://", "");
 	if(url.indexOf("/Documentation/Sugar_Versions/") > 0)
 		Utils.transformTableToDivs();
 });
