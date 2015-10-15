@@ -19,6 +19,9 @@ var Search = (function() {
     }
   };
 
+  /**
+   * Render results
+   */
   Search.prototype.render = function() {
     if (typeof tmpl === 'undefined') {
       throw new Error('JS template engine doesn\'t found');
@@ -35,6 +38,9 @@ var Search = (function() {
     this.$resultsBlock.removeClass('loading');
   };
 
+  /**
+   * Convert search criteria from URL to API query
+   */
   Search.prototype.searchCriteriaToQuery = function() {
     var query,
         tags = [],
@@ -58,16 +64,18 @@ var Search = (function() {
     this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') + (tags.length ? 'tags:' + tags.join(',') : '');
   };
 
+  /**
+   * Update search form
+   */
   Search.prototype.updateForm = function() {
-    var criteria, $input, $filter, value,
-        replace = new RegExp("\\+",'g');
+    var criteria, $input, $filter, value;
 
     for (var i = 0; i < this.criteria.length; i++) {
       criteria = this.criteria[i].split('=');
       $input = $('[name=' + criteria[0] + ']');
       $filter = $('[name=filter_' + criteria[0] + ']');
 
-      value = criteria[1].indexOf('+') > -1 ? Utils.stripTags(criteria[1]) : criteria[1];
+      value = Utils.stripTags(criteria[1]);
 
       $input.val(value);
       $filter.val(value);
@@ -78,15 +86,21 @@ var Search = (function() {
     }
   };
 
+  /**
+   * Run search
+   */
   Search.prototype.doSearch = function() {
-    this.fetch()
+    this.$resultsBlock.addClass('loading');
+
+    return this.fetch()
       .done(this.render.bind(this));
   };
 
+  /**
+   * Fetch data from remote API
+   */
   Search.prototype.fetch = function() {
     var _this = this;
-
-    this.$resultsBlock.addClass('loading');
 
     return $.ajax({
         url: this.apiUrl,
