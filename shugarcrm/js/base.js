@@ -54,7 +54,7 @@
     transformTableToDivs: function(){
       var div = document.createElement('div');
       div.setAttribute("class", "row");
-      $("section .content-section").append(div);
+      $("section .content-body").append(div);
       $(".container table td").each(function(){
         var divs = document.createElement('div');
         divs.setAttribute("class", "col-sm-6 col-md-3 content-col");
