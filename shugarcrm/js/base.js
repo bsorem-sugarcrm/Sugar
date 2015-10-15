@@ -49,6 +49,30 @@
       var replace = new RegExp("\\+", 'gi');
 
       return str.replace(replace, ' ');
+    },
+
+    transformTableToDivs: function(){
+      var div = document.createElement('div');
+      div.setAttribute("class", "row");
+      $("section .content-section").append(div);
+      $(".container table td").each(function(){
+        var divs = document.createElement('div');
+        divs.setAttribute("class", "col-sm-6 col-md-3 content-col");
+        var h2 = document.createElement('h2');
+        h2.innerHTML = $("h3", this).text();
+        divs.appendChild(h2);
+
+        var ul = document.createElement('ul');
+        ul.setAttribute('class','plain-list');
+        divs.appendChild(ul);
+        $("li", this).each(function(){
+          var li = document.createElement('li');
+          li.innerHTML = $(this).html();
+          ul.appendChild(li);
+        });
+        div.appendChild(divs);
+      }); 
+      $(".container table td").remove();
     }
   };
 })();
