@@ -440,7 +440,13 @@ NavTree = new Tree();
                     NavTree.init(url);
                     NavTree.setHover();
 
+                    $('#tree-title').html("");
                     $('#tree-title').append(siblingList);
+
+                    $('body').scrollspy({ target: '#toc-body' });
+                    $('[data-spy="scroll"]').each(function () {
+                      var $spy = $(this).scrollspy('refresh')
+                    })
                 }
 
 
