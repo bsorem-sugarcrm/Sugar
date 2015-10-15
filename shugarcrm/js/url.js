@@ -70,8 +70,8 @@ $("#urlButton").click(function(){
 //TEMP - DOCUMENT PAGE
 $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
-	if(url.indexOf("/Documentation/Sugar_Versions/") > 0)
-		Utils.transformTableToDivs();
+	// if(url.indexOf("/Documentation/Sugar_Versions/") > 0)
+		// Utils.transformTableToDivs();
 });
 
 function transformTableToDivs(){
