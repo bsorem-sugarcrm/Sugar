@@ -813,6 +813,7 @@ a.video-thumbnail:hover {
 
 #tree-title a{
   color: #ccc;
+  text-decoration: none;
 }
 
 #tree-title a.title{
