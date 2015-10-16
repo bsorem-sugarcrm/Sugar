@@ -417,7 +417,10 @@ NavTree = new Tree();
 
                 }
 
-                searchPath = "/"+path;
+                if(url.indexOf("http")>-1)
+                    searchPath = "/"+path;
+                else
+                    searchPath = "";
 
                 var treeData = tree;
                 //This will go into the Tree if on live site

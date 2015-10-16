@@ -28,8 +28,6 @@ $("#urlButton").click(function(){
 	//No MAX
 	searchPath = "/"+path;
 
-	debugger;
-
 	//This will go into the Tree if on live site
 	if(treeData == null)
 		treeData = NavTree.getData();

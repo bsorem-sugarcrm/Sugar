@@ -855,6 +855,9 @@ a.video-thumbnail:hover {
 #tree-title a{
   color: #ccc;
 }
+#tree-title a:hover{
+  text-decoration: none;
+}
 
 #tree-title a.title{
   color: #fff;
