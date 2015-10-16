@@ -48,7 +48,8 @@ var Search = (function() {
 
     for (var i = 0; i < criteria.length; i++) {
       if (criteria[i].indexOf('tag') > -1) {
-        tags.push(criteria[i].substr(5));
+        if(criteria[i].indexOf('All+edition') == -1)
+          tags.push(criteria[i].substr(5));
       } else {
         query = criteria[i].substr(2);
       }
