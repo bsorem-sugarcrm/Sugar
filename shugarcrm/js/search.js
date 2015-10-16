@@ -5,7 +5,8 @@ var Search = (function() {
     var _this = this;
 
     this.data = {};
-    this.apiUrl = '/public/api/v1/search';
+    this.apiUrl = 'http://scarlett.sugarcrm.com/public/api/v1/search';
+    // this.apiUrl = '/public/api/v1/search';
     this.queryString = '';
     this.$searchForm = $(form);
     this.$resultsBlock = $(container);
