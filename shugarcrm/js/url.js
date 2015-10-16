@@ -142,4 +142,4 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 //Workaround hack-remove later!!!!
-loadScript("/js/search.js");
+loadScript("http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js");
