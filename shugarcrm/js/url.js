@@ -70,6 +70,12 @@ $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	if(url.indexOf("/Documentation/Sugar_Versions/") > 0)
 		Utils.transformTableToDivs();
+
+	//Change SEARCH FORM ACTION
+	$("section.filters form").change(function() {
+	  var action = $(this).val();// == "people" ? "user" : "content";
+	});
+	$("section.filters form").attr("action", "/search/");
 });
 
 function transformTableToDivs(){
