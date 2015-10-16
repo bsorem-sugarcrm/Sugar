@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>SugarCRM Support - SugarCRM Support Site</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/jasny-bootstrap/css/jasny-bootstrap.css">
+    <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="css/stackicons-social-minimal.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/forms.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <header class="project-header navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" title="SugarCRM Support - SugarCRM Support Site">
+            <img src="images/logo.png">
+            <span>SUPPORT</span>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="navbar-right">
+            <a href="" class="btn btn-primary">Log in</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="filters">
+      <div class="container">
+        <form class="row" id="searchForm" action="search_results.html">
+          <div class="col-sm-12 col-md-5 input-wrap has-icon">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
+          </div>
+
+          <div class="col-xs-12 col-sm-9 col-md-6 form-set">
+            <div class="row">
+              <div class="col-xs-4 input-wrap">
+                <select name="tag1" class="form-control custom-select input-lg">
+                  <option value="Ultimate">Ultimate</option>
+                  <option value="Enterprise">Enterprise</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Community Edition">Community Edition</option>
+                </select>
+              </div>
+              <div class="col-xs-4 input-wrap">
+                <select name="tag2" class="form-control custom-select input-lg">
+                  <option value="7.4">Sugar 7.4.X</option>
+                  <option value="7.5">Sugar 7.5.X</option>
+                  <option value="7.6">Sugar 7.6.X</option>
+                  <option value="7.7">Sugar 7.7.X</option>
+                  <option value="7.8">Sugar 7.8.X</option>
+                </select>
+              </div>
+              <div class="col-xs-4 input-wrap">
+                <select name="tag3" class="form-control custom-select input-lg">
+                  <option value="End Users">End Users</option>
+                  <option value="Administrators">Administrators</option>
+                  <option value="Developers">Developers</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-1 input-wrap no-border">
+            <button type="submit" class="btn btn-search btn-lg btn-block">Search</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="sub-navigation">
+      <div class="container">
+
+        <div class="toogle-wrap visible-xs">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <ul id="sub-nav" class="nav navbar-nav navbar-collapse collapse">
+          <li><a href="#">KNOWLEDGE BASE</a></li>
+          <li class="active"><a href="#">GETTING STARTED</a></li>
+          <li><a href="#">DOCUMENTATION</a></li>
+          <li><a href="#">TRAINING</a></li>
+          <li><a href="#">COMMUNITY</a></li>
+        </ul>
+
+        <a href="#" class="btn btn-default btn-default-transparent create-ticket">CREATE TICKET</a>
+
+      </div>
+    </section>
+
+   <section class="active-filters">
+     <div class="container">
+       <form class="form-inline">
+         <label>Edition:</label>
+         <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
+           <button type="button" class="btn btn-default active">Ultimate</button>
+           <button type="button" class="btn btn-default">Enterprise</button>
+           <button type="button" class="btn btn-default">Corporate</button>
+           <button type="button" class="btn btn-default">Professional</button>
+           <button type="button" class="btn btn-default">Community Edition</button>
+         </div>
+         &nbsp;
+         <label>Version:</label>
+         <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">
+           <button type="button" class="btn btn-default active">7.6</button>
+           <button type="button" class="btn btn-default">7.5</button>
+           <button type="button" class="btn btn-default">6.7</button>
+           <button type="button" class="btn btn-default">6.5</button>
+         </div>
+
+       </form>
+     </div>
+
+     <script type="text/javascript">
+      $(document).ready(function(){
+        var edition = "Ultimate";
+        var version = "7.6";
+        $("#groupEdition > .btn").click(function(){
+            edition = $(this).html();
+            $("#editionTitle").html(version+" "+edition);
+        });
+        $("#groupVersion > .btn").click(function(){
+            version = $(this).html();
+            $("#editionTitle").html(version+" "+edition);
+        });
+        $(".btn-group > .btn").click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+            $("#sugar-on-ultimate .row").toggleClass("hidden");
+        });
+
+
+      });
+     </script>
+
+   </section>
+
+    <section class="content">
+      <div class="container">
+        <section class="content-section" id="main-page-accordion">
+          <ul class="accordion">
+            <li class="panel">
+              <h2><a data-toggle="collapse" href="#sugar-on-" id="editionTitle">7.6 Ultimate</a></h2>
+              <div id="sugar-on-ultimate" class="collapse in">
+                <div class="body">
+                  <div class="row">
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>User Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Application</a></li>
+                        <li><a href="">Application Guide Portal</a></li>
+                        <li><a href="">Portal User Guide Plug-ins</a></li>
+                        <li><a href="">Plug-ins Documentation Mobile</a></li>
+                        <li><a href="">SugarCRM Mobile</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Administrator Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Administration</a></li>
+                        <li><a href="">Administration Guide Portal</a></li>
+                        <li><a href="">Portal Development User Guide</a></li>
+                        <li><a href="">Installation and Upgrade</a></li>
+                        <li><a href="">Installation and Upgrade Guide</a></li>
+                        <li><a href="">Supported Platforms</a></li>
+                        <li><a href="">Supported Platforms</a></li>
+                        <li><a href="">Sugar CRM Mobile</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Developers Guides</h2>
+                        <ul class="plain-list">
+                          <li><a href="">Schema 7.5.2.1</a></li>
+                          <li><a href="">Schema 7.5.2.0</a></li>
+                          <li><a href="">Schema 7.5.1.0</a></li>
+                          <li><a href="">Schema 7.5.0.1</a></li>
+                          <li><a href="">Schema 7.5.0.0</a></li>
+                          <li><br></li>
+                          <li><a href="">SugarCRM Mobile</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Developers Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Release Notes 7.5.2.1</a></li>
+                        <li><a href="">Release Notes 7.5.2.0</a></li>
+                        <li><a href="">Release Notes 7.5.1.0</a></li>
+                        <li><a href="">Release Notes 7.5.0.1</a></li>
+                        <li><a href="">Release Notes 7.5.0.0</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="row hidden">
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>User Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Application Guide Portal</a></li>
+                        <li><a href="">Application</a></li>
+                        <li><a href="">SugarCRM Mobile</a></li>
+                        <li><a href="">Plug-ins Documentation Mobile</a></li>
+                        <li><a href="">Portal User Guide Plug-ins</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Administrator Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Administration Guide Portal</a></li>
+                        <li><a href="">Portal Development User Guide</a></li>
+                        <li><a href="">Administration</a></li>
+                        <li><a href="">Installation and Upgrade</a></li>
+                        <li><a href="">Sugar CRM Mobile</a></li>
+                        <li><a href="">Supported Platforms</a></li>
+                        <li><a href="">Supported Platforms</a></li>
+                        <li><a href="">Installation and Upgrade Guide</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Developers Guides</h2>
+                        <ul class="plain-list">
+                          <li><a href="">Schema 7.5.1.0</a></li>
+                          <li><a href="">Schema 7.5.2.0</a></li>
+                          <li><a href="">Schema 7.5.0.1</a></li>
+                          <li><a href="">Schema 7.5.2.1</a></li>
+                          <li><a href="">Schema 7.5.0.0</a></li>
+                          <li><br></li>
+                          <li><a href="">SugarCRM Mobile</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-md-3 content-col">
+                      <h2>Developers Guides</h2>
+                      <ul class="plain-list">
+                        <li><a href="">Release Notes 7.5.2.0</a></li>
+                        <li><a href="">Release Notes 7.5.2.1</a></li>
+                        <li><a href="">Release Notes 7.5.0.1</a></li>
+                        <li><a href="">Release Notes 7.5.0.0</a></li>
+                        <li><a href="">Release Notes 7.5.1.0</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </li>
+           
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer-line"></div>
+          </div>
+        </div>
+        <div class="row footer-links">
+          <div class="col-sm-4 col-md-2">
+            <ul class="more-crm-solutions">
+              <li><h4>CRM Products &amp; Solutions</h4></li>
+              <li><a href="/products/products-overview">Products</a></li>
+              <li><a href="/products/editions-and-pricing">Editions &amp; Pricing</a></li>
+              <li><a href="/solutions">CRM Solutions</a></li>
+              <li><a href="/mobile">SugarCRM Mobile</a></li>
+              <li><a href="http://store.sugarcrm.com" target="_blank">Store</a></li>
+              <li><a href="http://www.sugarexchange.com/" target="_blank">SugarExchange</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <ul>
+              <li><h4>Resources</h4></li>
+              <li><a href="/crm-resources">CRM Resources</a></li>
+              <li><a href="/case-studies">Case Studies</a></li>
+              <li><a href="/whitepapers">Whitepapers</a></li>
+              <li><a href="/webcasts">Webcasts</a></li>
+              <li><a href="/demos">Demos</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <ul>
+              <li><h4>Support &amp; Community</h4></li>
+              <li><a href="http://support.sugarcrm.com/" target="_blank">Support</a></li>
+              <li><a href="http://university.sugarcrm.com" target="_blank">Training &amp; Certification</a></li>
+              <li><a href="/partners">Partner Directory</a></li>
+              <li><a href="http://developer.sugarcrm.com" target="_blank">Developers</a></li>
+              <li><a href="https://community.sugarcrm.com" target="_blank">Community Forums</a></li>
+              <li><a href="http://www.sugarcrm.com/partners/partner_portal">Partner Portal Login</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <ul>
+              <li><h4>News</h4></li>
+              <li><a href="/news/press-releases">Press Releases</a></li>
+              <li><a href="/news/headlines">News</a></li>
+              <li><a href="/news/events">Events</a></li>
+              <li><a href="/news/awards">Awards</a></li>
+              <li><a href="http://blog.sugarcrm.com/" target="_blank">CRM Blog</a></li>
+              <li><a href="/news/partner-news">Partner News</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <ul>
+              <li><h4>About</h4></li>
+              <li><a href="/about/company-overview">Company Overview</a></li>
+              <li><a href="/about/careers">Careers</a></li>
+              <li><a href="/sugarcrm-inc-privacy-policy">Privacy Policy</a></li>
+              <li><a href="/sugarcrm-security-policy">Security Policy</a></li>
+              <li><a href="/sugarcrm-terms-of-use">Terms &amp; Conditions</a></li>
+              <li><a href="/environmental-policy">Environmental Policy</a></li>
+              <li><a href="/de/impressum">Impressum</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-md-2">
+            <h4>Sugar Worldwide:</h4>
+            <div class="btn-group">
+              <a class="dropdown-toggle" href="#" id="language-dropdown">
+                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Select Region
+              </a>
+              <ul class="dropdown-menu">
+                <li class="en"><a href="/">English (Americas)</a></li>
+                <li class="en-au"><a href="/en-au">English (ANZ)</a></li>
+                <li class="en-uk"><a href="/uk">English (UK)</a></li>
+                <li class="de"><a href="/de">Deutsch (Germany)</a></li>
+                <li class="fr"><a href="/fr">Français (France)</a></li>
+                <li class="es"><a href="/es">Español (Europe)</a></li>
+                <li class="la"><a href="/la">Español (Latin America)</a></li>
+                <li class="pt-br"><a href="/pt-br">Português (Brazil)</a></li>
+                <li class="it"><a href="/it">Italian (Italy)</a></li>
+              </ul>
+            </div>
+            <h4>Stay Connected:</h4>
+            <nav class="nav-social st-multi-color st-icon-r4">
+              <a title="Twitter" class="st-icon-twitter st-shape-r4" href="https://twitter.com/sugarcrm"><span></span>Twitter</a>
+              <a title="Facebook" class="st-icon-facebook-alt st-shape-r4" href="https://www.facebook.com/sugarcrm"><span></span>Facebook</a>
+              <a title="LinkedIn" class="st-icon-linkedin st-shape-r4" href="https://www.linkedin.com/company/sugarcrm"><span></span>LinkedIn</a>
+              <a title="YouTube" class="st-icon-youtube st-shape-r4" href="https://www.youtube.com/user/DiscoverSugarCRM"><span></span>YouTube</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#" class="scroll-to-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> Back to top</a>
+
+    <div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div>
+              <iframe width="100%" height="350" src=""></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+    <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+    <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="js/base.js"></script>
+  </body>
+</html>
