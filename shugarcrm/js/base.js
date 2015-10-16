@@ -97,6 +97,11 @@ $(function() {
   if ($.fn.videoModalTrigger) {
     $('.video-trigger').videoModalTrigger({ autoplay: true });
   }
+
+  //Select sub-nav active
+  if ($.fn.selectSubNav) {
+    $('.sub-nav').selectSubNav();
+  }
 });
 
 /**
@@ -164,3 +169,25 @@ $(function() {
     });
   };
 })(jQuery);
+
+/*
+ * Select Sub-Nav for active section
+ */
+(function($) {
+  'use strict';
+
+  $.fn.selectSubNav = function() {
+
+    var url = window.location.href;
+    if(url.indexOf("Knowledge_Base") > -1){
+      $("#sub-nav li:nth-child(1)").toggleClass("active");
+    }else if(url.indexOf("Get_Started") > -1){
+      $("#sub-nav li:nth-child(2)").toggleClass("active");
+    }else if(url.indexOf("Documentation") > -1){
+      $("#sub-nav li:nth-child(3)").toggleClass("active");
+    }
+
+  };
+})(jQuery);
+
+
