@@ -417,7 +417,7 @@ NavTree = new Tree();
 
                 }
 
-                if(url.indexOf("http")>-1)
+                if(window.location.href.indexOf("http")>-1)
                     searchPath = "/"+path;
                 else
                     searchPath = "";
