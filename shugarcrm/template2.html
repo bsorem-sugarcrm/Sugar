@@ -46,37 +46,38 @@
 
     <section class="filters">
       <div class="container">
-        <form class="row">
+        <form class="row" id="searchForm" action="/search/">
           <div class="col-sm-12 col-md-5 input-wrap has-icon">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <input type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
+            <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
           </div>
 
           <div class="col-xs-12 col-sm-9 col-md-6 form-set">
             <div class="row">
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>Ultimate</option>
-                  <option>Enterprise</option>
-                  <option>Corporate</option>
-                  <option>Professional</option>
-                  <option>Community Edition</option>
+                <select name="tag1" class="form-control custom-select input-lg">
+                  <option>All edition</option>
+                  <option value="Ultimate">Ultimate</option>
+                  <option value="Enterprise">Enterprise</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Community Edition">Community Edition</option>
                 </select>
               </div>
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>Sugar 7.4.X</option>
-                  <option>Sugar 7.5.X</option>
-                  <option>Sugar 7.6.X</option>
-                  <option>Sugar 7.7.X</option>
-                  <option>Sugar 7.8.X</option>
+                <select name="tag2" class="form-control custom-select input-lg">
+                  <option value="7.4">Sugar 7.4.X</option>
+                  <option value="7.5">Sugar 7.5.X</option>
+                  <option value="7.6">Sugar 7.6.X</option>
+                  <option value="7.7">Sugar 7.7.X</option>
+                  <option value="7.8">Sugar 7.8.X</option>
                 </select>
               </div>
               <div class="col-xs-4 input-wrap">
-                <select class="form-control custom-select input-lg">
-                  <option>End Users</option>
-                  <option>Administrators</option>
-                  <option>Developers</option>
+                <select name="tag3" class="form-control custom-select input-lg">
+                  <option value="End Users">End Users</option>
+                  <option value="Administrators">Administrators</option>
+                  <option value="Developers">Developers</option>
                 </select>
               </div>
             </div>
@@ -343,6 +344,7 @@
     <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/nav.js"></script>
     <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/rating.js"></script>
     <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/base.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js"></script>
 
     <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/url.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
