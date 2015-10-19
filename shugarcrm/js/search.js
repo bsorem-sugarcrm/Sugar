@@ -64,7 +64,7 @@ var Search = (function() {
         if(criteria[i].indexOf('All+edition') == -1)
           tags.push(criteria[i].substr(5));
       } else if (criteria[i].indexOf('from') > -1) {
-        this.from = (int)criteria[i].substr(5);
+        this.from = Math.floor(criteria[i].substr(5));
       } else {
         query = criteria[i].substr(2);
       }
