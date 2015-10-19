@@ -12,6 +12,7 @@ var Search = (function() {
     this.$resultsBlock = $(container);
     this.$results = this.$resultsBlock.find('.results');
     this.$pagination = this.$resultsBlock.find('.pagination');
+    this.from = 0;
 
     if (window.location.search) {
       this.searchCriteriaToQuery();
@@ -37,6 +38,17 @@ var Search = (function() {
     }));
 
     this.$resultsBlock.removeClass('loading');
+
+    var url = window.location.href;
+    var search = window.location.search;
+    // var query = this.criteria.join("&");
+    if(search.indexOf("from") > -1){
+      search = search.substring(0, search.indexOf("&from"));
+    }
+    search += "&from="+(this.from + 10);
+    
+    this.$pagination.html("<a href='"+search+"'>Next page >></a>");
+
   };
 
   /**
@@ -51,6 +63,8 @@ var Search = (function() {
       if (criteria[i].indexOf('tag') > -1) {
         if(criteria[i].indexOf('All+edition') == -1)
           tags.push(criteria[i].substr(5));
+      } else if (criteria[i].indexOf('from') > -1) {
+        this.from = (int)criteria[i].substr(5);
       } else {
         query = criteria[i].substr(2);
       }
