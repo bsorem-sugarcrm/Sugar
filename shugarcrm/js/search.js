@@ -39,15 +39,16 @@ var Search = (function() {
 
     this.$resultsBlock.removeClass('loading');
 
-    var url = window.location.href;
-    var search = window.location.search;
-    // var query = this.criteria.join("&");
-    if(search.indexOf("from") > -1){
-      search = search.substring(0, search.indexOf("&from"));
+    //Add Pagination control at bottom
+    if(this.data.data.length > 9){
+      var search = window.location.search;
+      if(search.indexOf("from") > -1){
+        search = search.substring(0, search.indexOf("&from"));
+      }
+      search += "&from="+(this.from + 10);
+      
+      this.$pagination.html("<a href='"+search+"'>Next page >></a>");
     }
-    search += "&from="+(this.from + 10);
-    
-    this.$pagination.html("<a href='"+search+"'>Next page >></a>");
 
   };
 
