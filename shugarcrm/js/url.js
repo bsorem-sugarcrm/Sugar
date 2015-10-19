@@ -76,6 +76,10 @@ $(document).ready(function () {
 	  var action = $(this).val();// == "people" ? "user" : "content";
 	});
 	$("section.filters form").attr("action", "/search/");
+
+	//Select ULTIMATE RIGHT AWAY
+	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
+
 });
 
 function transformTableToDivs(){
