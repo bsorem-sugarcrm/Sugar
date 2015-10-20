@@ -150,6 +150,7 @@ function showEditionVersion(){
 
 function loadEditionVersion(url){
 	$( ".content-body" ).load( url + " .content-body" );
+	Utils.transformTableToDivs();
 }
 
 function loadScript(url, callback)
@@ -170,7 +171,7 @@ function loadScript(url, callback)
 }
 
 var editionVersions = '<section class="active-filters">'+
-     '<div class="container">'+
+     '<div>'+
       '   <label>Edition:</label>'+
       '   <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">'+
       '     <button type="button" class="btn btn-default active">Ultimate</button>'+
