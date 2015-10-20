@@ -149,8 +149,9 @@ function showEditionVersion(){
 }
 
 function loadEditionVersion(url){
-	$( ".content-body" ).load( url + " .content-body" );
-	Utils.transformTableToDivs();
+	$( ".content-body" ).load( url + " .content-body", function() {
+  		Utils.transformTableToDivs();
+   	);
 }
 
 function loadScript(url, callback)
