@@ -73,6 +73,8 @@ $(document).ready(function () {
 
 		if( path == "Documentation/Sugar_Versions"){
 			$(".content-heading").append(editionVersions);
+			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+			loadEditionVersion(url);
 		}
 		Utils.transformTableToDivs();		
 	}
@@ -104,8 +106,7 @@ $(document).ready(function () {
 	    $("#sugar-on-ultimate .row").toggleClass("hidden");
 
 	    //AJAX call to get site
-	    var ed = Utils.getAbbreviatedEdition(edition);
-	    var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
+	    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	    loadEditionVersion(url);
 	    // $( ".content" ).load( url + " .content" );
 	});
