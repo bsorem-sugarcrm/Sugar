@@ -158,19 +158,7 @@ function showEditionVersion(){
 }
 
 function loadEditionVersion(url){
-	// $.ajax({
-	//     url: url,
-	//     dataType: "html",
-	//     dataType: 'jsonp',
-	//     jsonp: false,
-	//     jsonpCallback: 'sitemap'
-	// }).done(function (site) {
-	// 	var resp = site;
-	// 	}
-	// );
-
 	$( ".content" ).load( url + " .content" );
-	// $( ".content" ).load( url + " .content" );
 }
 
 function loadScript(url, callback)

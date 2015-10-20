@@ -157,8 +157,9 @@
 
             //AJAX call to get site
             var ed = getAbbreviatedEdition(edition);
+            var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
             // loadEditionVersion("/Documentation/Sugar_Versions/"+version+"/"+ed+"/");
-            loadEditionVersion("index.html");
+            // $( ".content" ).load( url + " .content" );
         });
 
 
