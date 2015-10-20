@@ -69,7 +69,7 @@ $("#urlButton").click(function(){
 $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-	if(path.indexOf("Documentation/Sugar_Versions") > 0){
+	if(path.indexOf("Documentation/Sugar_Versions") > -1){
 
 		if( path == "Documentation/Sugar_Versions"){
 			$(".content-heading").appendChild(editionVersions);
