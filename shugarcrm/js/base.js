@@ -49,6 +49,15 @@
       var replace = new RegExp("\\+", 'gi');
 
       return str.replace(replace, ' ');
+    }, 
+    getAbbreviatedEdition: function(edition) {
+      var ed = "";
+      switch(edition){
+        case "Corporate": ed = "Corp"; break;
+        case "Community Edition" : ed = "CE"; break;
+        default : ed = edition.substring(0,3);
+      }
+      return ed;
     },
 
     transformTableToDivs: function(){

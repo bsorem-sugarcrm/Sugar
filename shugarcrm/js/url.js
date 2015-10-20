@@ -68,8 +68,11 @@ $("#urlButton").click(function(){
 //TEMP - DOCUMENT PAGE
 $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
-	if(url.indexOf("/Documentation/Sugar_Versions/") > 0)
+	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
+	if(url.indexOf("/Documentation/Sugar_Versions/") > 0){
 		Utils.transformTableToDivs();
+
+	}
 
 	//Change SEARCH FORM ACTION
 	$("section.filters form").change(function() {
@@ -80,35 +83,30 @@ $(document).ready(function () {
 	//Select ULTIMATE RIGHT AWAY
 	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
 
-	$("section.active-filters form").change(function() {
-	  var action = $(this).val();// == "people" ? "user" : "content";
+	var edition = "Ultimate";
+	var version = "7.6";
+	$("#groupEdition > .btn").click(function(){
+	    edition = $(this).html();
+	    $("#editionTitle").html(version+" "+edition);
 	});
+	$("#groupVersion > .btn").click(function(){
+	    version = $(this).html();
+	    $("#editionTitle").html(version+" "+edition);
+	});
+	$(".btn-group > .btn").click(function(){
+	    $(this).addClass("active").siblings().removeClass("active");
+	    $("#okButton").addClass("btn-primary");
 
+	    //Only for demo
+	    $("#sugar-on-ultimate .row").toggleClass("hidden");
+
+	    //AJAX call to get site
+	    var ed = getAbbreviatedEdition(edition);
+	    var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
+	    loadEditionVersion(url);
+	    // $( ".content" ).load( url + " .content" );
+	});
 });
-
-function transformTableToDivs(){
-	var div = document.createElement('div');
-	div.setAttribute("class", "row");
-	$("section .content-section").append(div);
-	$(".container table td").each(function(){
-		var divs = document.createElement('div');
-		divs.setAttribute("class", "col-sm-6 col-md-3 content-col");
-		var h2 = document.createElement('h2');
-		h2.innerHTML = $("h3", this).text();
-		divs.appendChild(h2);
-
-		var ul = document.createElement('ul');
-		ul.setAttribute('class','plain-list');
-		divs.appendChild(ul);
-		$("li", this).each(function(){
-			var li = document.createElement('li');
-			li.innerHTML = $(this).html();
-			ul.appendChild(li);
-		});
-		div.appendChild(divs);
-	});	
-	$(".container table td").remove();
-}
 
 function getPathUntilDepth(path, depth){
 	var result = "";
@@ -139,18 +137,8 @@ function getHeaderTags(){
 	return tags;
 }
 
-function getAbbreviatedEdition(edition){
-	var ed = "";
-	switch(edition){
-		case "Corporate": ed = "Corp"; break;
-		case "Community Edition" : ed = "CE"; break;
-		default : ed = edition.substring(0,3);
-	}
-	return ed;
-}
-
 function showEditionVersion(){
-	var ed = getAbbreviatedEdition(edition);
+	var ed = Utils.getAbbreviatedEdition(edition);
 
   	var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
   	window.location.replace("http://dock-dev.sugarcrm.com"+url);
@@ -178,4 +166,4 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 //Workaround hack-remove later!!!!
-loadScript("http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js");
+// loadScript("http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js");
