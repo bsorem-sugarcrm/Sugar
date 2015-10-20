@@ -72,7 +72,7 @@ $(document).ready(function () {
 	if(path.indexOf("Documentation/Sugar_Versions") > -1){
 
 		if( path == "Documentation/Sugar_Versions"){
-			$(".content-heading").appendChild(editionVersions);
+			$(".content-heading").append(editionVersions);
 		}else{
 			Utils.transformTableToDivs();
 		}
