@@ -106,7 +106,7 @@ $(document).ready(function () {
 	    $("#sugar-on-ultimate .row").toggleClass("hidden");
 
 	    //AJAX call to get site
-	    var ed = getAbbreviatedEdition(edition);
+	    var ed = Utils.getAbbreviatedEdition(edition);
 	    var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
 	    loadEditionVersion(url);
 	    // $( ".content" ).load( url + " .content" );
@@ -171,26 +171,26 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 
-var editionVersions = '<section class="active-filters">
-     <div class="container">
-         <label>Edition:</label>
-         <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
-           <button type="button" class="btn btn-default active">Ultimate</button>
-           <button type="button" class="btn btn-default">Enterprise</button>
-           <button type="button" class="btn btn-default">Corporate</button>
-           <button type="button" class="btn btn-default">Professional</button>
-           <button type="button" class="btn btn-default">Community Edition</button>
-         </div>
-         &nbsp;
-         <label>Version:</label>
-         <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">
-           <button type="button" class="btn btn-default active">7.6</button>
-           <button type="button" class="btn btn-default">7.5</button>
-           <button type="button" class="btn btn-default">6.7</button>
-           <button type="button" class="btn btn-default">6.5</button>
-         </div>
-     </div>  
-   </section>';
+var editionVersions = '<section class="active-filters">'+
+     '<div class="container">'+
+      '   <label>Edition:</label>'+
+      '   <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">'+
+      '     <button type="button" class="btn btn-default active">Ultimate</button>'+
+      '    <button type="button" class="btn btn-default">Enterprise</button>'+
+      '     <button type="button" class="btn btn-default">Corporate</button>'+
+      '     <button type="button" class="btn btn-default">Professional</button>'+
+      '     <button type="button" class="btn btn-default">Community Edition</button>'+
+      '   </div>'+
+      '   &nbsp;'+
+      '   <label>Version:</label>'+
+      '   <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">'+
+      '     <button type="button" class="btn btn-default active">7.6</button>'+
+      '     <button type="button" class="btn btn-default">7.5</button>'+
+      '     <button type="button" class="btn btn-default">6.7</button>'+
+      '     <button type="button" class="btn btn-default">6.5</button>'+
+      '   </div>'+
+     '</div>  '+
+   '</section>';
 
 
 //Workaround hack-remove later!!!!
