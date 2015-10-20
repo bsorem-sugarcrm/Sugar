@@ -67,7 +67,19 @@ $("#urlButton").click(function(){
 
 //TEMP - DOCUMENT PAGE
 $(document).ready(function () {
+	var edition = "Ultimate";
+	var version = "7.6";
+	var url = window.location.href.replace("http://", "").replace("https://", "");
+	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
+	if(path.indexOf("Documentation/Sugar_Versions") > -1){
 
+		if( path == "Documentation/Sugar_Versions"){
+			$(".content-heading").append(editionVersions);
+			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+			loadEditionVersion(url);
+		}
+		Utils.transformTableToDivs();		
+	}
 
 	//Change SEARCH FORM ACTION
 	$("section.filters form").change(function() {
@@ -78,8 +90,7 @@ $(document).ready(function () {
 	//Select ULTIMATE RIGHT AWAY
 	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
 
-	var edition = "Ultimate";
-	var version = "7.6";
+	
 	$("#groupEdition > .btn").click(function(){
 	    edition = $(this).html();
 	    $("#editionTitle").html(version+" "+edition);
@@ -100,18 +111,6 @@ $(document).ready(function () {
 	    loadEditionVersion(url);
 	    // $( ".content" ).load( url + " .content" );
 	});
-
-	var url = window.location.href.replace("http://", "").replace("https://", "");
-	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-	if(path.indexOf("Documentation/Sugar_Versions") > -1){
-
-		if( path == "Documentation/Sugar_Versions"){
-			$(".content-heading").append(editionVersions);
-			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-			loadEditionVersion(url);
-		}
-		Utils.transformTableToDivs();		
-	}
 });
 
 function getPathUntilDepth(path, depth){
