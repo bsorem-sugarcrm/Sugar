@@ -69,8 +69,13 @@ $("#urlButton").click(function(){
 $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-	if(url.indexOf("/Documentation/Sugar_Versions/") > 0){
-		Utils.transformTableToDivs();
+	if(path.indexOf("Documentation/Sugar_Versions") > 0){
+
+		if( path == "Documentation/Sugar_Versions"){
+			$(".content-heading").appendChild(editionVersions);
+		}else{
+			Utils.transformTableToDivs();
+		}
 
 	}
 
@@ -165,5 +170,28 @@ function loadScript(url, callback)
     // Fire the loading
     head.appendChild(script);
 }
+
+var editionVersions = '<section class="active-filters">
+     <div class="container">
+         <label>Edition:</label>
+         <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
+           <button type="button" class="btn btn-default active">Ultimate</button>
+           <button type="button" class="btn btn-default">Enterprise</button>
+           <button type="button" class="btn btn-default">Corporate</button>
+           <button type="button" class="btn btn-default">Professional</button>
+           <button type="button" class="btn btn-default">Community Edition</button>
+         </div>
+         &nbsp;
+         <label>Version:</label>
+         <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">
+           <button type="button" class="btn btn-default active">7.6</button>
+           <button type="button" class="btn btn-default">7.5</button>
+           <button type="button" class="btn btn-default">6.7</button>
+           <button type="button" class="btn btn-default">6.5</button>
+         </div>
+     </div>  
+   </section>';
+
+
 //Workaround hack-remove later!!!!
 // loadScript("http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js");
