@@ -11,7 +11,7 @@ $("#urlButton").click(function(){
 
 	}else if(pathArr[0] == "Documentation"){
 		if(pathArr[1] == "Sugar_Versions"){
-			searchPath = getPathUntilDepth(pathArr, 5);
+			searchPath = NavTree.getPathUntilDepth(pathArr, 5);
 		}else if(pathArr[1] == "Mobile_Solutions"){
 
 		}else if(pathArr[1] == "Plug_ins"){
@@ -41,7 +41,7 @@ $("#urlButton").click(function(){
 
 	
 	if(branch){
-		NavTree.addToc(branch, "/"+path, getHeaderTags());
+		NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
 		// NavTree.setTreeTitle(branch.name);
 		NavTree.setData(branch);
 		var content = document.querySelector('#tree-navigation-content .widget-body');
@@ -67,6 +67,18 @@ $("#urlButton").click(function(){
 
 //TEMP - DOCUMENT PAGE
 $(document).ready(function () {
+
+	//Change SEARCH FORM ACTION - HEADER
+	$("section.filters form").change(function() {
+	  var action = $(this).val();// == "people" ? "user" : "content";
+	});
+	$("section.filters form").attr("action", "/search/");
+
+	//Select ULTIMATE RIGHT AWAY - HEADER
+	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
+
+
+	//Documentation START
 	var edition = "Ultimate";
 	var version = "7.6";
 	var url = window.location.href.replace("http://", "").replace("https://", "");
@@ -80,26 +92,31 @@ $(document).ready(function () {
 		}
 		Utils.transformTableToDivs();		
 	}
-
-	//Change SEARCH FORM ACTION
-	$("section.filters form").change(function() {
-	  var action = $(this).val();// == "people" ? "user" : "content";
-	});
-	$("section.filters form").attr("action", "/search/");
-
-	//Select ULTIMATE RIGHT AWAY
-	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
-
 	
+	//Edition Button Bar CLICK
 	$("#groupEdition > .btn").click(function(){
 	    edition = $(this).html();
+	    if(edition == "Community Edition"){
+	    	version = "6.5";
+	    	$("#groupVersion > .btn").removeClass("active");
+	    	$("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
+	    }else{
+	    	$("#groupVersion > .btn").removeClass("disabled");
+	    }
+
 	    $("#editionTitle").html(version+" "+edition);
 	});
+	//Version Button Bar CLICK
 	$("#groupVersion > .btn").click(function(){
+		if($(this).hasClass("disabled"))
+			return;
 	    version = $(this).html();
 	    $("#editionTitle").html(version+" "+edition);
 	});
+	//Button Bar CLICK - ALL
 	$(".btn-group > .btn").click(function(){
+		if($(this).hasClass("disabled"))
+			return;
 	    $(this).addClass("active").siblings().removeClass("active");
 	    $("#okButton").addClass("btn-primary");
 
@@ -109,46 +126,8 @@ $(document).ready(function () {
 	    //AJAX call to get site
 	    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	    loadEditionVersion(url);
-	    // $( ".content" ).load( url + " .content" );
 	});
 });
-
-function getPathUntilDepth(path, depth){
-	var result = "";
-	var i = 0;
-	while(path[i] != undefined && path[i].length > 0){
-		result += "/" + path[i];
-		i++;
-		if(i == depth)
-			break;
-	}
-	return result;
-}
-
-function getHeaderTags(){
-	var order = 0;
-	var tags = [];
-	$('.content-body h2').each(function() {
-		var node = { 
-			children : [],
-			href : "#" + $(this).attr('id'), 
-			name : $(this).text(),
-			order: order,
-			sort : "m"
-		};
-		order++;
-		tags.push(node);
-	});
-	return tags;
-}
-
-function showEditionVersion(){
-	var ed = Utils.getAbbreviatedEdition(edition);
-
-  	var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
-  	window.location.replace("http://dock-dev.sugarcrm.com"+url);
-  // $("section.active-filters form").attr("action", url);
-}
 
 function loadEditionVersion(url){
 	$( ".content-body" ).load( url + " .content-body", function() {
