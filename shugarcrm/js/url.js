@@ -73,10 +73,8 @@ $(document).ready(function () {
 
 		if( path == "Documentation/Sugar_Versions"){
 			$(".content-heading").append(editionVersions);
-		}else{
-			Utils.transformTableToDivs();
 		}
-
+		Utils.transformTableToDivs();		
 	}
 
 	//Change SEARCH FORM ACTION
@@ -151,7 +149,7 @@ function showEditionVersion(){
 }
 
 function loadEditionVersion(url){
-	$( ".content" ).load( url + " .content" );
+	$( ".content-body" ).load( url + " .content-body" );
 }
 
 function loadScript(url, callback)
