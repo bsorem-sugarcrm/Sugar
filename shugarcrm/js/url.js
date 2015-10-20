@@ -80,6 +80,10 @@ $(document).ready(function () {
 	//Select ULTIMATE RIGHT AWAY
 	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
 
+	$("section.active-filters form").change(function() {
+	  var action = $(this).val();// == "people" ? "user" : "content";
+	});
+
 });
 
 function transformTableToDivs(){
@@ -133,6 +137,40 @@ function getHeaderTags(){
 		tags.push(node);
 	});
 	return tags;
+}
+
+function getAbbreviatedEdition(edition){
+	var ed = "";
+	switch(edition){
+		case "Corporate": ed = "Corp"; break;
+		case "Community Edition" : ed = "CE"; break;
+		default : ed = edition.substring(0,3);
+	}
+	return ed;
+}
+
+function showEditionVersion(){
+	var ed = getAbbreviatedEdition(edition);
+
+  	var url = "/Documentation/Sugar_Versions/"+version+"/"+ed+"/";
+  	window.location.replace("http://dock-dev.sugarcrm.com"+url);
+  // $("section.active-filters form").attr("action", url);
+}
+
+function loadEditionVersion(url){
+	// $.ajax({
+	//     url: url,
+	//     dataType: "html",
+	//     dataType: 'jsonp',
+	//     jsonp: false,
+	//     jsonpCallback: 'sitemap'
+	// }).done(function (site) {
+	// 	var resp = site;
+	// 	}
+	// );
+
+	$( ".content" ).load( url + " .content" );
+	// $( ".content" ).load( url + " .content" );
 }
 
 function loadScript(url, callback)

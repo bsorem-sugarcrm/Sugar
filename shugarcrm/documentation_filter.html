@@ -112,7 +112,7 @@
 
    <section class="active-filters">
      <div class="container">
-       <form class="form-inline">
+       <!-- <form class="form-inline"> -->
          <label>Edition:</label>
          <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
            <button type="button" class="btn btn-default active">Ultimate</button>
@@ -129,14 +129,17 @@
            <button type="button" class="btn btn-default">6.7</button>
            <button type="button" class="btn btn-default">6.5</button>
          </div>
+         &nbsp;
+         <button class="btn btn-default btn-xs" style="padding:6px 10px;line-height: 1.5;" id="okButton" onclick="showEditionVersion()">Ok</button>
 
-       </form>
+       <!-- </form> --> 
      </div>
 
      <script type="text/javascript">
+     var edition = "Ultimate";
+     var version = "7.6";
       $(document).ready(function(){
-        var edition = "Ultimate";
-        var version = "7.6";
+        
         $("#groupEdition > .btn").click(function(){
             edition = $(this).html();
             $("#editionTitle").html(version+" "+edition);
@@ -147,8 +150,18 @@
         });
         $(".btn-group > .btn").click(function(){
             $(this).addClass("active").siblings().removeClass("active");
+            $("#okButton").addClass("btn-primary");
+
+            //Only for demo
             $("#sugar-on-ultimate .row").toggleClass("hidden");
+
+            //AJAX call to get site
+            var ed = getAbbreviatedEdition(edition);
+            // loadEditionVersion("/Documentation/Sugar_Versions/"+version+"/"+ed+"/");
+            loadEditionVersion("index.html");
         });
+
+
 
 
       });
@@ -161,7 +174,7 @@
         <section class="content-section" id="main-page-accordion">
           <ul class="accordion">
             <li class="panel">
-              <h2><a data-toggle="collapse" href="#sugar-on-" id="editionTitle">7.6 Ultimate</a></h2>
+              <h1><a data-toggle="collapse" href="#sugar-on-" id="editionTitle">7.6 Ultimate</a></h1>
               <div id="sugar-on-ultimate" class="collapse in">
                 <div class="body">
                   <div class="row">
@@ -389,5 +402,6 @@
     <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
     <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="js/base.js"></script>
+    <script src="js/url.js"></script>
   </body>
 </html>
