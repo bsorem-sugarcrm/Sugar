@@ -542,7 +542,8 @@ var Tree = (function () {
                             $('#tree-title').append(siblingList);
 
                             //Add prev & next paging links
-                            NavTree.addPrevNextPageLinks()
+                            if(branch.paging == 1)
+                                NavTree.addPrevNextPageLinks();
                         }
                     }
                     if($('#tree-title').html() == ""){

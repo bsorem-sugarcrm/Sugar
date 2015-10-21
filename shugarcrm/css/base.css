@@ -545,8 +545,18 @@ a.scroll-to-top.visible {
   /*list-style: none;*/
 }
 
+.content .content-body ul li a {
+    display: block;
+    float: left;
+    width: 30%;
+}
+
 .content .content-body ul li p{
   margin: 0;
+  display: block;
+  float: left;
+  width: 70%;
+  padding-left: 15px;
 }
 
 /**
