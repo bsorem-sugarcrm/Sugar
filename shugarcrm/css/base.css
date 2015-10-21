@@ -525,6 +525,11 @@ a.scroll-to-top.visible {
   opacity: 1;
 }
 
+.content-body ul li:nth-child(2n) {
+  background-color: #EEE;
+  list-style: none;
+}
+
 /**
  * Content
  */
