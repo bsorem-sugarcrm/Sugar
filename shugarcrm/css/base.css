@@ -545,6 +545,10 @@ a.scroll-to-top.visible {
   /*list-style: none;*/
 }
 
+.content-body ul li p{
+  margin: 0;
+}
+
 /**
  * Content
  */
