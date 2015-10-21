@@ -36,12 +36,11 @@ $("#urlButton").click(function(){
 
 	//Get top-level sibling nodes
 	var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
-	var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
-	var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
 
 	
 	if(branch){
-		NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
+		// NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
+		NavTree.addMainContent(branch, "/"+path, NavTree.getHeaderTags());
 		// NavTree.setTreeTitle(branch.name);
 		NavTree.setData(branch);
 		var content = document.querySelector('#tree-navigation-content .widget-body');
@@ -49,7 +48,13 @@ $("#urlButton").click(function(){
 		NavTree.setHover();
 
 		$('#tree-title').html("");
-		$('#tree-title').append(siblingList);
+
+		var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
+		if(branchParent){
+			var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
+			if(siblingList)
+				$('#tree-title').append(siblingList);
+		}
 
 		$('body').scrollspy({ target: '#toc-body' });
 		$('[data-spy="scroll"]').each(function () {
