@@ -360,7 +360,7 @@ var Tree = (function () {
         $('.content-body a').each(function() {
             var node = { 
                 children : [],
-                href : "#" + $(this).attr('id'), 
+                href : $(this).attr('href'), 
                 name : $(this).text(),
                 order: order,
                 sort : "m"
