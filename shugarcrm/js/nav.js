@@ -253,7 +253,7 @@ var Tree = (function () {
         var pathArr = path.split("/");
 
         if(pathArr[1] == "Documentation" &&
-            (pathArr[2] == "Sugar_Versions" || pathArr[1] == "Installable_Connectors" )){
+            (pathArr[2] == "Sugar_Versions" || pathArr[2] == "Installable_Connectors" )){
             //H2 tags
             this.addToc(data, path, this.getHeaderTags());
         }else{
