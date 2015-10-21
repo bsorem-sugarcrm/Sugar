@@ -323,12 +323,13 @@ var Tree = (function () {
             a.innerHTML = children[i].name;
             if(children[i].name == title){
                 //Main 
-                // if(ul.getE)
                 a.setAttribute('class', 'title');
                 span.appendChild(a);
                 a.setAttribute('data-toggle', 'collapse');
                 a.setAttribute('data-target', '#sibling');
-                this.siblingPrev = lastSibling;
+                //Add prev sibling
+                if(lastSibling.paging == 1)
+                    this.siblingPrev = lastSibling;
             }else{
                 //Sibling
                 var li = document.createElement('li');
@@ -337,7 +338,8 @@ var Tree = (function () {
                 li.appendChild(a);
                 ul.appendChild(li);                
                 lastSibling = children[i];
-                if(this.siblingPrev != null && this.siblingNext == null){
+                //Add next sibling
+                if(this.siblingPrev != null && this.siblingNext == null && lastSibling.paging == 1){
                     this.siblingNext = lastSibling;
                 }
             }
