@@ -1,13 +1,17 @@
 var Tree = (function () {
     function Tree() {
         this.data = null;
+        this.siblings = null;
+        this.siblingPrev = null;
+        this.siblingNext = null;
         this.status = 'closed';
         this.origin = '';
+        this.sitemapjs = null;
     }
 
     Tree.prototype.setData = function (tree) {
         this.data = tree;
-        this.data.href = '/';  // root must be /
+        // this.data.href = '/';  // root must be /
     };
     Tree.prototype.getData = function () {
         return this.data;        
@@ -101,11 +105,11 @@ var Tree = (function () {
                     function(e){
                         $('.link-del-hover').remove();
                     }
-                );
+                    );
                 $('body').append(t);
             },
             function(){}
-        );
+            );
     };
     Tree.prototype.open = function (location) {
         var _id = "ul_" + this.cleanName(location);
@@ -239,6 +243,14 @@ var Tree = (function () {
 
         if (data[key] == val) {
             return data;
+        } else if (Array.isArray(data)){
+            var children = data;
+            for (var i = 0; i < children.length; i++) {
+                var found = this.findKey(keyObj, children[i]);
+                if (found) {
+                    return found;
+                }
+            }
         } else if (data.hasOwnProperty("children")) {
             var children = data.children;
             for (var i = 0; i < children.length; i++) {
@@ -261,6 +273,8 @@ var Tree = (function () {
         }   
 
 
+
+
          // if(pathArr[0] == "Get Started"){
 
          //        }else if(pathArr[0] == "Documentation"){
@@ -279,8 +293,8 @@ var Tree = (function () {
          //        }else if(pathArr[0] == "Knowledge_Base"){
 
          //        }        
-    }; 
-    Tree.prototype.addToc = function(data, path, tocChildren){
+     }; 
+     Tree.prototype.addToc = function(data, path, tocChildren){
         if (data["href"] == path){
             data.children = tocChildren;
         }else if(data.hasOwnProperty("children")) {
@@ -301,26 +315,36 @@ var Tree = (function () {
         var ul = document.createElement('ul');
         ul.setAttribute('class', 'collapse');
         div.appendChild(ul);
-        ul.setAttribute('id','sibling')
+        ul.setAttribute('id','sibling');
+        var lastSibling;
+
         for(var i=0; i<children.length; i++){
             var a = document.createElement('a');            
             a.innerHTML = children[i].name;
             if(children[i].name == title){
+                //Main 
+                // if(ul.getE)
                 a.setAttribute('class', 'title');
                 span.appendChild(a);
-                // li.setAttribute('class', 'title');
                 a.setAttribute('data-toggle', 'collapse');
                 a.setAttribute('data-target', '#sibling');
-                
+                this.siblingPrev = lastSibling;
             }else{
+                //Sibling
                 var li = document.createElement('li');
                 a.setAttribute('href', children[i].href);
                 li.setAttribute('aria-expanded', false);
                 li.appendChild(a);
-                ul.appendChild(li);
+                ul.appendChild(li);                
+                lastSibling = children[i];
+                if(this.siblingPrev != null && this.siblingNext == null){
+                    this.siblingNext = lastSibling;
+                }
             }
             
         }
+        this.siblings = children;
+
         return div;
     };
     Tree.prototype.showSiblings = function(){
@@ -370,15 +394,136 @@ var Tree = (function () {
         });
         return tags;
     };
-    Tree.prototype.setTreeTitle = function(title){
-
+    Tree.prototype.getDeepestChild = function (obj) {
+     var tree = this;
+     if (obj.hasOwnProperty('children') && obj.children.length > 0) {
+         var children = obj.children;
+         children = tree.sort(children, obj.sort);
+         return tree.getDeepestChild(children[children.length-1]);
+     }
+     return obj;
     };
-    return Tree;
-})();
 
-NavTree = new Tree();
+    Tree.prototype.getNextSibling = function (obj) {
+        var tree = this, next;
+        // var parent = tree.getParentObject(obj);
+           // if managed to get all the way to the root...
+           if (parent == tree.data && obj == tree.data) return false;
+           // otherwise check lineage
+           var siblings = parent.children;
+           siblings = tree.sort(siblings, parent.sort);
+           var pos = tree.getPosition(obj);
+           if (pos !== siblings.length-1) next = siblings[pos+1];
+           else {
+             next = tree.getNextSibling(parent);
+         }
+         return next;
+     };
 
-(function () {
+     Tree.prototype.getPosition = function (obj) {
+         var tree = this, pos = 0;
+         // var parent = tree.getParentObject(obj);
+         var children = parent.children;
+         children = tree.sort(children, parent.sort);
+         children.forEach(function (child, i) {
+             if (child.href === obj.href) pos = i;
+         });
+         return pos;
+     };
+
+     Tree.prototype.getPrevious = function (location) {
+         var parent, prev = false;
+         var tree = this;
+           // default to current page from url
+           if (typeof location === 'undefined') location = this.rootUrl;
+           current = tree.findKey({ "href" : location }, this.sitemapjs);
+           // current = tree.getSelfObject(location);
+           if (current === false || typeof current === 'undefined') return false;
+           // parent = tree.getParentObject(current);
+           if (parent && parent.hasOwnProperty('children')) {
+             var pos = tree.getPosition(current);
+             if (pos === 0) prev = parent;
+             else {
+                 var siblings = parent.children;
+                 siblings = tree.sort(siblings, parent.sort);
+                 prev = tree.getDeepestChild(siblings[pos-1]);
+             }
+         }
+         if (prev.hasOwnProperty('paging') && prev.paging === 1) return prev;
+
+         return false;
+     };
+
+     Tree.prototype.getNext = function (location) {
+         var parent, next = false, current;
+         var tree = this;
+           // default to current page from url
+           if (typeof location === 'undefined') location = this.rootUrl;
+
+           // current = tree.getSelfObject(location);
+            current = tree.findKey({ "href" : location }, this.sitemapjs);
+           if (current === false || typeof current === 'undefined') return false;
+           // parent = tree.getParentObject(current);
+           // search current children
+           if (current.hasOwnProperty('children') && current.children.length > 0) {
+             var children = current.children;
+             children = tree.sort(children, current.sort);
+             next = children[0];
+         } else {
+             next = tree.getNextSibling(current);
+         }
+
+         if (next.hasOwnProperty('paging') && next.paging === 1) return next;
+
+         return false;
+     };
+
+     Tree.prototype.addPrevNextPageLinks = function(){
+        var widgets_bottom = $(".content-footer");
+        if (widgets_bottom && this.siblings) {
+            // html container
+            var prevnext = document.createElement('div');
+            prevnext.setAttribute('id', 'prevnext');
+            prevnext.setAttribute('class', 'row');
+            // Set vars
+            var prev = NavTree.siblingPrev;
+            var next = NavTree.siblingNext;
+            var pHTML = '', nHTML = '';
+            var maxlen = 40;
+            var showPaging = false;
+
+            if (prev) {
+                var pFull = prev.name;
+                var pName = (pFull.length > maxlen) ? pFull.substring(0, maxlen).trim() + '...' : pFull;
+                pHTML = '<div class="col-xs-6 text-left"><span id="prevnext_previous" data-toggle="tooltip" title="' + pFull + '"><a href="' + prev.href + '"> < Previous</a> | ' + pName + '</span></div>';
+                showPaging = true;
+            }
+            if (next) {
+                var nFull = next.name;
+                var nName = (nFull.length > maxlen) ? nFull.substring(0, maxlen).trim() + '...' : nFull;
+                nHTML = '<div class="col-xs-6 text-right"><span id="prevnext_next" data-toggle="tooltip" title="' + nFull + '">' + nName + ' | <a href="' + next.href + '">Next ></a></span></div>';
+                showPaging = true;
+            }
+            if (showPaging) {
+                prevnext.innerHTML = pHTML + nHTML;
+                var fi = widgets_bottom.children().first();
+                $(prevnext).insertBefore(widgets_bottom.children().first());
+                // widgets_bottom.insertBefore(prevnext, widgets_bottom.first());
+                $('[data-toggle="tooltip"]').tooltip({ placement: 'top' });
+            }
+        }
+     };
+     return Tree; 
+
+     Tree.prototype.setTreeTitle = function(title){
+
+     };
+     return Tree;
+ })();
+
+ NavTree = new Tree();
+
+ (function () {
     $(document).ready(function () {
         // Add to widgets
         var widgets = document.getElementById('navmenu');
@@ -446,7 +591,7 @@ NavTree = new Tree();
 
                 var searchPath = "";
                 // https://support.sugarcrm.com/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started
-               
+
 
                 if(window.location.href.indexOf("http")>-1)
                     searchPath = "/"+path;
@@ -454,6 +599,8 @@ NavTree = new Tree();
                     searchPath = "";
 
                 var treeData = tree;
+
+                NavTree.sitemapjs = tree;
 
                 var branch = NavTree.findKey({ "href" : searchPath }, treeData);
 
@@ -474,8 +621,12 @@ NavTree = new Tree();
                     var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
                     if(branchParent){
                         var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
-                        if(siblingList)
+                        if(siblingList){
                             $('#tree-title').append(siblingList);
+
+                            //Add prev & next paging links
+                            NavTree.addPrevNextPageLinks()
+                        }
                     }
                     if($('#tree-title').html() == ""){
                         $('#tree-title').addClass("hidden");
@@ -485,10 +636,10 @@ NavTree = new Tree();
                     $('body').scrollspy({ target: '#toc-body' });
                     $('[data-spy="scroll"]').each(function () {
                       var $spy = $(this).scrollspy('refresh')
-                    })
+                  })
                 }
 
             });
-        }
-    });
+}
+});
 })();

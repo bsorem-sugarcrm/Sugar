@@ -56,6 +56,42 @@ $("#urlButton").click(function(){
 				$('#tree-title').append(siblingList);
 		}
 
+
+
+		var widgets_bottom = $(".content-footer");
+        if (widgets_bottom && siblingList) {
+            // html container
+            var prevnext = document.createElement('div');
+            prevnext.setAttribute('id', 'prevnext');
+            prevnext.setAttribute('class', 'row');
+            // Set vars
+            var prev = NavTree.siblingPrev;
+            var next = NavTree.siblingNext;
+            var pHTML = '', nHTML = '';
+            var maxlen = 40;
+            var showPaging = false;
+
+            if (prev) {
+                var pFull = prev.name;
+                var pName = (pFull.length > maxlen) ? pFull.substring(0, maxlen).trim() + '...' : pFull;
+                pHTML = '<div class="col-xs-6 text-left"><span id="prevnext_previous" data-toggle="tooltip" title="' + pFull + '"><a href="' + prev.href + '"> < Previous</a> | ' + pName + '</span></div>';
+                showPaging = true;
+            }
+            if (next) {
+                var nFull = next.name;
+                var nName = (nFull.length > maxlen) ? nFull.substring(0, maxlen).trim() + '...' : nFull;
+                nHTML = '<div class="col-xs-6 text-right"><span id="prevnext_next" data-toggle="tooltip" title="' + nFull + '">' + nName + ' | <a href="' + next.href + '">Next ></a></span></div>';
+                showPaging = true;
+            }
+            if (showPaging) {
+                prevnext.innerHTML = pHTML + nHTML;
+                var fi = widgets_bottom.children().first();
+                $(prevnext).insertBefore(widgets_bottom.children().first());
+                // widgets_bottom.insertBefore(prevnext, widgets_bottom.first());
+                $('[data-toggle="tooltip"]').tooltip({ placement: 'top' });
+            }
+        }
+
 		$('body').scrollspy({ target: '#toc-body' });
 		$('[data-spy="scroll"]').each(function () {
 		  var $spy = $(this).scrollspy('refresh')
@@ -94,6 +130,10 @@ $(document).ready(function () {
 			$(".content-heading").append(editionVersions);
 			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 			loadEditionVersion(url);
+
+			//Remove pagination
+
+
 		}
 		Utils.transformTableToDivs();		
 	}
