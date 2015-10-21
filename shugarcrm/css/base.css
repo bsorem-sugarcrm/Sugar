@@ -526,12 +526,12 @@ a.scroll-to-top.visible {
 }
 
 /*Striped LIST*/
-.content-body ul{
+.content .content-body ul{
     list-style-type: none;
     padding-left: 0;
 }
 
-.content-body ul li {
+.content .content-body ul li {
     display: inline-block;
     width: 100%;
     padding: 10px;
@@ -540,12 +540,12 @@ a.scroll-to-top.visible {
     box-sizing: border-box;
 }
 
-.content-body ul li:nth-child(2n) {
+.content .content-body ul li:nth-child(2n) {
   background-color: #EEE;
   /*list-style: none;*/
 }
 
-.content-body ul li p{
+.content .content-body ul li p{
   margin: 0;
 }
 
