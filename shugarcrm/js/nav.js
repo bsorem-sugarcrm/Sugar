@@ -317,6 +317,7 @@ var Tree = (function () {
         div.appendChild(ul);
         ul.setAttribute('id','sibling');
         var lastSibling;
+        var mainElement;
 
         for(var i=0; i<children.length; i++){
             var a = document.createElement('a');            
@@ -327,8 +328,9 @@ var Tree = (function () {
                 span.appendChild(a);
                 a.setAttribute('data-toggle', 'collapse');
                 a.setAttribute('data-target', '#sibling');
+                mainElement = children[i];
                 //Add prev sibling
-                if(lastSibling != null && lastSibling.paging == 1)
+                if(lastSibling != null && lastSibling.paging == 1 && mainElement == null)
                     this.siblingPrev = lastSibling;
             }else{
                 //Sibling
@@ -339,7 +341,7 @@ var Tree = (function () {
                 ul.appendChild(li);                
                 lastSibling = children[i];
                 //Add next sibling
-                if(this.siblingPrev != null && this.siblingNext == null && lastSibling.paging == 1){
+                if(mainElement != null && this.siblingNext == null && lastSibling.paging == 1){
                     this.siblingNext = lastSibling;
                 }
             }
