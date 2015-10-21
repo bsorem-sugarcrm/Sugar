@@ -328,7 +328,7 @@ var Tree = (function () {
                 a.setAttribute('data-toggle', 'collapse');
                 a.setAttribute('data-target', '#sibling');
                 //Add prev sibling
-                if(lastSibling.paging == 1)
+                if(lastSibling != null && lastSibling.paging == 1)
                     this.siblingPrev = lastSibling;
             }else{
                 //Sibling
