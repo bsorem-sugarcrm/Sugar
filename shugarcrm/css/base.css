@@ -63,6 +63,13 @@ ol.unmarked {
   list-style: none;
 }
 
+table{
+  border: 1px solid #d8d8d8;
+}
+table td{
+  padding: 5px;
+}
+
 /**
  * Header
  */
