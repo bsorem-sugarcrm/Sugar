@@ -525,6 +525,16 @@ a.scroll-to-top.visible {
   opacity: 1;
 }
 
+/*Striped LIST*/
+.content-body ul li {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .content-body ul li:nth-child(2n) {
   background-color: #EEE;
   list-style: none;
