@@ -526,12 +526,12 @@ a.scroll-to-top.visible {
 }
 
 /*Striped LIST*/
-.content .content-body ul{
+.content .content-body .content-children ul{
     list-style-type: none;
     padding-left: 0;
 }
 
-.content .content-body ul li {
+.content .content-body .content-children ul li {
     display: inline-block;
     width: 100%;
     padding: 10px;
@@ -540,18 +540,18 @@ a.scroll-to-top.visible {
     box-sizing: border-box;
 }
 
-.content .content-body ul li:nth-child(2n) {
+.content .content-body .content-children ul li:nth-child(2n) {
   background-color: #EEE;
   /*list-style: none;*/
 }
 
-.content .content-body ul li a {
+.content .content-body .content-children ul li a {
     display: block;
     float: left;
     width: 30%;
 }
 
-.content .content-body ul li p{
+.content .content-body .content-children ul li p{
   margin: 0;
   display: block;
   float: left;
@@ -619,17 +619,17 @@ a.video-thumbnail:hover {
   margin: 0 0 25px;
 }
 
-.content .content-body {
+.content .content-body .content-children {
   margin: 0 0 50px;
   font-size: 14px;
   line-height: 20px;
 }
 
-.content .content-body p + h3 {
+.content .content-body .content-children p + h3 {
   margin-top: 40px;
 }
 
-.content .content-body p {
+.content .content-body .content-children p {
   margin: 0 0 20px;
 }
 
