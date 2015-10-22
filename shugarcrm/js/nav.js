@@ -272,23 +272,19 @@ var Tree = (function () {
         //     this.addToc(data, path, this.getLowestLevelLinks());
         // }   
 
-        var mainContent;
+        var mainContent = this.getLowestLevelLinks();
         if(pathArr[0] == "Get_Started"){
-            mainContent = this.getLowestLevelLinks();
+
         }else if(pathArr[0] == "Documentation"){
             if(pathArr[1] == "Sugar_Versions"){
-                mainContent = this.getHeaderTags();
-            }else if(pathArr[1] == "Mobile_Solutions"){
-                mainContent = this.getLowestLevelLinks();
-            }else if(pathArr[1] == "Plug_ins"){
-                mainContent = this.getLowestLevelLinks();
+                if(pathArr.length >= 5){
+
+                }
             }else if(pathArr[1] == "Installable_Connectors"){
                 mainContent = this.getHeaderTags();
-            }else if(pathArr[1] == "Sugar_Developer"){
-                mainContent = this.getLowestLevelLinks();
             }
         }else if(pathArr[0] == "Knowledge_Base"){
-            mainContent = this.getLowestLevelLinks();
+            
         }
 
         this.addToc(data, path, mainContent);
@@ -433,7 +429,26 @@ var Tree = (function () {
             }
         }
      };
-     return Tree; 
+
+     //Special function to get the max deep level for Navbar - custom for each section
+     Tree.prototype.getJunctionForPath = function(path){
+        var pathArr = path.substr(1).split("/");
+        var path2 = path;
+        if(pathArr[0] == "Get_Started"){
+
+        }else if(pathArr[0] == "Documentation"){
+            if(pathArr[1] == "Sugar_Versions"){
+                if(pathArr.length >= 5){
+                    path2 = pathArr[0]+pathArr[1]+pathArr[2]+pathArr[3]+pathArr[4];
+                }
+            }else if(pathArr[1] == "Installable_Connectors"){
+
+            }
+        }else if(pathArr[0] == "Knowledge_Base"){
+            
+        }
+        return path2;
+     };
 
      Tree.prototype.setTreeTitle = function(title){
 
@@ -522,7 +537,7 @@ var Tree = (function () {
 
                 NavTree.sitemapjs = tree;
 
-                var branch = NavTree.findKey({ "href" : searchPath }, treeData);
+                var branch = NavTree.findKey({ "href" : NavTree.getJunctionForPath(searchPath) }, treeData);
 
                 //Get top-level sibling nodes
                 var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
