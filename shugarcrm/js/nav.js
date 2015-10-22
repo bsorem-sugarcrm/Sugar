@@ -455,8 +455,10 @@ var Tree = (function () {
                 if(pathArr.length > 3){
                     path2 = this.getPathUntilDepth(pathArr, 3);
                 }
-            }else if(pathArr[1] == "Installable_Connectors"){
-
+            }else if(pathArr[1] == "Sugar_Developer"){
+                if(pathArr.length > 3){
+                    path2 = this.getPathUntilDepth(pathArr, 3);
+                }
             }
         }else if(pathArr[0] == "Knowledge_Base"){
             
