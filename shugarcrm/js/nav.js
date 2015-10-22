@@ -262,6 +262,8 @@ var Tree = (function () {
         }
     };
     Tree.prototype.addMainContent = function(data, path){
+        if(path.indexOf("/") == 0) 
+            path = path.substr(1);
         var pathArr = path.split("/");
         //TODO Sugar_Versions/x.x H2 only
         // if(pathArr[1] == "Documentation" && 
@@ -273,7 +275,7 @@ var Tree = (function () {
         // }   
 
         var mainContent;
-        if(pathArr[0] == "Get Started"){
+        if(pathArr[0] == "Get_Started"){
             mainContent = this.getLowestLevelLinks();
         }else if(pathArr[0] == "Documentation"){
             if(pathArr[1] == "Sugar_Versions"){
