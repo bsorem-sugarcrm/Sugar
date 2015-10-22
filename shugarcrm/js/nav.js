@@ -372,6 +372,9 @@ var Tree = (function () {
                 order: order,
                 sort : "m"
             };
+            if(node.name == "" || $(this).attr('id') === undefined)
+                return true;
+
             order++;
             tags.push(node);
 
