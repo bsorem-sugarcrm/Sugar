@@ -836,6 +836,9 @@ a.video-thumbnail:hover {
 .content .navmenu ul a {
    color: #b7b7b8; 
 }
+.content .navmenu ul a:focus {
+   background:none;
+}
 
 .content .navmenu ul a b,
 .content .navmenu ul .active, {
