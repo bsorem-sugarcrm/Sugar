@@ -278,7 +278,7 @@ var Tree = (function () {
         }else if(pathArr[0] == "Documentation"){
             if(pathArr[1] == "Sugar_Versions"){
                 if(pathArr.length >= 5){
-
+                    mainContent = this.getHeaderTags();
                 }
             }else if(pathArr[1] == "Installable_Connectors"){
                 mainContent = this.getHeaderTags();
