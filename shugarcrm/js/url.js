@@ -131,11 +131,9 @@ $(document).ready(function () {
 			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 			loadEditionVersion(url);
 
-			//Remove pagination
-
-
 		}
-		Utils.transformTableToDivs();		
+		if(path.split("/").length == 4)
+			Utils.transformTableToDivs();		
 	}
 	
 	//Edition Button Bar CLICK
@@ -172,6 +170,7 @@ $(document).ready(function () {
 	    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	    loadEditionVersion(url);
 	});
+
 });
 
 function loadEditionVersion(url){
