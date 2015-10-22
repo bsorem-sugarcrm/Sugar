@@ -263,36 +263,35 @@ var Tree = (function () {
     };
     Tree.prototype.addMainContent = function(data, path){
         var pathArr = path.split("/");
-//TODO Sugar_Versions/x.x H2 only
-        if(pathArr[1] == "Documentation" && 
-            ((pathArr[2] == "Sugar_Versions" && pathArr.length < 4)  || pathArr[2] == "Installable_Connectors" )){
-            //H2 tags
-            this.addToc(data, path, this.getHeaderTags());
-        }else{
-            this.addToc(data, path, this.getLowestLevelLinks());
-        }   
+        //TODO Sugar_Versions/x.x H2 only
+        // if(pathArr[1] == "Documentation" && 
+        //     ((pathArr[2] == "Sugar_Versions" && pathArr.length < 4)  || pathArr[2] == "Installable_Connectors" )){
+        //     //H2 tags
+        //     this.addToc(data, path, this.getHeaderTags());
+        // }else{
+        //     this.addToc(data, path, this.getLowestLevelLinks());
+        // }   
 
+        var mainContent;
+        if(pathArr[0] == "Get Started"){
+            mainContent = this.getLowestLevelLinks();
+        }else if(pathArr[0] == "Documentation"){
+            if(pathArr[1] == "Sugar_Versions"){
+                mainContent = this.getHeaderTags();
+            }else if(pathArr[1] == "Mobile_Solutions"){
+                mainContent = this.getLowestLevelLinks();
+            }else if(pathArr[1] == "Plug_ins"){
+                mainContent = this.getLowestLevelLinks();
+            }else if(pathArr[1] == "Installable_Connectors"){
+                mainContent = this.getHeaderTags();
+            }else if(pathArr[1] == "Sugar_Developer"){
+                mainContent = this.getLowestLevelLinks();
+            }
+        }else if(pathArr[0] == "Knowledge_Base"){
+            mainContent = this.getLowestLevelLinks();
+        }
 
-
-
-         // if(pathArr[0] == "Get Started"){
-
-         //        }else if(pathArr[0] == "Documentation"){
-         //            if(pathArr[1] == "Sugar_Versions" || pathArr[1] == "Installable_Connectors" ){
-         //                // searchPath = NavTree.getPathUntilDepth(pathArr, 5);
-         //                this.addToc(data, path, tocChildren);
-         //            }else if(pathArr[1] == "Mobile_Solutions"){
-
-         //            }else if(pathArr[1] == "Plug_ins"){
-
-         //            }else if(pathArr[1] == "Installable_Connectors"){
-
-         //            }else if(pathArr[1] == "Sugar_Developer"){
-
-         //            }
-         //        }else if(pathArr[0] == "Knowledge_Base"){
-
-         //        }        
+        this.addToc(data, path, mainContent);
      }; 
      Tree.prototype.addToc = function(data, path, tocChildren){
         if (data["href"] == path){
