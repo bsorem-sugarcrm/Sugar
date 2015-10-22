@@ -578,7 +578,7 @@ var Tree = (function () {
 
                     $('body').scrollspy({ target: '#toc-body' });
                     $('[data-spy="scroll"]').each(function () {
-                      var $spy = $(this).scrollspy('refresh')
+                      var $spy = $(this).scrollspy('refresh');
                   })
                 }
 

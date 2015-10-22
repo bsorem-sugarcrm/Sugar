@@ -859,7 +859,7 @@ a.video-thumbnail:hover {
   padding: 5px 0 5px 15px;
   position: relative;
 }
-.content .navmenu li.active a{
+.content .navmenu li.active > a{
   color: #e31c24;
 }
 
