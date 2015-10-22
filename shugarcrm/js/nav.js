@@ -461,7 +461,9 @@ var Tree = (function () {
                 }
             }
         }else if(pathArr[0] == "Knowledge_Base"){
-            
+            if(pathArr.length > 2){
+                path2 = this.getPathUntilDepth(pathArr, 2);
+            }
         }
         return path2;
      };
