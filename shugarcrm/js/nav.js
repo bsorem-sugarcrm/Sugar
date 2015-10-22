@@ -451,6 +451,10 @@ var Tree = (function () {
                 if(pathArr.length > 3){
                     path2 = this.getPathUntilDepth(pathArr, 3);
                 }
+            }else if(pathArr[1] == "Plug-ins"){
+                if(pathArr.length > 3){
+                    path2 = this.getPathUntilDepth(pathArr, 3);
+                }
             }else if(pathArr[1] == "Installable_Connectors"){
 
             }
