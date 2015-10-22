@@ -447,6 +447,10 @@ var Tree = (function () {
                 if(pathArr.length >= 5){
                     path2 = this.getPathUntilDepth(pathArr, 5);
                 }
+            }else if(pathArr[1] == "Mobile_Solutions"){
+                if(pathArr.length > 3){
+                    path2 = this.getPathUntilDepth(pathArr, 3);
+                }
             }else if(pathArr[1] == "Installable_Connectors"){
 
             }
