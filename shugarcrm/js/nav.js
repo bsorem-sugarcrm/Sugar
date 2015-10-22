@@ -439,7 +439,7 @@ var Tree = (function () {
         }else if(pathArr[0] == "Documentation"){
             if(pathArr[1] == "Sugar_Versions"){
                 if(pathArr.length >= 5){
-                    path2 = pathArr[0]+pathArr[1]+pathArr[2]+pathArr[3]+pathArr[4];
+                    path2 = this.getPathUntilDepth(path, 5);
                 }
             }else if(pathArr[1] == "Installable_Connectors"){
 
