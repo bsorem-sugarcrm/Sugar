@@ -537,7 +537,8 @@ var Tree = (function () {
 
                 NavTree.sitemapjs = tree;
 
-                var branch = NavTree.findKey({ "href" : NavTree.getJunctionForPath(searchPath) }, treeData);
+                searchPath = NavTree.getJunctionForPath(searchPath);
+                var branch = NavTree.findKey({ "href" : searchPath }, treeData);
 
                 //Get top-level sibling nodes
                 var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
