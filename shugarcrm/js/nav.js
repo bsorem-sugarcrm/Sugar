@@ -263,9 +263,9 @@ var Tree = (function () {
     };
     Tree.prototype.addMainContent = function(data, path){
         var pathArr = path.split("/");
-
-        if(pathArr[1] == "Documentation" &&
-            (pathArr[2] == "Sugar_Versions" || pathArr[2] == "Installable_Connectors" )){
+//TODO Sugar_Versions/x.x H2 only
+        if(pathArr[1] == "Documentation" && 
+            ((pathArr[2] == "Sugar_Versions" && pathArr.length < 4)  || pathArr[2] == "Installable_Connectors" )){
             //H2 tags
             this.addToc(data, path, this.getHeaderTags());
         }else{
