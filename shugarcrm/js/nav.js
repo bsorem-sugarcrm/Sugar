@@ -262,9 +262,7 @@ var Tree = (function () {
         }
     };
     Tree.prototype.addMainContent = function(data, path){
-        if(path.indexOf("/") == 0) 
-            path = path.substr(1);
-        var pathArr = path.split("/");
+        var pathArr = path.substr(1).split("/");
         //TODO Sugar_Versions/x.x H2 only
         // if(pathArr[1] == "Documentation" && 
         //     ((pathArr[2] == "Sugar_Versions" && pathArr.length < 4)  || pathArr[2] == "Installable_Connectors" )){
