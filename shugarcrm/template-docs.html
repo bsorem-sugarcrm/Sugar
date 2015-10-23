@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>SugarCRM Support - SugarCRM Support Site</title>
+    <title>{{title}} - SugarCRM Support Site</title>
+
+    <link rel="canonical" href="{{canonical}}">
 
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/jasny-bootstrap/css/jasny-bootstrap.css">
-    <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.css">
-    <link rel="stylesheet" href="css/stackicons-social-minimal.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/forms.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/jasny-bootstrap/css/jasny-bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/stackicons-social-minimal.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/base.css" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/forms.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
+    
   </head>
 
   <body>
@@ -28,9 +30,11 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#" title="SugarCRM Support - SugarCRM Support Site">
-            <img src="images/logo.png">
+            <img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/images/logo.png">
             <span>SUPPORT</span>
-          </a>
+           </a>
+
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <div class="navbar-right">
@@ -42,7 +46,7 @@
 
     <section class="filters">
       <div class="container">
-        <form class="row" id="searchForm" action="search_results.html">
+        <form class="row" id="searchForm" action="/search/">
           <div class="col-sm-12 col-md-5 input-wrap has-icon">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
@@ -52,6 +56,7 @@
             <div class="row">
               <div class="col-xs-4 input-wrap">
                 <select name="tag1" class="form-control custom-select input-lg">
+                  <!-- <option>All edition</option> -->
                   <option value="Ultimate">Ultimate</option>
                   <option value="Enterprise">Enterprise</option>
                   <option value="Corporate">Corporate</option>
@@ -87,7 +92,6 @@
 
     <section class="sub-navigation">
       <div class="container">
-
         <div class="toogle-wrap visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -98,157 +102,142 @@
         </div>
 
         <ul id="sub-nav" class="nav navbar-nav navbar-collapse collapse">
-          <li><a href="#">KNOWLEDGE BASE</a></li>
-          <li class="active"><a href="#">GETTING STARTED</a></li>
-          <li><a href="#">DOCUMENTATION</a></li>
-          <li><a href="#">TRAINING</a></li>
-          <li><a href="#">COMMUNITY</a></li>
+          <li><a href="/Knowledge_Base">KNOWLEDGE BASE</a></li>
+          <li><a href="/Get_Started">GETTING STARTED</a></li>
+          <li><a href="/Documentation">DOCUMENTATION</a></li>
+          <li><a href="https://university.sugarcrm.com/">TRAINING</a></li>
+          <li><a href="https://community.sugarcrm.com/sugarcrm">COMMUNITY</a></li>
         </ul>
 
         <a href="#" class="btn btn-default btn-default-transparent create-ticket">CREATE TICKET</a>
-
       </div>
     </section>
 
-   <section class="active-filters">
-     <div class="container">
-         <label>Edition:</label>
-         <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
-           <button type="button" class="btn btn-default active">Ultimate</button>
-           <button type="button" class="btn btn-default">Enterprise</button>
-           <button type="button" class="btn btn-default">Corporate</button>
-           <button type="button" class="btn btn-default">Professional</button>
-           <button type="button" class="btn btn-default">Community Edition</button>
-         </div>
-         &nbsp;
-         <label>Version:</label>
-         <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">
-           <button type="button" class="btn btn-default active">7.6</button>
-           <button type="button" class="btn btn-default">7.5</button>
-           <button type="button" class="btn btn-default">6.7</button>
-           <button type="button" class="btn btn-default">6.5</button>
-         </div>
-     </div>  
-   </section>
+    <section class="content has-navmenu">
+      <div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>
 
-    <section class="content">
       <div class="container">
-        <section class="content-section" id="main-page-accordion">
-          <ul class="accordion">
-            <li class="panel">
-              <h1><a data-toggle="collapse" href="#sugar-on-" id="editionTitle">7.6 Ultimate</a></h1>
-              <div id="sugar-on-ultimate" class="collapse in">
-                <div class="body">
-                  <div class="row">
+        <div class="navbar content-navbar-toogle">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-disable-scrolling="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>User Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Application</a></li>
-                        <li><a href="">Application Guide Portal</a></li>
-                        <li><a href="">Portal User Guide Plug-ins</a></li>
-                        <li><a href="">Plug-ins Documentation Mobile</a></li>
-                        <li><a href="">SugarCRM Mobile</a></li>
-                      </ul>
-                    </div>
+        <div class="ro">
+          <div class="col-md-12gg" >
+            <!-- <section class="content-heading">
+              <a href="" class="back-link">&lt; Back to search results</a>
+            </section> -->
 
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Administrator Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Administration</a></li>
-                        <li><a href="">Administration Guide Portal</a></li>
-                        <li><a href="">Portal Development User Guide</a></li>
-                        <li><a href="">Installation and Upgrade</a></li>
-                        <li><a href="">Installation and Upgrade Guide</a></li>
-                        <li><a href="">Supported Platforms</a></li>
-                        <li><a href="">Supported Platforms</a></li>
-                        <li><a href="">Sugar CRM Mobile</a></li>
-                      </ul>
-                    </div>
+            <section class="content-heading">
+              {{breadcrumbs}}
+            </section>
+            <section class="content-body">
+              <h1>{{title}}</h1>
+              {{body}}
+              {{children}}
+            </section>
 
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Developers Guides</h2>
-                        <ul class="plain-list">
-                          <li><a href="">Schema 7.5.2.1</a></li>
-                          <li><a href="">Schema 7.5.2.0</a></li>
-                          <li><a href="">Schema 7.5.1.0</a></li>
-                          <li><a href="">Schema 7.5.0.1</a></li>
-                          <li><a href="">Schema 7.5.0.0</a></li>
-                          <li><br></li>
-                          <li><a href="">SugarCRM Mobile</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Developers Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Release Notes 7.5.2.1</a></li>
-                        <li><a href="">Release Notes 7.5.2.0</a></li>
-                        <li><a href="">Release Notes 7.5.1.0</a></li>
-                        <li><a href="">Release Notes 7.5.0.1</a></li>
-                        <li><a href="">Release Notes 7.5.0.0</a></li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="row hidden">
-
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>User Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Application Guide Portal</a></li>
-                        <li><a href="">Application</a></li>
-                        <li><a href="">SugarCRM Mobile</a></li>
-                        <li><a href="">Plug-ins Documentation Mobile</a></li>
-                        <li><a href="">Portal User Guide Plug-ins</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Administrator Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Administration Guide Portal</a></li>
-                        <li><a href="">Portal Development User Guide</a></li>
-                        <li><a href="">Administration</a></li>
-                        <li><a href="">Installation and Upgrade</a></li>
-                        <li><a href="">Sugar CRM Mobile</a></li>
-                        <li><a href="">Supported Platforms</a></li>
-                        <li><a href="">Supported Platforms</a></li>
-                        <li><a href="">Installation and Upgrade Guide</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Developers Guides</h2>
-                        <ul class="plain-list">
-                          <li><a href="">Schema 7.5.1.0</a></li>
-                          <li><a href="">Schema 7.5.2.0</a></li>
-                          <li><a href="">Schema 7.5.0.1</a></li>
-                          <li><a href="">Schema 7.5.2.1</a></li>
-                          <li><a href="">Schema 7.5.0.0</a></li>
-                          <li><br></li>
-                          <li><a href="">SugarCRM Mobile</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 content-col">
-                      <h2>Developers Guides</h2>
-                      <ul class="plain-list">
-                        <li><a href="">Release Notes 7.5.2.0</a></li>
-                        <li><a href="">Release Notes 7.5.2.1</a></li>
-                        <li><a href="">Release Notes 7.5.0.1</a></li>
-                        <li><a href="">Release Notes 7.5.0.0</a></li>
-                        <li><a href="">Release Notes 7.5.1.0</a></li>
-                      </ul>
-                    </div>
-                  </div>
-
+            <section class="content-footer">
+              <div class="row">
+                <div class="col-xs-6 text-left">
+                  <a href="">&lt; Previous</a> <span class="divider">|</span> Introduction
+                </div>
+                <div class="col-xs-6 text-right">
+                  User Interface <span class="divider">|</span> <a href="">Next &gt;</a>
                 </div>
               </div>
-            </li>
-           
-          </ul>
-        </section>
+              <div class="row m-t-lg">
+                <div class="col-xs-6 text-left">
+                <!-- <div class="form-row pull-right"> -->
+                  <h4>How would you rate this?</h4>
+                  <div class="star-rating" data-rating="3.6" data-cid="1234">
+                    <div class="raiting can-rate">
+                      <div class="raiting-blank"></div>
+                      <div class="raiting-hover"></div>
+                      <div class="raiting-votes"></div>
+                    </div>
+                    <div class="rating-result"></div>
+                  </div>
+                </div>
+                <div class="col-xs-6 text-right">
+                  
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#commentModal">Leave a Comment</button>
+
+                  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                          <h4 class="modal-title" id="myModalLabel">COMMENTS</h4>
+                        </div>
+                        <div class="modal-body">
+                          <textarea id="#commentModalTextArea" placeholder="Leave us comments..."></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary">Send</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </section>
+          </div>
+
+         <!--  <aside class="col-md-4 col-lg-3 right-bar">
+            <div id="widgets" class="widgets">
+              <div class="widget">
+                <div class="well widget-body">
+                  <h4>Related resources</h4>
+                  <ul class="unmarked">
+                    <li><a href="">Sugar Enterprise Administration Guide</a></li>
+                    <li><a href="">Installation & Upgrade Guide</a></li>
+                    <li><a href="">Sugar 7.6 Portal Deployment</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="widget">
+                <div class="widget-body">
+                  <form>
+                    <div class="form-row">
+                      <h4>How would you rate this?</h4>
+                      <div class="star-rating" data-rating="3.6" data-cid="1234">
+                        <div class="raiting can-rate">
+                          <div class="raiting-blank"></div>
+                          <div class="raiting-hover"></div>
+                          <div class="raiting-votes"></div>
+                        </div>
+                        <div class="rating-result"></div>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <h4>Did you resolve your issue?</h4>
+                      <label class="radio-inline">
+                        <input type="radio" name="issueStatus" value="1"> Yes
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="issueStatus" value="2"> No
+                      </label>
+                    </div>
+
+                    <div class="form-row">
+                      <h4>What can we do to improve this?</h4>
+                      <div class="form-group"><textarea class="form-control" rows="4"></textarea></div>
+                      <div class="form-group text-right"><input type="submit" class="btn btn-primary" value="submit"></div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </aside> -->
+        </div>        
       </div>
     </section>
 
@@ -347,23 +336,17 @@
 
     <a href="#" class="scroll-to-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> Back to top</a>
 
-    <div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModal" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <div>
-              <iframe width="100%" height="350" src=""></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="http://support.sugarcrm.com/assets/js/scripts/sitemap.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/nav.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/rating.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/base.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js"></script>
 
-   
-    <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-    <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/url.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/url.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
   </body>
 </html>
