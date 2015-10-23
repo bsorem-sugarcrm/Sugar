@@ -199,7 +199,7 @@ $(document).ready(function () {
 	      	$(".nav-tabs a").click(function(){
 	      		var section = $(this).html();
 	      		if(section != "Plug-Ins")
-	      			section.split("-").join(" ");
+	      			section.split("-").join("_");
 	      		loadSection(section);
 	      	});
 	      }
