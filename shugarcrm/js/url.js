@@ -201,7 +201,7 @@ $(document).ready(function () {
 	      		if(section != "Plug-Ins")
 	      			section = section.split("-").join("_");
 	      		loadSection(section);
-	      		$(this).addClass("active").siblings().removeClass("active");
+	      		$(this).parent().addClass("active").siblings().removeClass("active");
 	      	});
 	      }
 
