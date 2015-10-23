@@ -192,15 +192,16 @@ $(document).ready(function () {
 	      if(!($("#indexTabs").length)){
 	      	$(".content-section" ).empty();	
 	      	$(".content-section" ).append(indexTabs);	
-	      	$(".content-section .nav-tabs > a").click(function(){
-	      		$(this).addClass("active").siblings().removeClass("active");
-	      	});
+	      	// $(".content-section .nav-tabs a").click(function(){
+	      		
+	      	// });
 	      	var a = $(".nav-tabs");
 	      	$(".nav-tabs a").click(function(){
 	      		var section = $(this).html();
 	      		if(section != "Plug-Ins")
 	      			section = section.split("-").join("_");
 	      		loadSection(section);
+	      		$(this).addClass("active").siblings().removeClass("active");
 	      	});
 	      }
 
