@@ -177,6 +177,7 @@ $(document).ready(function () {
 	}else{
 	//INDEX PAGE
 	  var edition;
+
 	  $("#groupUserType > .btn").click(function(){
 	      usertype = $(this).html();
 	      $('#editionHolder').removeClass("hidden");
@@ -184,9 +185,15 @@ $(document).ready(function () {
 
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
+	      if($("#indexTabs") == undefined){
+	      	$( ".content-section" ).empty();	
+	      	$( ".content-section" ).append(indexTabs);	
+	      }
+
+
 	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition);
-	      $( ".content-section" ).load( url + " .content-body", function() {
-	        Utils.transformTableToDivs();
+	      $( ".tab-content" ).load( url + " .content-body", function() {
+	        
 	      });
 	  });
 	}
@@ -236,9 +243,9 @@ var editionVersions = '<section class="active-filters">'+
      '</div>  '+
    '</section>';
 
-var indexTabs ='<div class="tabs">           <ul class="nav nav-tabs"> '+            
+var indexTabs ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
 '<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           
 '<li role="presentation"><a href="#">On-Site</a></li>'+
 '<li role="presentation"><a href="#">Mobile</a></li>'+   
 '<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
-'</ul>         </div>';
+'</ul>         </div><div class="tab-content"></div> ';
