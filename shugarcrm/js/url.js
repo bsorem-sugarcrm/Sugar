@@ -178,6 +178,10 @@ $(document).ready(function () {
 	//INDEX PAGE
 	  var edition;
 
+	  $(".btn-group > .btn").click(function(){
+	  	  $(this).addClass("active").siblings().removeClass("active");
+	  }
+
 	  $("#groupUserType > .btn").click(function(){
 	      usertype = $(this).html();
 	      $('#editionHolder').removeClass("hidden");
@@ -190,8 +194,7 @@ $(document).ready(function () {
 	      	$( ".content-section" ).append(indexTabs);	
 	      }
 
-
-	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition);
+	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition)+"/On_Demand/";
 	      $( ".tab-content" ).load( url + " .content-body", function() {
 	        
 	      });
