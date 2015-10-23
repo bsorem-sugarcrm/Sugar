@@ -185,7 +185,7 @@ $(document).ready(function () {
 
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
-	      if($("#indexTabs") == undefined){
+	      if(!($("#indexTabs").length)){
 	      	$( ".content-section" ).empty();	
 	      	$( ".content-section" ).append(indexTabs);	
 	      }
