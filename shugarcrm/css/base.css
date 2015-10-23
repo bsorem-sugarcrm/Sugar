@@ -1534,19 +1534,19 @@ footer .nav-social a {
   margin-bottom: 15px;
 }
 
-.search-result-box .tabs {
+.search-result-box .tabs, .content-section .tabs{
   margin: 0 0 25px;
 }
 
-.search-result-box .tabs .nav {
+.search-result-box .tabs.nav, .content-section .tabs.nav {
   border-bottom: 2px solid #eee;
 }
 
-.search-result-box .tabs .nav li {
+.search-result-box .tabs .nav li, .content-section .tabs .nav li {
   margin-bottom: -2px;
 }
 
-.search-result-box .tabs .nav li a {
+.search-result-box .tabs .nav li a, .content-section .tabs .nav li a {
   background: none;
   border: none;
   color: #444;
@@ -1554,7 +1554,7 @@ footer .nav-social a {
   margin: 0 5px 0 0;
 }
 
-.search-result-box .tabs .nav li.active a {
+.search-result-box .tabs .nav li.active a, .content-section .tabs .nav li.active a {
   border-bottom: 2px solid #e61718;
 }
 
