@@ -194,7 +194,7 @@ $(document).ready(function () {
 	      	$( ".content-section" ).append(indexTabs);	
 	      	$(".content-section .nav-tabs > a").click(function(){
 	      		$(this).addClass("active").siblings().removeClass("active");
-	      	}
+	      	});
 	      }
 
 	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition)+"/On_Demand/";
