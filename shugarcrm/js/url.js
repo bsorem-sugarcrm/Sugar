@@ -149,28 +149,32 @@ $(document).ready(function () {
 
 	    $("#editionTitle").html(version+" "+edition);
 	});
-	//Version Button Bar CLICK
-	$("#groupVersion > .btn").click(function(){
-		if($(this).hasClass("disabled"))
-			return;
-	    version = $(this).html();
-	    $("#editionTitle").html(version+" "+edition);
-	});
-	//Button Bar CLICK - ALL
-	$(".btn-group > .btn").click(function(){
-		if($(this).hasClass("disabled"))
-			return;
-	    $(this).addClass("active").siblings().removeClass("active");
-	    $("#okButton").addClass("btn-primary");
 
-	    //Only for demo
-	    $("#sugar-on-ultimate .row").toggleClass("hidden");
 
-	    //AJAX call to get site
-	    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-	    loadEditionVersion(url);
-	});
+	//Documentation PAGES
+	if(window.url.href.indexOf("Documentation/Sugar_Versions/")>-1){
+		//Version Button Bar CLICK
+		$("#groupVersion > .btn").click(function(){
+			if($(this).hasClass("disabled"))
+				return;
+		    version = $(this).html();
+		    $("#editionTitle").html(version+" "+edition);
+		});
+		//Button Bar CLICK - ALL
+		$(".btn-group > .btn").click(function(){
+			if($(this).hasClass("disabled"))
+				return;
+		    $(this).addClass("active").siblings().removeClass("active");
+		    $("#okButton").addClass("btn-primary");
 
+		    //Only for demo
+		    $("#sugar-on-ultimate .row").toggleClass("hidden");
+
+		    //AJAX call to get site
+		    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+		    loadEditionVersion(url);
+		});
+	}else{
 	//INDEX PAGE
 	  var edition;
 	  $("#groupUserType > .btn").click(function(){
@@ -185,7 +189,7 @@ $(document).ready(function () {
 	        Utils.transformTableToDivs();
 	      });
 	  });
-
+	}
 });
 
 function loadEditionVersion(url){
