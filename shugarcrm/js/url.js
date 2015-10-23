@@ -190,18 +190,32 @@ $(document).ready(function () {
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
 	      if(!($("#indexTabs").length)){
-	      	$( ".content-section" ).empty();	
-	      	$( ".content-section" ).append(indexTabs);	
+	      	$(".content-section" ).empty();	
+	      	$(".content-section" ).append(indexTabs);	
 	      	$(".content-section .nav-tabs > a").click(function(){
 	      		$(this).addClass("active").siblings().removeClass("active");
 	      	});
+	      	var a = $(".nav-tabs");
+	      	$(".nav-tabs a").click(function(){
+	      		var section = $(this).html();
+	      		if(section != "Plug-Ins")
+	      			section.split("-").join(" ");
+	      		loadSection(section);
+	      	});
 	      }
 
-	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition)+"/On_Demand/";
+
+
+	      loadSection("On_Demand");
+	     
+	  });
+
+	  function loadSection(section){
+	  	 var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition)+"/"+section;
 	      $( ".tab-content" ).load( url + " .content-body", function() {
 	        
 	      });
-	  });
+	  }
 	}
 });
 
