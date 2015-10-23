@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>SugarCRM Support - SugarCRM Support Site</title>
 
-    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/jasny-bootstrap/css/jasny-bootstrap.css">
-    <link rel="stylesheet" href="assets/bootstrap-select/css/bootstrap-select.css">
-    <link rel="stylesheet" href="css/stackicons-social-minimal.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/forms.css">
+    <link rel="canonical" href="{{canonical}}">
 
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/jasny-bootstrap/css/jasny-bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/stackicons-social-minimal.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/base.css" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/forms.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 
   </head>
 
   <body>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 
     <header class="project-header navbar navbar-inverse">
       <div class="container">
@@ -45,7 +44,7 @@
 
     <section class="filters">
       <div class="container">
-        <form class="row" id="searchForm" action="search_results.html">
+        <form class="row" id="searchForm" action="/search/">
           <div class="col-sm-12 col-md-5 input-wrap has-icon">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
@@ -55,6 +54,7 @@
             <div class="row">
               <div class="col-xs-4 input-wrap">
                 <select name="tag1" class="form-control custom-select input-lg">
+                  <!-- <option>All edition</option> -->
                   <option value="Ultimate">Ultimate</option>
                   <option value="Enterprise">Enterprise</option>
                   <option value="Corporate">Corporate</option>
@@ -102,7 +102,7 @@
 
         <ul id="sub-nav" class="nav navbar-nav navbar-collapse collapse">
           <li><a href="#">KNOWLEDGE BASE</a></li>
-          <li class="active"><a href="#">GETTING STARTED</a></li>
+          <li><a href="#">GETTING STARTED</a></li>
           <li><a href="#">DOCUMENTATION</a></li>
           <li><a href="#">TRAINING</a></li>
           <li><a href="#">COMMUNITY</a></li>
@@ -141,28 +141,6 @@
           </div>
         </div>
       </div>
-
-      <script type="text/javascript">
-      $(document).ready(function (argument) {
-        //Edition Button Bar CLICK
-        var usertype;
-        var edition;
-        $("#groupUserType > .btn").click(function(){
-            usertype = $(this).html();
-            $('#editionHolder').removeClass("hidden");
-        });
-
-        $("#groupEdition > .btn").click(function(){
-            edition = $(this).html();
-            // window.location.href = "http://support.sugarcrm.com/Get_Started/"+usertype+"/"+
-            var url = "http://dock-dev.sugarcrm.com/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition);
-            $( ".content-section" ).load( url + " .content-body", function() {
-              Utils.transformTableToDivs();
-            });
-        });
-      });
-
-      </script>
 
     </section>
 
@@ -412,10 +390,12 @@
     </div>
 
 
-    <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-    <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/url.js"></script>
-    <script src="js/search.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/base.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js"></script>
+    <script src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/url.js"></script>
   </body>
 </html>

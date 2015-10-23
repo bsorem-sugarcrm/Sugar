@@ -171,6 +171,21 @@ $(document).ready(function () {
 	    loadEditionVersion(url);
 	});
 
+	//INDEX PAGE
+	  var edition;
+	  $("#groupUserType > .btn").click(function(){
+	      usertype = $(this).html();
+	      $('#editionHolder').removeClass("hidden");
+	  });
+
+	  $("#groupEdition > .btn").click(function(){
+	      edition = $(this).html();
+	      var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition);
+	      $( ".content-section" ).load( url + " .content-body", function() {
+	        Utils.transformTableToDivs();
+	      });
+	  });
+
 });
 
 function loadEditionVersion(url){
