@@ -60,6 +60,10 @@
       return ed;
     },
 
+    replaceSpaceToUnderScore: function(string) {
+      return string.split(" ").join("_");
+    },
+
     transformTableToDivs: function(){
       var div = document.createElement('div');
       div.setAttribute("class", "row");

@@ -12,9 +12,15 @@
     <link rel="stylesheet" href="css/stackicons-social-minimal.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/forms.css">
+
+
   </head>
 
   <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+
     <header class="project-header navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
@@ -108,45 +114,90 @@
     </section>
 
     <section class="active-filters">
-      <div class="container">
+      <!-- <div class="container">
         Active filters:
         <ul class="nav nav-pills">
           <li><a href="#" class="btn btn-default">Sugar Ultimate</a></li>
           <li><a href="#" class="btn btn-default">7.4.X</a></li>
           <li><a href="#" class="btn btn-default">End Users</a></li>
         </ul>
+      </div> -->
+      <div class="container">
+        <label class="pull-left">User type:</label>
+        <div class="btn-group btn-group-sm pull-left" role="groupUserType" id="groupUserType">
+          <button type="button" class="btn btn-default">End Users</button>
+          <button type="button" class="btn btn-default">Developer</button>
+          <button type="button" class="btn btn-default">Administrator</button>
+        </div>
+        &nbsp;
+        <div id="editionHolder" class="hidden pull-left m-l-lg">
+          <label>Edition:</label>
+          <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
+            <button type="button" class="btn btn-default">Ultimate</button>
+            <button type="button" class="btn btn-default">Enterprise</button>
+            <button type="button" class="btn btn-default">Corporate</button>
+            <button type="button" class="btn btn-default">Professional</button>
+            <button type="button" class="btn btn-default">Community Edition</button>
+          </div>
+        </div>
       </div>
+
+      <script type="text/javascript">
+      $(document).ready(function (argument) {
+        //Edition Button Bar CLICK
+        var usertype;
+        var edition;
+        $("#groupUserType > .btn").click(function(){
+            usertype = $(this).html();
+            $('#editionHolder').removeClass("hidden");
+        });
+
+        $("#groupEdition > .btn").click(function(){
+            edition = $(this).html();
+            // window.location.href = "http://support.sugarcrm.com/Get_Started/"+usertype+"/"+
+            var url = "http://dock-dev.sugarcrm.com/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition);
+            $( ".content-section" ).load( url + " .content-body", function() {
+              Utils.transformTableToDivs();
+            });
+        });
+      });
+
+      </script>
+
     </section>
 
     <section class="content">
       <div class="container">
-        <section class="content-section" id="learn-the-basis">
-          <h2>Learn the Basics</h2>
-          <div class="row">
-            <div class="col-sm-6 col-md-3 video-item">
-              <a href="#" class="thumbnail video-thumbnail video-trigger " data-video="http://www.youtube.com/embed/loFtozxZG0s" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
-              <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/loFtozxZG0s" data-target="#videoPlayerModal">SugarCRM Basics 1 Video</a>
-            </div>
-            <div class="col-sm-6 col-md-3 video-item">
-              <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/crJOc8CZ574" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
-              <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/crJOc8CZ574" data-target="#videoPlayerModal">SugarCRM Basics 1 Video</a>
-            </div>
-            <div class="col-sm-6 col-md-3 video-item">
-              <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/nyZk6CGdfhM" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
-              <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/nyZk6CGdfhM" data-target="#videoPlayerModal">SugarCRM Basics 3 Video</a>
-            </div>
-            <div class="col-sm-6 col-md-3 video-item">
-              <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/OWawRJgk_54" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
-              <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/OWawRJgk_54" data-target="#videoPlayerModal">SugarCRM Basics 4 Video</a>
-            </div>
-          </div>
-        </section>
+        <!-- <section class="content-section" >
+          
+        </section> -->
 
         <section class="content-section" id="main-page-accordion">
           <ul class="accordion">
             <li class="panel">
-              <h2><a data-toggle="collapse" data-parent=".accordion" href="#sugar-on-demand">Sugar on Demand</a></h2>
-              <div id="sugar-on-demand" class="collapse in">
+              <h2><a data-toggle="collapse" data-parent=".accordion" href="#learn-the-basis">Learn the Basics</a></h2>
+              <div class="row collapse in" id="learn-the-basis">
+                <div class="col-sm-6 col-md-3 video-item">
+                  <a href="#" class="thumbnail video-thumbnail video-trigger " data-video="http://www.youtube.com/embed/loFtozxZG0s" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
+                  <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/loFtozxZG0s" data-target="#videoPlayerModal">SugarCRM Basics 1 Video</a>
+                </div>
+                <div class="col-sm-6 col-md-3 video-item">
+                  <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/crJOc8CZ574" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
+                  <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/crJOc8CZ574" data-target="#videoPlayerModal">SugarCRM Basics 1 Video</a>
+                </div>
+                <div class="col-sm-6 col-md-3 video-item">
+                  <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/nyZk6CGdfhM" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
+                  <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/nyZk6CGdfhM" data-target="#videoPlayerModal">SugarCRM Basics 3 Video</a>
+                </div>
+                <div class="col-sm-6 col-md-3 video-item">
+                  <a href="#" class="thumbnail video-thumbnail video-trigger" data-video="http://www.youtube.com/embed/OWawRJgk_54" data-toggle="modal" data-target="#videoPlayerModal"><img src="pictures/video.jpg"></a>
+                  <a href="#" class="video-trigger" data-toggle="modal" data-video="http://www.youtube.com/embed/OWawRJgk_54" data-target="#videoPlayerModal">SugarCRM Basics 4 Video</a>
+                </div>
+              </div>
+            </li>
+            <li class="panel">
+              <h2><a class="collapsed" data-toggle="collapse" data-parent=".accordion" href="#sugar-on-demand">Sugar on Demand</a></h2>
+              <div id="sugar-on-demand" class="collapse">
                 <div class="body">
                   <div class="row">
                     <div class="col-sm-6 col-md-3">
@@ -360,10 +411,10 @@
       </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+
     <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
     <script src="assets/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="js/base.js"></script>
+    <script src="js/url.js"></script>
   </body>
 </html>
