@@ -152,7 +152,7 @@ $(document).ready(function () {
 
 
 	//Documentation PAGES
-	if(window.url.href.indexOf("Documentation/Sugar_Versions/")>-1){
+	if(window.location.href.indexOf("Documentation/Sugar_Versions/")>-1){
 		//Version Button Bar CLICK
 		$("#groupVersion > .btn").click(function(){
 			if($(this).hasClass("disabled"))
@@ -236,6 +236,9 @@ var editionVersions = '<section class="active-filters">'+
      '</div>  '+
    '</section>';
 
-
-//Workaround hack-remove later!!!!
-// loadScript("http://scarlett.sugarcrm.com/Sugar/shugarcrm/js/search.js");
+var indexTabs ='<div class="tabs">           <ul class="nav nav-tabs"> '+            
+'<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           
+'<li role="presentation"><a href="#">On-Site</a></li>'+
+'<li role="presentation"><a href="#">Mobile</a></li>'+   
+'<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
+'</ul>         </div>';
