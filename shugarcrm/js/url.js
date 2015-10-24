@@ -207,9 +207,7 @@ $(document).ready(function () {
 	      if(usertype == "Developers"){
 	      	$('#editionHolder').addClass("hidden");
 	      	edition = "";
-	      	
-	      	showTabs(indexTabs2);	
-	      	loadSection("Documentation");
+	      	showTabs(edition);	
 	  	  }else{
 	      	$('#editionHolder').removeClass("hidden");
 	      	$("#groupEdition > .btn").removeClass("active");
@@ -219,12 +217,8 @@ $(document).ready(function () {
 	  //Edition type Button bar Click
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
-
 	      $(".section-holder" ).empty();	
 	      showTabs(edition);	
-
-	      loadSection("On_Demand");
-	     
 	  });
 
 	  function showTabs(tabs){
@@ -241,6 +235,7 @@ $(document).ready(function () {
 	  			$("#indexTabs ul").append('<li role="presentation"><a href="#">'+branch.children[i].name+'</a></li>');
 	  		}
 	  		$("#indexTabs ul li:nth-child(1)").addClass("active");
+	  		loadSection($("#indexTabs ul li:nth-child(1) a").html());
 	  	}
 	  	
 	  	$(".nav-tabs a").click(function(){
