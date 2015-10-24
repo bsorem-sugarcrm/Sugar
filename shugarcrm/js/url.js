@@ -191,7 +191,7 @@ $(document).ready(function () {
 	      	$('#editionHolder').addClass("hidden");
 	      	edition = "";
 	      	
-	      	$(".content-section" ).append(indexTabs2);	
+	      	showTabs(indexTabs2);	
 	      	loadSection("Documentation");
 	  	  }else
 	      	$('#editionHolder').removeClass("hidden");
@@ -202,22 +202,22 @@ $(document).ready(function () {
 	      edition = $(this).html();
 
 	      $(".content-section" ).empty();	
-	      $(".content-section" ).append(indexTabs);	
-	      if(!($("#indexTabs").length)){
-	      	
-	      	var a = $(".nav-tabs");
-	      	$(".nav-tabs a").click(function(){
-	      		var section = $(this).html();
-	      		if(section != "Plug-Ins")
-	      			section = section.split("-").join("_");
-	      		loadSection(section);
-	      		$(this).parent().addClass("active").siblings().removeClass("active");
-	      	});
-	      }
+	      showTabs(indexTabs);	
 
 	      loadSection("On_Demand");
 	     
 	  });
+
+	  function showTabs(tabs){
+	  	$(".content-section" ).append(tabs);	
+	  	$(".nav-tabs a").click(function(){
+	  		var section = $(this).html();
+	  		if(section != "Plug-Ins")
+	  			section = section.split("-").join("_");
+	  		loadSection(section);
+	  		$(this).parent().addClass("active").siblings().removeClass("active");
+	  	});
+	  }
 
 	  function loadSection(section){
 	  	 var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype);
