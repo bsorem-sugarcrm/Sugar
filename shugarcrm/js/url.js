@@ -178,15 +178,23 @@ $(document).ready(function () {
 	//INDEX PAGE
 	  var edition;
 
+	  //All Button Bar Click
 	  $(".btn-group > .btn").click(function(){
 	  	  $(this).addClass("active").siblings().removeClass("active");
 	  });
 
+	  //User Type Button Bar Click
 	  $("#groupUserType > .btn").click(function(){
 	      usertype = $(this).html();
-	      $('#editionHolder').removeClass("hidden");
+	      if(usertype == "Developers"){
+	      	$('#editionHolder').addClass("hidden");
+	      	edition = "";
+	      	loadSection("Documentation");
+	  	  }else
+	      	$('#editionHolder').removeClass("hidden");
 	  });
 
+	  //Edition type Button bar Click
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
 	      if(!($("#indexTabs").length)){
@@ -212,7 +220,10 @@ $(document).ready(function () {
 	  });
 
 	  function loadSection(section){
-	  	 var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype)+"/"+Utils.replaceSpaceToUnderScore(edition)+"/"+section;
+	  	 var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype);
+	  	 if(edition != "")
+	  	 	url += "/"+Utils.replaceSpaceToUnderScore(edition);
+	  	 url += "/"+section;
 	      $( ".tab-content" ).load( url + " .content-body", function() {
 	        
 	      });
