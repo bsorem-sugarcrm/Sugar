@@ -177,6 +177,19 @@ $(document).ready(function () {
 	}else{
 	//INDEX PAGE
 	  var edition;
+	  var sitemap;
+
+	  //Load SITEMAP.JS
+	  $.ajax({
+	      // url: '/assets/js/scripts/sitemap.js',
+	      url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
+	      dataType: "jsonp",
+	      jsonp: false,
+	      jsonpCallback: 'sitemap'
+	  }).done(function (tree) {
+	  	// var branch = Utils.findKey({href:"/Get_Started/End_Users/Community_Edition"}, data);
+	  	sitemap = tree;
+	  });
 
 	  //Initial HACK - REMOVE!!!
 	  $(".content-section .accordion li:nth-child(1)").siblings().remove();
@@ -208,7 +221,7 @@ $(document).ready(function () {
 	      edition = $(this).html();
 
 	      $(".section-holder" ).empty();	
-	      showTabs(indexTabs);	
+	      showTabs(edition);	
 
 	      loadSection("On_Demand");
 	     
@@ -217,7 +230,19 @@ $(document).ready(function () {
 	  function showTabs(tabs){
 	  	$(".content-section .accordion a").addClass("collapsed");
 	  	$(".content-section .accordion div").removeClass("in");
-	  	$(".section-holder" ).append(tabs);	
+
+	  	var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype);
+	  	if(edition != "")
+	  		url += "/"+Utils.replaceSpaceToUnderScore(edition);
+	  	var branch = Utils.findKey({href: url }, sitemap);
+	  	if(branch){
+	  		$(".section-holder" ).append(indexTemplate);	
+	  		for(var i=0; i<branch.children.length; i++){
+	  			$("#indexTabs ul").append('<li role="presentation"><a href="#">'+branch.children[i].name+'</a></li>');
+	  		}
+	  		$("#indexTabs ul li:nth-child(1)").addClass("active");
+	  	}
+	  	
 	  	$(".nav-tabs a").click(function(){
 	  		var section = $(this).html();
 	  		if(section != "Plug-Ins")
@@ -282,6 +307,13 @@ var editionVersions = '<section class="active-filters">'+
       '   </div>'+
      '</div>  '+
    '</section>';
+
+var indexTemplate ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
+// '<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           
+// '<li role="presentation"><a href="#">On-Site</a></li>'+
+// '<li role="presentation"><a href="#">Mobile</a></li>'+   
+// '<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
+'</ul>         </div><div class="tab-content"></div> ';
 
 var indexTabs ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
 '<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           

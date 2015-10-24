@@ -44,7 +44,36 @@
 
       return string;
     },
+    //Used to find a key in the SiteMap.js
+    findKey: function(keyObj, data){
+        var p, key, val, tRet;
+        for (p in keyObj) {
+            if (keyObj.hasOwnProperty(p)) {
+                key = p;
+                val = keyObj[p];
+            }
+        }
 
+        if (data[key] == val) {
+            return data;
+        } else if (Array.isArray(data)){
+            var children = data;
+            for (var i = 0; i < children.length; i++) {
+                var found = this.findKey(keyObj, children[i]);
+                if (found) {
+                    return found;
+                }
+            }
+        } else if (data.hasOwnProperty("children")) {
+            var children = data.children;
+            for (var i = 0; i < children.length; i++) {
+                var found = this.findKey(keyObj, children[i]);
+                if (found) {
+                    return found;
+                }
+            }
+        }
+    },
     stripTags: function(str) {
       var replace = new RegExp("\\+", 'gi');
 
