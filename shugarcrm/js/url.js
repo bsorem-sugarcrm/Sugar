@@ -186,9 +186,12 @@ $(document).ready(function () {
 	  //User Type Button Bar Click
 	  $("#groupUserType > .btn").click(function(){
 	      usertype = $(this).html();
+	      $(".content-section" ).empty();	
 	      if(usertype == "Developers"){
 	      	$('#editionHolder').addClass("hidden");
 	      	edition = "";
+	      	
+	      	$(".content-section" ).append(indexTabs2);	
 	      	loadSection("Documentation");
 	  	  }else
 	      	$('#editionHolder').removeClass("hidden");
@@ -197,12 +200,11 @@ $(document).ready(function () {
 	  //Edition type Button bar Click
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
+
+	      $(".content-section" ).empty();	
+	      $(".content-section" ).append(indexTabs);	
 	      if(!($("#indexTabs").length)){
-	      	$(".content-section" ).empty();	
-	      	$(".content-section" ).append(indexTabs);	
-	      	// $(".content-section .nav-tabs a").click(function(){
-	      		
-	      	// });
+	      	
 	      	var a = $(".nav-tabs");
 	      	$(".nav-tabs a").click(function(){
 	      		var section = $(this).html();
@@ -212,8 +214,6 @@ $(document).ready(function () {
 	      		$(this).parent().addClass("active").siblings().removeClass("active");
 	      	});
 	      }
-
-
 
 	      loadSection("On_Demand");
 	     
@@ -281,3 +281,9 @@ var indexTabs ='<div class="tabs" id="indexTabs">           <ul class="nav nav-t
 '<li role="presentation"><a href="#">Mobile</a></li>'+   
 '<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
 '</ul>         </div><div class="tab-content"></div> ';
+
+var indexTabs2 = '<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
+'<li role="presentation" class="active"><a href="#">Documentation</a></li>'+
+'<li role="presentation"><a href="#">Community</a></li>'+     
+'</ul>         </div><div class="tab-content"></div> ';
+
