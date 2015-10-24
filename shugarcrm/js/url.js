@@ -193,8 +193,10 @@ $(document).ready(function () {
 	      	
 	      	showTabs(indexTabs2);	
 	      	loadSection("Documentation");
-	  	  }else
+	  	  }else{
 	      	$('#editionHolder').removeClass("hidden");
+	      	$("#groupEdition > .btn").removeClass("active");
+	      }
 	  });
 
 	  //Edition type Button bar Click
