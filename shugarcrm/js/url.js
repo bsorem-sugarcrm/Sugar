@@ -178,6 +178,10 @@ $(document).ready(function () {
 	//INDEX PAGE
 	  var edition;
 
+	  //Initial HACK - REMOVE!!!
+	  $(".content-section .accordion li:nth-child(1)").siblings().remove();
+	  $(".content-section .accordion").append("<div class='section-holder'></div>");
+
 	  //All Button Bar Click
 	  $(".btn-group > .btn").click(function(){
 	  	  $(this).addClass("active").siblings().removeClass("active");
@@ -186,7 +190,7 @@ $(document).ready(function () {
 	  //User Type Button Bar Click
 	  $("#groupUserType > .btn").click(function(){
 	      usertype = $(this).html();
-	      $(".content-section" ).empty();	
+	      $(".section-holder" ).empty();	
 	      if(usertype == "Developers"){
 	      	$('#editionHolder').addClass("hidden");
 	      	edition = "";
@@ -203,7 +207,7 @@ $(document).ready(function () {
 	  $("#groupEdition > .btn").click(function(){
 	      edition = $(this).html();
 
-	      $(".content-section" ).empty();	
+	      $(".section-holder" ).empty();	
 	      showTabs(indexTabs);	
 
 	      loadSection("On_Demand");
@@ -211,7 +215,9 @@ $(document).ready(function () {
 	  });
 
 	  function showTabs(tabs){
-	  	$(".content-section" ).append(tabs);	
+	  	$(".content-section .accordion a").addClass("collapsed");
+	  	$(".content-section .accordion div").removeClass("in");
+	  	$(".section-holder" ).append(tabs);	
 	  	$(".nav-tabs a").click(function(){
 	  		var section = $(this).html();
 	  		if(section != "Plug-Ins")
