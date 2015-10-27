@@ -304,21 +304,5 @@ var editionVersions = '<section class="active-filters">'+
    '</section>';
 
 var indexTemplate ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
-// '<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           
-// '<li role="presentation"><a href="#">On-Site</a></li>'+
-// '<li role="presentation"><a href="#">Mobile</a></li>'+   
-// '<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
-'</ul>         </div><div class="tab-content"></div> ';
-
-var indexTabs ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
-'<li role="presentation" class="active"><a href="#">On-Demand</a></li>  '+           
-'<li role="presentation"><a href="#">On-Site</a></li>'+
-'<li role="presentation"><a href="#">Mobile</a></li>'+   
-'<li role="presentation"><a href="#">Plug-Ins</a></li>'+     
-'</ul>         </div><div class="tab-content"></div> ';
-
-var indexTabs2 = '<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
-'<li role="presentation" class="active"><a href="#">Documentation</a></li>'+
-'<li role="presentation"><a href="#">Community</a></li>'+     
 '</ul>         </div><div class="tab-content"></div> ';
 
