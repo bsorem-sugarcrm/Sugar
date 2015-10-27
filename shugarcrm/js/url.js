@@ -235,6 +235,9 @@ $(document).ready(function () {
 	  			$("#indexTabs ul").append('<li role="presentation"><a href="#">'+branch.children[i].name+'</a></li>');
 	  		}
 	  		$("#indexTabs ul li:nth-child(1)").addClass("active");
+	  		$("#indexTabs h1").text("Getting Started with Sugar "+edition+" for "+usertype);
+
+
 	  		loadSection($("#indexTabs ul li:nth-child(1) a").html());
 	  	}
 	  	
@@ -303,6 +306,6 @@ var editionVersions = '<section class="active-filters">'+
      '</div>  '+
    '</section>';
 
-var indexTemplate ='<div class="tabs" id="indexTabs">           <ul class="nav nav-tabs"> '+            
+var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
 '</ul>         </div><div class="tab-content"></div> ';
 
