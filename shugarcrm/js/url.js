@@ -1,3 +1,5 @@
+var BASE_URL = "http://scarlett.sugarcrm.com/Sugar/shugarcrm/";
+
 $(document).ready(function () {
 
 	//Change SEARCH FORM ACTION - HEADER
@@ -66,8 +68,8 @@ $(document).ready(function () {
 		    loadEditionVersion(url);
 		});
 	}else{
-	//INDEX PAGE - load external script
-	loadScript("js/index.js");
+		//INDEX PAGE - load external script
+		loadScript(BASE_URL+"js/index.js");
 	}
 });
 
