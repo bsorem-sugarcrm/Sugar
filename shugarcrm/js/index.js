@@ -46,6 +46,7 @@ $(document).ready(function () {
 	      showTabs(edition);	
 	  });
 
+	  //Show the tabs from the Button Bar Selection
 	  function showTabs(tabs){
 	  	$(".content-section .accordion a").addClass("collapsed");
 	  	$(".content-section .accordion div").removeClass("in");
@@ -75,6 +76,7 @@ $(document).ready(function () {
 	  	});
 	  }
 
+	  //Load the selected Section into the Tab
 	  function loadSection(section){
 	  	 var url = "/Get_Started/"+Utils.replaceSpaceToUnderScore(usertype);
 	  	 if(edition != "")
