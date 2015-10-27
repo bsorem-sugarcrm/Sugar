@@ -241,7 +241,7 @@ $(document).ready(function () {
 	  	$(".nav-tabs a").click(function(){
 	  		var section = $(this).html();
 	  		if(section != "Plug-Ins")
-	  			section = section.split("-").join("_");
+	  			section = section.split("-").join("_").split(" ").join("_");
 	  		loadSection(section);
 	  		$(this).parent().addClass("active").siblings().removeClass("active");
 	  	});
