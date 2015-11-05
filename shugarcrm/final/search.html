@@ -1,0 +1,78 @@
+{{template:8f8e9ac5-5d83-9bbe-9d95-563a466f5333}}
+<!-- Header.html -->
+
+<section class="active-filters">
+  <div class="container">
+    <form class="form-inline">
+      <label>Active filters:</label>
+      <select name="filter_tag1" class="form-control input-sm">
+        <option>All edition</option>
+        <option>Ultimate</option>
+        <option>Enterprise</option>
+        <option>Corporate</option>
+        <option>Professional</option>
+        <option>Community Edition</option>
+      </select>
+      <select name="filter_tag2" class="form-control input-sm">
+        <option value="7.4">Sugar 7.4.X</option>
+        <option value="7.5">Sugar 7.5.X</option>
+        <option value="7.6">Sugar 7.6.X</option>
+        <option value="7.7">Sugar 7.7.X</option>
+        <option value="7.8">Sugar 7.8.X</option>
+      </select>
+      <select name="filter_tag3" class="form-control input-sm">
+        <option>End Users</option>
+        <option>Administrators</option>
+        <option>Developers</option>
+      </select>
+      <a href="#" class="clear-all-filters">CLEAR ALL</a>
+    </form>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="search-result-box" id="search-box">
+          <div class="results"></div>
+          <div class="pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/html" id="search_results">
+  <% if (data.error) { %>
+    <p><%=data.error%></p>
+  <% } else { %>
+    <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+    <div class="tabs">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">All results</a></li>
+        <li role="presentation"><a href="#">Base</a></li>
+        <li role="presentation"><a href="#">Community</a></li>
+        <li role="presentation"><a href="#">Documentation</a></li>
+        <li role="presentation"><a href="#">Apps</a></li>
+      </ul>
+    </div>
+    <ul class="search-result-list">
+      <%
+        for (var i = 0; i < data.data.length; i++) {
+        var item = data.data[i];
+      %>
+        <li>
+          <a href="<%=item.url%>">
+            <span class="title"><%=item.title%></span>
+            <span class="url"><%=item.url%></span>
+            <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  <% } %>
+</script>
+
+<!-- Footer.html -->
+{{template:80b69e0c-b60c-a34b-11fb-563a464a9923}}

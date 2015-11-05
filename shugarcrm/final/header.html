@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>{{title}} - SugarCRM Support Site</title>
+
+    <link rel="canonical" href="{{canonical}}">
+
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/jasny-bootstrap/css/jasny-bootstrap.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/assets/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/stackicons-social-minimal.css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/base.css" type="text/css">
+    <link rel="stylesheet" href="http://scarlett.sugarcrm.com/Sugar/shugarcrm/css/forms.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
+
+  </head>
+
+  <body>
+    <header class="project-header navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" title="SugarCRM Support - SugarCRM Support Site">
+            <img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/images/logo.png">
+            <span>SUPPORT</span>
+           </a>
+
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="navbar-right">
+            <a href="" class="btn btn-primary">Log in</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="filters">
+      <div class="container">
+        <form class="row" id="searchForm" action="/search/">
+          <div class="col-sm-12 col-md-5 input-wrap has-icon">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
+          </div>
+
+          <div class="col-xs-12 col-sm-9 col-md-6 form-set">
+            <div class="row">
+              <div class="col-xs-4 input-wrap">
+                <select name="tag1" class="form-control custom-select input-lg">
+                  <!-- <option>All edition</option> -->
+                  <option value="Ultimate">Ultimate</option>
+                  <option value="Enterprise">Enterprise</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Professional">Professional</option>
+                  <option value="Community Edition">Community Edition</option>
+                </select>
+              </div>
+              <div class="col-xs-4 input-wrap">
+                <select name="tag2" class="form-control custom-select input-lg">
+                  <option value="7.4">Sugar 7.4.X</option>
+                  <option value="7.5">Sugar 7.5.X</option>
+                  <option value="7.6">Sugar 7.6.X</option>
+                  <option value="7.7">Sugar 7.7.X</option>
+                  <option value="7.8">Sugar 7.8.X</option>
+                </select>
+              </div>
+              <div class="col-xs-4 input-wrap">
+                <select name="tag3" class="form-control custom-select input-lg">
+                  <option value="End Users">End Users</option>
+                  <option value="Administrators">Administrators</option>
+                  <option value="Developers">Developers</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-1 input-wrap no-border">
+            <button type="submit" class="btn btn-search btn-lg btn-block">Search</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="sub-navigation">
+      <div class="container">
+        <div class="toogle-wrap visible-xs">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <ul id="sub-nav" class="nav navbar-nav navbar-collapse collapse">
+          <li><a href="/Knowledge_Base">KNOWLEDGE BASE</a></li>
+          <li><a href="/Get_Started">GETTING STARTED</a></li>
+          <li><a href="/Documentation">DOCUMENTATION</a></li>
+          <li><a href="https://university.sugarcrm.com/">TRAINING</a></li>
+          <li><a href="https://community.sugarcrm.com/sugarcrm">COMMUNITY</a></li>
+        </ul>
+
+        <a href="#" class="btn btn-default btn-default-transparent create-ticket">CREATE TICKET</a>
+      </div>
+    </section>
+
+    <section class="content has-navmenu">
+      <div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>
+
+      <div class="container">
+        <div class="navbar content-navbar-toogle">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-disable-scrolling="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="ro">
+          <div class="col-md-12gg" >
+            <!-- <section class="content-heading">
+              <a href="" class="back-link">&lt; Back to search results</a>
+            </section> -->
+
+            <section class="content-heading">
+              {{breadcrumbs}}
+            </section>
+            <section class="content-body">
